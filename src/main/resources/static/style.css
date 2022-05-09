@@ -1,0 +1,31 @@
+/**** General css rules for the entire application ****/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+:root {
+    --main-color: black;
+    --secondary-color: white;
+    --button-bg-color: #1892c3;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form #submit {
+    background-color: var(--button-bg-color);
+    color: var(--secondary-color);
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+form input {
+    border-radius: 5px;
+}
+

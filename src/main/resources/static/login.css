@@ -1,0 +1,20 @@
+#login {
+    display: flex;
+    justify-content: center;
+}
+
+.login-wrapper {
+    border: 1px solid black;
+    padding: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 5px 10px lightgrey;
+}
+
+.login-wrapper form input {
+    width: 200px;
+    margin-bottom: 10px;
+    height: 30px;
+}
