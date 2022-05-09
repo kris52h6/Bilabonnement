@@ -18,13 +18,14 @@ public class DatabaseConnectionManager
             return conn;
         }
 
-        url = "bilabonnementkea.mysql.database.azure.com";
-        username = "Gruppe9@bilabonnementkea";
-        password = "Dat21dkea";
+        url = System.getenv("db.url");
+        username = System.getenv("db.username");
+        password = System.getenv("db.password");
 
         try
         {
             conn = DriverManager.getConnection(url, username, password);
+            System.out.println("connected");
         } catch (SQLException e)
         {
             e.printStackTrace();
