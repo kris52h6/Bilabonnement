@@ -17,4 +17,10 @@ public class ContractController {
         System.out.println(contractRepository.getSingleById(id));
         return "contract";
     }
+
+    @GetMapping("/allContracts")
+    public String allContracts(Model model){
+        model.addAttribute("contracts", contractRepository.getAllEntities());
+        return "allContracts";
+    }
 }

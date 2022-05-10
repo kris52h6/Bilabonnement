@@ -7,20 +7,47 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContractRepository implements  IRepository{
+
+    private final Connection conn = DatabaseConnectionManager.getConnection();
+
+
     @Override
-    public List getAllEntities() {
-        return null;
+    public List<Contract> getAllEntities() {
+        List<Contract> allContracts = new ArrayList<>();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract JOIN bilabonnement.customer ON contract.customer_cpr_nr = customer.customer_cpr_nr");
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                Contract temp = new Contract(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getDouble(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getDate(7),
+                        rs.getDate(8),
+                        rs.getBoolean(9)
+                );
+                allContracts.add(temp);
+            }
+
+        }catch(SQLException e){
+            System.out.println("Something wrong in statement");
+            e.printStackTrace();
+        }
+        return allContracts;
     }
 
     @Override
     public Contract getSingleById(int id) {
-            Connection conn = DatabaseConnectionManager.getConnection();
             Contract temp = null;
             try {
-                PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE contract_id = " + 1);
+                PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE contract_id = " + id);
                 ResultSet rs = pstmt.executeQuery();
                 while(rs.next()){
                     temp = new Contract(

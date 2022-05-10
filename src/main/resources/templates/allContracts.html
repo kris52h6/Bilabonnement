@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contract</title>
+</head>
+<body>
+<h1>An overview of an contract</h1>
+<table>
+    <tr
+            th:each="contract : ${contracts}">
+        <td th:text="${contract.getId()}"></td>
+        <td th:text="${contract.getCprNr()}"></td>
+        <td th:text="${contract.getPrice()}"></td>
+        <td th:text="${contract.getPickupPlace()}"></td>
+        <td th:text="${contract.getReturnPlace()}"></td>
+        <td th:text="${contract.getStartDate()}"></td>
+        <td th:text="${contract.getEndDate()}"></td>
+        <td th:text="${contract.isReturned()}"></td>
+
+
+    </tr>
+</table>
+</body>
+</html>
