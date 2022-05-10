@@ -63,6 +63,8 @@ public class CarRepository implements IRepository{
         return allRentedCars;
     }
 
+
+
     @Override
     public Object getSingleById(int id) {
         Connection conn = DatabaseConnectionManager.getConnection();
