@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Contract {
     private int id;
-    private int user_id;
+    private String cprNr;
     private int vin_no;
     private double price;
     private String pickupPlace;
@@ -13,14 +13,26 @@ public class Contract {
     private Date endDate;
     boolean isReturned;
 
+    public Contract(int id, String cprNr, int vin_no, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned) {
+        this.id = id;
+        this.cprNr = cprNr;
+        this.vin_no = vin_no;
+        this.price = price;
+        this.pickupPlace = pickupPlace;
+        this.returnPlace = returnPlace;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.isReturned = isReturned;
+    }
 
     public int getId() {
         return id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public String getCprNr() {
+        return cprNr;
     }
+
 
     public int getVin_no() {
         return vin_no;
@@ -54,9 +66,6 @@ public class Contract {
         this.id = id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
 
     public void setVin_no(int vin_no) {
         this.vin_no = vin_no;
@@ -86,18 +95,7 @@ public class Contract {
         isReturned = returned;
     }
 
-    @Override
-    public String toString() {
-        return "Contract{" +
-                "id=" + id +
-                ", user_id=" + user_id +
-                ", vin_no=" + vin_no +
-                ", price=" + price +
-                ", pickupPlace='" + pickupPlace + '\'' +
-                ", returnPlace='" + returnPlace + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", isReturned=" + isReturned +
-                '}';
+    public void setCprNr(String cprNr) {
+        this.cprNr = cprNr;
     }
 }
