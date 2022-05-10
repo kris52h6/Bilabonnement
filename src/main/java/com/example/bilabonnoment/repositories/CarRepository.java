@@ -35,6 +35,34 @@ public class CarRepository implements IRepository{
         return allCars;
     }
 
+    public List getAllRentedCars(){
+        Connection conn = DatabaseConnectionManager.getConnection();
+        List<Car> allRentedCars = new ArrayList<>();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car WHERE car_is_leased = 1");
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                Car temp = new Car(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getDouble(6),
+                        rs.getDouble(7),
+                        rs.getDouble(8),
+                        rs.getBoolean(9)
+                );
+                allRentedCars.add(temp);
+            }
+
+        }catch(SQLException e){
+            System.out.println("Something wrong in statement");
+            e.printStackTrace();
+        }
+        return allRentedCars;
+    }
+
     @Override
     public Object getSingleById(int id) {
         Connection conn = DatabaseConnectionManager.getConnection();

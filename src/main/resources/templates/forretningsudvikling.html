@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+<h1>An overview of all rented cars</h1>
+<table>
+    <tr
+            th:each="car : ${cars}">
+        <td th:text="${car.getId()}"></td>
+        <td th:text="${car.getVinNo()}"></td>
+        <td th:text="${car.getMake()}"></td>
+        <td th:text="${car.getModel()}"></td>
+        <td th:text="${car.getEquipmentLevel()}"></td>
+        <td th:text="${car.getValuePreTax()}"></td>
+        <td th:text="${car.getRegistrationTax()}"></td>
+        <td th:text="${car.getCo2Emission()}"></td>
+        <td th:text="${car.getIs_leased()}"></td>
+
+
+    </tr>
+</table>
+</body>
+</html>
