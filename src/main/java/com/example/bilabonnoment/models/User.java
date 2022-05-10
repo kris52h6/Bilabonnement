@@ -6,21 +6,21 @@ public class User
     private String username;
     private String password;
 
-    public User(int id, String user_username, String user_password) {
+    public User(int id, String username, String password) {
         this.id = id;
-        this.username = user_username;
-        this.password = user_password;
+        this.username = username;
+        this.password = password;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getUser_username() {
+    public String getUsername() {
         return username;
     }
 
-    public String getUser_password() {
+    public String getPassword() {
         return password;
     }
 
