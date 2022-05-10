@@ -20,7 +20,7 @@ public class ContractRepository implements  IRepository{
             Connection conn = DatabaseConnectionManager.getConnection();
             Contract temp = null;
             try {
-                PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE contract_id = " + id);
+                PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE contract_id = " + 1);
                 ResultSet rs = pstmt.executeQuery();
                 while(rs.next()){
                     temp = new Contract(
