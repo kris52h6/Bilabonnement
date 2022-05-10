@@ -2,12 +2,8 @@ package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Car;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.*;
+import java.util.*;
 
 public class CarRepository implements IRepository{
     @Override
@@ -68,8 +64,9 @@ public class CarRepository implements IRepository{
     }
 
     @Override
-    public boolean create(Car car) {
-        Connection conn = DatabaseConnectionManager.getConnection();
+    public boolean create(Object entity) {
+        return false;
+        /*Connection conn = DatabaseConnectionManager.getConnection();
 
         boolean result = false;
         try {
@@ -92,6 +89,6 @@ public class CarRepository implements IRepository{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return result;
+        return result;*/
     }
 }
