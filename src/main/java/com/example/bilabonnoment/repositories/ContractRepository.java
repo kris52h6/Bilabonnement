@@ -19,7 +19,8 @@ public class ContractRepository implements  IRepository{
     public List<Contract> getAllEntities() {
         List<Contract> allContracts = new ArrayList<>();
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract JOIN bilabonnement.customer ON contract.customer_cpr_nr = customer.customer_cpr_nr");
+            //PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract JOIN bilabonnement.customer ON contract.customer_cpr_nr = customer.customer_cpr_nr");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract");
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 Contract temp = new Contract(

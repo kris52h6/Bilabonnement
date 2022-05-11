@@ -19,16 +19,10 @@ public class DatabaseConnectionManager
         }
 
 
-        /*
         url = System.getenv("db.url");
         username = System.getenv("db.username");
         password = System.getenv("db.password");
-         */
 
-
-        url = "jdbc:mysql://bilabonnementkea.mysql.database.azure.com";
-        username = "Gruppe9@bilabonnementkea";
-        password = "KeaDat21d";
 
         try
         {
