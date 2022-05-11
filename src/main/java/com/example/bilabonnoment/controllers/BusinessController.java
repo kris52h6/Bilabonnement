@@ -1,26 +1,24 @@
 package com.example.bilabonnoment.controllers;
 
-import com.example.bilabonnoment.models.Car;
 import com.example.bilabonnoment.repositories.CarRepository;
-import com.example.bilabonnoment.repositories.IRepository;
-import com.example.bilabonnoment.services.ForretningsService;
+import com.example.bilabonnoment.services.BusinessService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ForretningsudviklingController {
+public class BusinessController {
 
     //private final CarRepository carRepository = new CarRepository();
 
     private final CarRepository carRepository = new CarRepository();
-    private final ForretningsService forretningsService = new ForretningsService();
+    private final BusinessService businessService = new BusinessService();
 
-    @GetMapping("/forretningsudvikling")
+    @GetMapping("/businessDevelopment")
     public String getAllCars(Model model) {
         model.addAttribute("cars", carRepository.getAllRentedCars());
-        model.addAttribute("totalValue", forretningsService.totalValueOfAllRentedCars(carRepository.getAllRentedCars()));
+        model.addAttribute("totalValue", businessService.totalValueOfAllRentedCars(carRepository.getAllRentedCars()));
         System.out.println(carRepository.getAllRentedCars());
-        return "forretningsudvikling";
+        return "businessDevelopment";
     }
 }
