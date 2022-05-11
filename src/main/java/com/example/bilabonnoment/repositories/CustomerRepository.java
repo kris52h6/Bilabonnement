@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRepository implements ICustomerRepository{
@@ -16,7 +17,25 @@ public class CustomerRepository implements ICustomerRepository{
 
     @Override
     public List getAllEntities() {
-        return null;
+        List<Customer> allContracts = new ArrayList<>();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer");
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                Customer temp = new Customer(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4)
+                );
+                allContracts.add(temp);
+            }
+
+        }catch(SQLException e){
+            System.out.println("Something wrong in statement");
+            e.printStackTrace();
+        }
+        return allContracts;
     }
 
     @Override
