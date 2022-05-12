@@ -20,7 +20,7 @@ public class Contract {
         NO
     }
 
-    public Damage damage;
+    private Damage damage;
 
 
 

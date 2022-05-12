@@ -49,10 +49,10 @@ public class Damage {
     @Override
     public String toString() {
         return "Damage{" +
-                "id=" + id +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                ", reportId=" + reportId +
+                "damage_id=" + id +
+                ", damage_price=" + price +
+                ", damage_description='" + description + '\'' +
+                ", report_id=" + reportId +
                 '}';
     }
 }
