@@ -5,13 +5,13 @@ public class Damage {
     private int id;
     private double price;
     private String description;
-    private int contractId;
+    private int reportId;
 
-    public Damage(int id, double price, String description, int contractId) {
+    public Damage(int id, double price, String description, int reportId) {
         this.id = id;
         this.price = price;
         this.description = description;
-        this.contractId = contractId;
+        this.reportId = reportId;
     }
 
     public int getId() {
@@ -38,21 +38,21 @@ public class Damage {
         this.description = description;
     }
 
-    public int getContractId() {
-        return contractId;
+    public int getReportId() {
+        return reportId;
     }
 
-    public void setContractId(int contractId) {
-        this.contractId = contractId;
+    public void setReportId(int reportId) {
+        this.reportId = reportId;
     }
 
     @Override
     public String toString() {
         return "Damage{" +
-                "id=" + id +
-                ", price=" + price +
-                ", description='" + description + '\'' +
-                ", contractId=" + contractId +
+                "damage_id=" + id +
+                ", damage_price=" + price +
+                ", damage_description='" + description + '\'' +
+                ", report_id=" + reportId +
                 '}';
     }
 }
