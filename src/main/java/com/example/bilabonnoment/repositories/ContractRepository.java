@@ -73,6 +73,8 @@ public class ContractRepository implements  IRepository{
                 System.out.println("Something wrong in statement");
                 e.printStackTrace();
             }
+
+        System.out.println(temp.getDamage());
             return temp;
     }
 
