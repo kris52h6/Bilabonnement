@@ -22,6 +22,8 @@ public class ContractRepository implements  IRepository{
             //PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract JOIN bilabonnement.customer ON contract.customer_cpr_nr = customer.customer_cpr_nr");
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract");
             ResultSet rs = pstmt.executeQuery();
+
+
             while(rs.next()){
                 Contract temp = new Contract(
                         rs.getInt(1),
@@ -32,7 +34,9 @@ public class ContractRepository implements  IRepository{
                         rs.getString(6),
                         rs.getDate(7),
                         rs.getDate(8),
-                        rs.getBoolean(9)
+                        rs.getBoolean(9),
+                        Contract.Damage.valueOf(rs.getString(10))
+
                 );
                 allContracts.add(temp);
             }
@@ -60,7 +64,8 @@ public class ContractRepository implements  IRepository{
                             rs.getString(6),
                             rs.getDate(7),
                             rs.getDate(8),
-                            rs.getBoolean(9)
+                            rs.getBoolean(9),
+                            Contract.Damage.valueOf(rs.getString(10))
                     );
                 }
 

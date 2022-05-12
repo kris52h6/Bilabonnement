@@ -14,13 +14,13 @@ public class Contract {
     private Date endDate;
     private boolean isReturned;
 
-    private enum Damage {
+    public enum Damage {
         UNCHECKED,
         YES,
         NO
     }
 
-    private Damage damage;
+    public Damage damage;
 
 
 
