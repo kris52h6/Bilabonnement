@@ -1,11 +1,14 @@
 package com.example.bilabonnoment.controllers;
 
+import com.example.bilabonnoment.models.Contract;
 import org.springframework.stereotype.Controller;
 import com.example.bilabonnoment.repositories.ContractRepository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.sql.Date;
 
 @Controller
 public class ContractController {
@@ -25,6 +28,15 @@ public class ContractController {
         return "allContracts";
     }
 
-    @PostMapping("/createNewContract")
-    public String creatNew
+
+
+    @GetMapping("/createNewContract")
+    public String creatNewContract(){
+        ContractRepository contractRepository = new ContractRepository();
+        Contract.Damage damage = Contract.Damage.YES;
+        Date date = new Date(System.currentTimeMillis());
+        Contract contract = new Contract(10, "123", 124, 10.0, "abc", "abc", date, date, true, damage);
+        contractRepository.create(contract);
+        return "ok";
+    }
 }

@@ -3,11 +3,9 @@ package com.example.bilabonnoment.repositories;
 import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class ContractRepository implements  IRepository<Contract>{
@@ -91,8 +89,9 @@ public class ContractRepository implements  IRepository<Contract>{
             pstmt.setDate(6, contract.getStartDate());
             pstmt.setDate(7, contract.getEndDate());
             pstmt.setBoolean(8, contract.isReturned());
+            pstmt.setString(9, contract.getDamage().name());
 
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
             result = true;
         }
         catch (SQLException e){
@@ -100,4 +99,5 @@ public class ContractRepository implements  IRepository<Contract>{
         }
         return result;
     }
+
 }
