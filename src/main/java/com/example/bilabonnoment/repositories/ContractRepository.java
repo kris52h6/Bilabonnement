@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-public class ContractRepository implements  IRepository<Contract>{
+public class ContractRepository implements  IRepository<Contract> {
 
     private final Connection conn = DatabaseConnectionManager.getConnection();
 
@@ -22,7 +22,7 @@ public class ContractRepository implements  IRepository<Contract>{
             ResultSet rs = pstmt.executeQuery();
 
 
-            while(rs.next()){
+            while (rs.next()) {
                 Contract temp = new Contract(
                         rs.getInt(1),
                         rs.getString(2),
@@ -39,7 +39,7 @@ public class ContractRepository implements  IRepository<Contract>{
                 allContracts.add(temp);
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Something wrong in statement");
             e.printStackTrace();
         }
@@ -48,32 +48,32 @@ public class ContractRepository implements  IRepository<Contract>{
 
     @Override
     public Contract getSingleById(int id) {
-            Contract temp = null;
-            try {
-                PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE contract_id = " + id);
-                ResultSet rs = pstmt.executeQuery();
-                while(rs.next()){
-                    temp = new Contract(
-                            rs.getInt(1),
-                            rs.getString(2),
-                            rs.getInt(3),
-                            rs.getDouble(4),
-                            rs.getString(5),
-                            rs.getString(6),
-                            rs.getDate(7),
-                            rs.getDate(8),
-                            rs.getBoolean(9),
-                            Contract.Damage.valueOf(rs.getString(10))
-                    );
-                }
-
-            }catch(SQLException e){
-                System.out.println("Something wrong in statement");
-                e.printStackTrace();
+        Contract temp = null;
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE contract_id = " + id);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                temp = new Contract(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getDouble(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getDate(7),
+                        rs.getDate(8),
+                        rs.getBoolean(9),
+                        Contract.Damage.valueOf(rs.getString(10))
+                );
             }
 
+        } catch (SQLException e) {
+            System.out.println("Something wrong in statement");
+            e.printStackTrace();
+        }
+
         System.out.println(temp.getDamage());
-            return temp;
+        return temp;
     }
 
     @Override
@@ -93,8 +93,7 @@ public class ContractRepository implements  IRepository<Contract>{
 
             pstmt.executeUpdate();
             result = true;
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;

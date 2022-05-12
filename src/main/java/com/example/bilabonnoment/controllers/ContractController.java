@@ -1,6 +1,5 @@
 package com.example.bilabonnoment.controllers;
 
-import com.example.bilabonnoment.models.Contract;
 import org.springframework.stereotype.Controller;
 import com.example.bilabonnoment.repositories.ContractRepository;
 import org.springframework.ui.Model;
@@ -29,14 +28,13 @@ public class ContractController {
     }
 
 
-
-    @GetMapping("/createNewContract")
+    @GetMapping("/test")
     public String creatNewContract(){
         ContractRepository contractRepository = new ContractRepository();
         Contract.Damage damage = Contract.Damage.YES;
         Date date = new Date(System.currentTimeMillis());
         Contract contract = new Contract(10, "123", 124, 10.0, "abc", "abc", date, date, true, damage);
         contractRepository.create(contract);
-        return "ok";
+        return "index";
     }
 }
