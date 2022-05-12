@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContractRepository implements  IRepository{
+public class ContractRepository implements  IRepository<Contract>{
 
     private final Connection conn = DatabaseConnectionManager.getConnection();
 
@@ -77,7 +77,25 @@ public class ContractRepository implements  IRepository{
     }
 
     @Override
-    public boolean create(Object entity) {
-        return false;
+    public boolean create(Contract contract) {
+        boolean result = false;
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.contract (customer_cpr_nr, vin_no, contract_price, car_pickup_place, car_return_place, contract_start_date, contract_end_date, is_returned, contract_damage) VALUES (?,?,?,?,?,?,?,?,?)");
+            pstmt.setString(1, contract.getCprNr());
+            pstmt.setInt(2, contract.getVin_no());
+            pstmt.setDouble(3, contract.getPrice());
+            pstmt.setString(4, contract.getPickupPlace());
+            pstmt.setString(5, contract.getReturnPlace());
+            pstmt.setDate(6, contract.getStartDate());
+            pstmt.setDate(7, contract.getEndDate());
+            pstmt.setBoolean(8, contract.isReturned());
+
+            pstmt.executeQuery();
+            result = true;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return result;
     }
 }

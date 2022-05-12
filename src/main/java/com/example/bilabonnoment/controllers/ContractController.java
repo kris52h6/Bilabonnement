@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import com.example.bilabonnoment.repositories.ContractRepository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -23,4 +24,7 @@ public class ContractController {
         model.addAttribute("contracts", contractRepository.getAllEntities());
         return "allContracts";
     }
+
+    @PostMapping("/createNewContract")
+    public String creatNew
 }
