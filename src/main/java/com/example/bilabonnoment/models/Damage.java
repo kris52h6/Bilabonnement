@@ -2,57 +2,57 @@ package com.example.bilabonnoment.models;
 
 public class Damage {
 
-    private int damage_id;
-    private double damage_price;
-    private String damage_description;
-    private int report_id;
+    private int id;
+    private double price;
+    private String description;
+    private int reportId;
 
-    public Damage(int damage_id, double damage_price, String damage_description, int report_id) {
-        this.damage_id = damage_id;
-        this.damage_price = damage_price;
-        this.damage_description = damage_description;
-        this.report_id = report_id;
+    public Damage(int id, double price, String description, int reportId) {
+        this.id = id;
+        this.price = price;
+        this.description = description;
+        this.reportId = reportId;
     }
 
-    public int getDamage_id() {
-        return damage_id;
+    public int getId() {
+        return id;
     }
 
-    public void setDamage_id(int damage_id) {
-        this.damage_id = damage_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public double getDamage_price() {
-        return damage_price;
+    public double getPrice() {
+        return price;
     }
 
-    public void setDamage_price(double damage_price) {
-        this.damage_price = damage_price;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public String getDamage_description() {
-        return damage_description;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDamage_description(String damage_description) {
-        this.damage_description = damage_description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public int getReport_id() {
-        return report_id;
+    public int getReportId() {
+        return reportId;
     }
 
-    public void setReport_id(int report_id) {
-        this.report_id = report_id;
+    public void setReportId(int reportId) {
+        this.reportId = reportId;
     }
 
     @Override
     public String toString() {
         return "Damage{" +
-                "damage_id=" + damage_id +
-                ", damage_price=" + damage_price +
-                ", damage_description='" + damage_description + '\'' +
-                ", report_id=" + report_id +
+                "damage_id=" + id +
+                ", damage_price=" + price +
+                ", damage_description='" + description + '\'' +
+                ", report_id=" + reportId +
                 '}';
     }
 }
