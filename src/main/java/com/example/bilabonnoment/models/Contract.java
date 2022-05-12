@@ -3,6 +3,7 @@ package com.example.bilabonnoment.models;
 import java.sql.Date;
 
 public class Contract {
+
     private int id;
     private String cprNr;
     private int vin_no;
@@ -11,9 +12,19 @@ public class Contract {
     private String returnPlace;
     private Date startDate;
     private Date endDate;
-    boolean isReturned;
+    private boolean isReturned;
 
-    public Contract(int id, String cprNr, int vin_no, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned) {
+    private enum Damage {
+        UNCHECKED,
+        YES,
+        NO
+    }
+
+    private Damage damage;
+
+
+
+    public Contract(int id, String cprNr, int vin_no, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned, Damage damage) {
         this.id = id;
         this.cprNr = cprNr;
         this.vin_no = vin_no;
@@ -23,6 +34,15 @@ public class Contract {
         this.startDate = startDate;
         this.endDate = endDate;
         this.isReturned = isReturned;
+        this.damage = damage;
+    }
+
+    public Damage getDamage() {
+        return damage;
+    }
+
+    public void setDamage(Damage damage) {
+        this.damage = damage;
     }
 
     public int getId() {
