@@ -19,6 +19,7 @@ public class BusinessController {
         model.addAttribute("cars", carRepository.getAllRentedCars());
         model.addAttribute("totalValue", businessService.totalValueOfAllRentedCars(carRepository.getAllRentedCars()));
         System.out.println(carRepository.getAllRentedCars());
+        System.out.println(businessService.totalValueOfAllRentedCars(carRepository.getAllRentedCars()));
         return "businessDevelopment";
     }
 }

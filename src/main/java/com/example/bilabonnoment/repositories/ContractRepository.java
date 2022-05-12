@@ -69,7 +69,7 @@ public class ContractRepository implements  IRepository{
                 e.printStackTrace();
             }
             return temp;
-        }
+    }
 
     @Override
     public boolean create(Object entity) {
