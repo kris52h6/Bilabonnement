@@ -22,7 +22,11 @@ public class Contract {
 
     private Damage damage;
 
-
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id;
+    }
 
     public Contract(int id, String cprNr, int vin_no, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned, Damage damage) {
         this.id = id;
