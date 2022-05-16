@@ -14,7 +14,7 @@ import java.util.List;
 public class CustomerRepository implements ICustomerRepository{
 
     @Override
-    public List getAllEntities() {
+    public List<Customer> getAllEntities() {
         Connection conn = DatabaseConnectionManager.getConnection();
         List<Customer> allContracts = new ArrayList<>();
         try {
