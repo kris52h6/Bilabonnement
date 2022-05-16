@@ -5,13 +5,13 @@ public class Damage {
     private int id;
     private double price;
     private String description;
-    private int reportId;
+    private int contractId;
 
     public Damage(int id, double price, String description, int reportId) {
         this.id = id;
         this.price = price;
         this.description = description;
-        this.reportId = reportId;
+        this.contractId = reportId;
     }
 
     public int getId() {
@@ -38,12 +38,12 @@ public class Damage {
         this.description = description;
     }
 
-    public int getReportId() {
-        return reportId;
+    public int getContractId() {
+        return contractId;
     }
 
-    public void setReportId(int reportId) {
-        this.reportId = reportId;
+    public void setContractId(int contractId) {
+        this.contractId = contractId;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class Damage {
                 "damage_id=" + id +
                 ", damage_price=" + price +
                 ", damage_description='" + description + '\'' +
-                ", report_id=" + reportId +
+                ", report_id=" + contractId +
                 '}';
     }
 }

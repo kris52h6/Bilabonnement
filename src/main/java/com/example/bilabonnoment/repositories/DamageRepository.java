@@ -20,9 +20,16 @@ public class DamageRepository implements IDamageRepository {
         List<Damage> allDamages = new ArrayList<>();
         try {
 
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage ORDER BY contract_id");
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){;
+            while(rs.next()){
+                Damage temp = new Damage(
+                        rs.getInt(1),
+                        rs.getDouble(2),
+                        rs.getString(3),
+                        rs.getInt(4)
+                );
+                allDamages.add(temp);
             }
 
         }catch(SQLException e){
