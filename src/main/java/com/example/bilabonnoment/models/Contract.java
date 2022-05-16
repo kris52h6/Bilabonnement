@@ -118,4 +118,21 @@ public class Contract {
     public void setCprNr(String cprNr) {
         this.cprNr = cprNr;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Contract{" +
+                "id=" + id +
+                ", cprNr='" + cprNr + '\'' +
+                ", vin_no=" + vin_no +
+                ", price=" + price +
+                ", pickupPlace='" + pickupPlace + '\'' +
+                ", returnPlace='" + returnPlace + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", isReturned=" + isReturned +
+                ", damage=" + damage +
+                '}';
+    }
 }
