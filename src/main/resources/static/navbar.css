@@ -1,0 +1,16 @@
+nav .nav-wrapper {
+    display: flex;
+    background-color: #87c5de;
+    padding: 5px;
+}
+
+nav .title {
+    font-size: 40px;
+    font-family: "Helvetica Neue", sans-serif;
+    color: floralwhite;
+}
+
+nav .link {
+    position: absolute;
+    left: 50%;
+}

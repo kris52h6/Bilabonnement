@@ -57,7 +57,6 @@ public class Contract {
         return cprNr;
     }
 
-
     public int getVin_no() {
         return vin_no;
     }
@@ -123,7 +122,7 @@ public class Contract {
         this.cprNr = cprNr;
     }
 
-    @Override
+    /*@Override
     public String toString()
     {
         return "Contract{" +
@@ -138,5 +137,5 @@ public class Contract {
                 ", isReturned=" + isReturned +
                 ", damage=" + damage +
                 '}';
-    }
+    }*/
 }
