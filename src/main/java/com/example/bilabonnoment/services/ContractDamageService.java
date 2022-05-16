@@ -7,7 +7,6 @@ import com.example.bilabonnoment.repositories.DamageRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ContractDamageService {
@@ -37,11 +36,8 @@ public class ContractDamageService {
 
     public HashMap<Contract, ArrayList<Damage>> contractWithDamage(int contractId){
         ContractRepository contractRepository = new ContractRepository();
-
         HashMap<Contract, ArrayList<Damage>> contractWithDamages = new HashMap<>();
-        ArrayList<Damage> damagesToContract = getAllDamagesFromContract(contractId);
-        contractWithDamages.put(contractRepository.getSingleById(contractId), damagesToContract);
-
+        contractWithDamages.put(contractRepository.getSingleById(contractId), getAllDamagesFromContract(contractId));
         return contractWithDamages;
     }
 
