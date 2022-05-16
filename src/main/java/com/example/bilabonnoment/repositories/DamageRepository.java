@@ -60,10 +60,10 @@ public class DamageRepository implements IDamageRepository {
     }
 
     @Override
-    public List<Damage> getAllDamagesFromContract(int id) {
+    public List<Damage> getAllDamagesFromContract(int contractId) {
         List<Damage> allDamages = new ArrayList<>();
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE contract_id = " + id);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE contract_id = " + contractId);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 Damage temp = new Damage(
@@ -72,6 +72,7 @@ public class DamageRepository implements IDamageRepository {
                         rs.getString(3),
                         rs.getInt(4)
                 );
+                allDamages.add(temp);
             }
 
         }catch(SQLException e){
@@ -79,5 +80,10 @@ public class DamageRepository implements IDamageRepository {
             e.printStackTrace();
         }
         return allDamages;
+    }
+
+    @Override
+    public List<String> getAllDamagesFromContracts() {
+        return null;
     }
 }
