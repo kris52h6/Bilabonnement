@@ -13,10 +13,9 @@ import java.util.List;
 
 public class CustomerRepository implements ICustomerRepository{
 
-    private final Connection conn = DatabaseConnectionManager.getConnection();
-
     @Override
     public List getAllEntities() {
+        Connection conn = DatabaseConnectionManager.getConnection();
         List<Customer> allContracts = new ArrayList<>();
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer");
@@ -40,6 +39,7 @@ public class CustomerRepository implements ICustomerRepository{
 
     @Override
     public Customer getSingleById(int id) {
+        Connection conn = DatabaseConnectionManager.getConnection();
         Customer temp = null;
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_id = " + id);
@@ -68,6 +68,7 @@ public class CustomerRepository implements ICustomerRepository{
 
     @Override
     public Customer getCustomerFromCprNr(String cprNr) {
+        Connection conn = DatabaseConnectionManager.getConnection();
         Customer temp = null;
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_cpr_nr = " + cprNr);
