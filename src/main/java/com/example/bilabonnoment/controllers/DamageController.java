@@ -15,8 +15,6 @@ public class DamageController {
     public String damageIndex(){
         DamageRepository damageRepository = new DamageRepository();
         List<Damage> allDamages = damageRepository.getAllEntities();
-
-
         return "damageIndex";
     }
 
