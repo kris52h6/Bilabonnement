@@ -29,13 +29,28 @@ public class ContractDamageService {
                 ContractWithDamages.put(contractRepository.getSingleById(currentContractId), damagesToContract);
                 damagesToContract = new ArrayList<>();
             }
-
             previousContractId = currentContractId;
-
         }
-
         return ContractWithDamages;
     }
+
+
+    public HashMap<Contract, ArrayList<Damage>> contractWithDamage(int contractId){
+
+        DamageRepository damageRepository = new DamageRepository();
+        ContractRepository contractRepository = new ContractRepository();
+
+        HashMap<Contract, ArrayList<Damage>> contractWithDamages = new HashMap<>();
+        ArrayList<Damage> damagesToContract = new ArrayList<>();
+
+        for (Damage damage : damageRepository.getAllDamagesFromContract(contractId)) {
+
+                damagesToContract = getAllDamagesFromContract(contractId);
+                contractWithDamages.put(contractRepository.getSingleById(contractId), damagesToContract);
+            }
+        return contractWithDamages;
+    }
+
 
     public ArrayList<Damage> getAllDamagesFromContract(int id) {
         DamageRepository damageRepository = new DamageRepository();
