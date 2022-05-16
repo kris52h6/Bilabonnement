@@ -12,11 +12,9 @@ import java.util.List;
 
 public class ContractRepository implements  IRepository<Contract> {
 
-    private final Connection conn = DatabaseConnectionManager.getConnection();
-
-
     @Override
     public List<Contract> getAllEntities() {
+        Connection conn = DatabaseConnectionManager.getConnection();
         List<Contract> allContracts = new ArrayList<>();
         try {
             //PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract JOIN bilabonnement.customer ON contract.customer_cpr_nr = customer.customer_cpr_nr");
@@ -50,6 +48,7 @@ public class ContractRepository implements  IRepository<Contract> {
 
     @Override
     public Contract getSingleById(int id) {
+        Connection conn = DatabaseConnectionManager.getConnection();
         Contract temp = null;
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE contract_id = " + id);
@@ -80,6 +79,7 @@ public class ContractRepository implements  IRepository<Contract> {
 
     @Override
     public boolean create(Contract contract) {
+        Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
         try {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.contract (customer_cpr_nr, vin_no, contract_price, car_pickup_place, car_return_place, contract_start_date, contract_end_date, is_returned, contract_damage) VALUES (?,?,?,?,?,?,?,?,?)");

@@ -6,6 +6,7 @@ import java.sql.*;
 import java.util.*;
 
 public class CarRepository implements IRepository{
+
     @Override
     public List getAllEntities() {
         Connection conn = DatabaseConnectionManager.getConnection();

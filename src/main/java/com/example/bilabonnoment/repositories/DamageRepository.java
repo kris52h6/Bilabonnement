@@ -12,11 +12,9 @@ import java.util.List;
 
 public class DamageRepository implements IDamageRepository {
 
-    private final Connection conn = DatabaseConnectionManager.getConnection();
-
-
     @Override
     public List<Damage> getAllEntities() {
+        Connection conn = DatabaseConnectionManager.getConnection();
         List<Damage> allDamages = new ArrayList<>();
         try {
 
@@ -34,6 +32,7 @@ public class DamageRepository implements IDamageRepository {
 
     @Override
     public Damage getSingleById(int id) {
+        Connection conn = DatabaseConnectionManager.getConnection();
         Damage temp = null;
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE damage_id = " + id);
@@ -61,6 +60,7 @@ public class DamageRepository implements IDamageRepository {
 
     @Override
     public List<Damage> getAllDamagesFromContract(int contractId) {
+        Connection conn = DatabaseConnectionManager.getConnection();
         List<Damage> allDamages = new ArrayList<>();
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE contract_id = " + contractId);
