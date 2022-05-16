@@ -36,18 +36,12 @@ public class ContractDamageService {
 
 
     public HashMap<Contract, ArrayList<Damage>> contractWithDamage(int contractId){
-
-        DamageRepository damageRepository = new DamageRepository();
         ContractRepository contractRepository = new ContractRepository();
 
         HashMap<Contract, ArrayList<Damage>> contractWithDamages = new HashMap<>();
-        ArrayList<Damage> damagesToContract = new ArrayList<>();
+        ArrayList<Damage> damagesToContract = getAllDamagesFromContract(contractId);
+        contractWithDamages.put(contractRepository.getSingleById(contractId), damagesToContract);
 
-        for (Damage damage : damageRepository.getAllDamagesFromContract(contractId)) {
-
-                damagesToContract = getAllDamagesFromContract(contractId);
-                contractWithDamages.put(contractRepository.getSingleById(contractId), damagesToContract);
-            }
         return contractWithDamages;
     }
 
