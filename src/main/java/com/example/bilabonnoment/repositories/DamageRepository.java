@@ -62,7 +62,22 @@ public class DamageRepository implements IDamageRepository {
 
     @Override
     public boolean create(Damage entity) {
-        return false;
+        Connection conn = DatabaseConnectionManager.getConnection();
+        boolean result = false;
+        try
+        {
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.damage (damage_price, damage_description, contract_id) VALUES (?,?,?)");
+            pstmt.setDouble(1, entity.getPrice());
+            pstmt.setString(2, entity.getDescription());
+            pstmt.setInt(3, entity.getContractId());
+
+            pstmt.executeUpdate();
+            result = true;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
@@ -93,4 +108,5 @@ public class DamageRepository implements IDamageRepository {
     public List<String> getAllDamagesFromContracts() {
         return null;
     }
+    
 }
