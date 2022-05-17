@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IDamageRepository extends IRepository<Damage> {
 
-    public List<Damage> getAllDamagesFromContract(int id);
+    public List<Damage> getAllDamagesFromContract(int contractId);
 
     public List<String> getAllDamagesFromContracts();
 

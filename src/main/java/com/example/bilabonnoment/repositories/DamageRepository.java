@@ -1,6 +1,5 @@
 package com.example.bilabonnoment.repositories;
 
-import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Damage;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 import org.springframework.web.context.request.WebRequest;
@@ -61,15 +60,15 @@ public class DamageRepository implements IDamageRepository {
     }
 
     @Override
-    public boolean create(Damage entity) {
+    public boolean create(Damage damage) {
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
         try
         {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.damage (damage_price, damage_description, contract_id) VALUES (?,?,?)");
-            pstmt.setDouble(1, entity.getPrice());
-            pstmt.setString(2, entity.getDescription());
-            pstmt.setInt(3, entity.getContractId());
+            pstmt.setDouble(1, damage.getPrice());
+            pstmt.setString(2, damage.getDescription());
+            pstmt.setInt(3, damage.getContractId());
 
             pstmt.executeUpdate();
             result = true;

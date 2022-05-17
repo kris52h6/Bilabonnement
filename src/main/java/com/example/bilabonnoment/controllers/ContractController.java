@@ -19,7 +19,6 @@ public class ContractController {
     @GetMapping("/contract")
     public String getContract(@RequestParam int id, Model model) {
         model.addAttribute("contracts", contractRepository.getSingleById(id));
-        System.out.println(contractRepository.getSingleById(id));
         return "contract";
     }
 
@@ -29,16 +28,6 @@ public class ContractController {
         return "allContracts";
     }
 
-    @GetMapping("/test")
-    public String creatNewContract(){
-        ContractRepository contractRepository = new ContractRepository();
-        Contract.Damage damage = Contract.Damage.YES;
-        Date date = new Date(System.currentTimeMillis());
-        Contract contract = new Contract(10, "123", 124, 10.0, "abc", "abc", date, date, true, damage);
-        contractRepository.create(contract);
-        return "index";
-    }
-
     @GetMapping("/contractForm")
     public String contractForm(){
         return "create-contract";
@@ -46,9 +35,6 @@ public class ContractController {
 
     @PostMapping("/createContract")
     public String createContract(WebRequest dataFromForm) {
-        System.out.println(dataFromForm.getParameter("customerCprNr"));
-        System.out.println(dataFromForm.getParameter("contractPrice"));
-        System.out.println(dataFromForm.getParameter("contractStartDate"));
         contractRepository.createContract(dataFromForm);
         return "redirect:/allContracts";
     }
