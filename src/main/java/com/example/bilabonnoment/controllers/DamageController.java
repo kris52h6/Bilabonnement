@@ -48,4 +48,11 @@ public class DamageController {
         return "redirect:/allContracts";
     }
 
+    @GetMapping("/deleteDamage")
+    public String deleteDamage(@RequestParam int contractId, int damageId){
+        System.out.println("JEg er her");
+        damageRepository.deleteDamage(damageId);
+        return "redirect:/damageReport?id=" + contractId;
+    }
+
 }
