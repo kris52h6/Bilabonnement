@@ -2,13 +2,16 @@ package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
+import org.springframework.web.context.request.WebRequest;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ContractRepository implements  IContractRepository {
 
@@ -129,5 +132,30 @@ public class ContractRepository implements  IContractRepository {
             e.printStackTrace();
         }
         return allContractsFromCustomer;
+    }
+
+    @Override
+    public void createContract(WebRequest data) {
+
+
+        System.out.println(data.getParameter("contractStartDate"));
+        
+        //java.sql.Date startDate = Date.valueOf(data.getParameter("contractStartDate"));
+        //java.sql.Date endDate = Date.valueOf(data.getParameter("contractEndDate"));
+
+        Contract contract = new Contract(
+                -1,
+                data.getParameter("customerCprNr"),
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("vinNo"))),
+                Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
+                data.getParameter("carPickupPlace"),
+                data.getParameter("carReturnPlace"),
+                Date.valueOf(data.getParameter("contractEndDate")),
+                Date.valueOf(data.getParameter("contractEndDate")),
+                false,
+                Contract.Damage.UNCHECKED
+        );
+
+        create(contract);
     }
 }
