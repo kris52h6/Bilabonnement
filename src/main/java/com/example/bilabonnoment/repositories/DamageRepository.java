@@ -120,4 +120,20 @@ public class DamageRepository implements IDamageRepository {
         );
         create(damage);
     }
+
+    @Override
+    public void deleteDamage(int damageId) {
+        Connection conn = DatabaseConnectionManager.getConnection();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM bilabonnement.damage WHERE damage_id = " + damageId);
+            int rs = pstmt.executeUpdate();
+            System.out.println(rs);
+        }
+        catch(SQLException e){
+        System.out.println("Something wrong in statement");
+        e.printStackTrace();
+    }
+
+
+    }
 }
