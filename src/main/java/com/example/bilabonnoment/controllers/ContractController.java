@@ -45,7 +45,7 @@ public class ContractController {
     }
 
     @PostMapping("/createContract")
-    public String createEmployee(WebRequest dataFromForm) {
+    public String createContract(WebRequest dataFromForm) {
         System.out.println(dataFromForm.getParameter("customerCprNr"));
         System.out.println(dataFromForm.getParameter("contractPrice"));
         System.out.println(dataFromForm.getParameter("contractStartDate"));

@@ -1,14 +1,14 @@
 package com.example.bilabonnoment.repositories;
 
+import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Damage;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
+import org.springframework.web.context.request.WebRequest;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DamageRepository implements IDamageRepository {
 
@@ -107,6 +107,18 @@ public class DamageRepository implements IDamageRepository {
     @Override
     public List<String> getAllDamagesFromContracts() {
         return null;
+    }
+
+    @Override
+    public void createDamage(WebRequest data) {
+        Damage damage = new Damage(
+                -1,
+                Double.parseDouble(Objects.requireNonNull(data.getParameter("damagePrice"))),
+                data.getParameter("damageDescription"),
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("contractId")))
+
+        );
+        create(damage);
     }
 
     public boolean editDamage(Damage damage){

@@ -12,7 +12,9 @@ import com.example.bilabonnoment.services.CustomerContractService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +35,17 @@ public class DamageController {
         /*model.addAttribute("damages",contractDamageService.getAllDamagesFromContract(id));*/
         model.addAttribute("contract", contractDamageService.contractWithDamage(id));
         return "damageReport";
+    }
+
+    @GetMapping("/damageForm")
+    public String contractForm(@RequestParam int contractId){
+        return "create-damage";
+    }
+
+    @PostMapping("/createDamage")
+    public String createDamage(WebRequest dataFromForm) {
+        damageRepository.createDamage(dataFromForm);
+        return "redirect:/allContracts";
     }
 
 }
