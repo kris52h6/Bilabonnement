@@ -4,17 +4,24 @@ import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Damage;
 import com.example.bilabonnoment.repositories.ContractRepository;
 import com.example.bilabonnoment.repositories.DamageRepository;
+import com.example.bilabonnoment.repositories.IContractRepository;
+import com.example.bilabonnoment.repositories.IDamageRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ContractDamageService {
+
+    private final IDamageRepository damageRepository;
+    private final IContractRepository contractRepository;
+
+    public ContractDamageService(DamageRepository damageRepository, ContractRepository contractRepository) {
+        this.damageRepository = damageRepository;
+        this.contractRepository = contractRepository;
+    }
+
     public HashMap<Contract, ArrayList<Damage>> contractsFromDamageList(){
-
-        DamageRepository damageRepository = new DamageRepository();
-        ContractRepository contractRepository = new ContractRepository();
-
         HashMap<Contract, ArrayList<Damage>> ContractWithDamages = new HashMap<>();
         ArrayList<Damage> damagesToContract = new ArrayList<>();
 
@@ -33,7 +40,6 @@ public class ContractDamageService {
         return ContractWithDamages;
     }
 
-
     public HashMap<Contract, ArrayList<Damage>> contractWithDamage(int contractId){
         ContractRepository contractRepository = new ContractRepository();
         HashMap<Contract, ArrayList<Damage>> contractWithDamages = new HashMap<>();
@@ -48,7 +54,9 @@ public class ContractDamageService {
     }
 
     public static void main(String[] args) {
-        ContractDamageService contractDamageService = new ContractDamageService();
+        DamageRepository damageRepository = new DamageRepository();
+        ContractRepository contractRepository = new ContractRepository();
+        ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
 
         HashMap<Contract, ArrayList<Damage>> contractsWithDamages = contractDamageService.contractsFromDamageList();
 

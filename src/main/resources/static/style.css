@@ -12,6 +12,14 @@
     --button-bg-color: #1892c3;
 }
 
+h1 {
+    font-size: 40px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -28,4 +36,6 @@ form #submit {
 form input {
     border-radius: 5px;
 }
+
+
 

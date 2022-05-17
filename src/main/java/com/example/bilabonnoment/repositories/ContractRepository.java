@@ -108,7 +108,6 @@ public class ContractRepository implements  IContractRepository {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE customer_cpr_nr = '" + cprNr + "'");
             ResultSet rs = pstmt.executeQuery();
 
-
             while (rs.next()) {
                 Contract temp = new Contract(
                         rs.getInt(1),
@@ -121,7 +120,6 @@ public class ContractRepository implements  IContractRepository {
                         rs.getDate(8),
                         rs.getBoolean(9),
                         Contract.Damage.valueOf(rs.getString(10))
-
                 );
                 allContractsFromCustomer.add(temp);
             }

@@ -2,48 +2,60 @@ package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Customer;
-import com.example.bilabonnoment.models.Damage;
 import com.example.bilabonnoment.repositories.ContractRepository;
 import com.example.bilabonnoment.repositories.CustomerRepository;
+import com.example.bilabonnoment.repositories.IContractRepository;
 import com.example.bilabonnoment.repositories.ICustomerRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CustomerContractService {
+    private final ICustomerRepository customerRepository;
+    private final IContractRepository contractRepository;
 
-    CustomerRepository customerRepository = new CustomerRepository();
-    ContractRepository contractRepository = new ContractRepository();
-
-    List<Contract> allContracts = new ArrayList<>();
-    List<Customer> allCustomers = new ArrayList<>();
+    public CustomerContractService(ICustomerRepository customerRepository, IContractRepository contractRepository) {
+        this.customerRepository = customerRepository;
+        this.contractRepository = contractRepository;
+    }
 
     public HashMap<Customer, ArrayList<Contract>> allCustomersContracts(){
-        /*customerRepository.getAllEntities();
+
+        CustomerRepository customerRepository = new CustomerRepository();
+        ContractRepository contractRepository = new ContractRepository();
+
         String previousCustomerCprNr = null;
         String currentCustomerCprNr = "";
+        ArrayList<Contract> allContracts = new ArrayList<>();
+        HashMap<Customer, ArrayList<Contract>> customersWithContracts = new HashMap<>();
 
-        for (Customer customer : allCustomers) {
+        for (Customer customer : customerRepository.getAllEntities()) {
+
             currentCustomerCprNr = customer.getCPR();
 
             if (!currentCustomerCprNr.equals(previousCustomerCprNr)) {
-                allContracts = contractRepository.getAllContractsFromCustomerCprNr(currentCustomerCprNr);
-                //allContracts = new ArrayList<>();
-                allContracts.add(contractRepository.getAllContractsFromCustomerCprNr(currentCustomerCprNr))
+                allContracts = (ArrayList<Contract>) contractRepository.getAllContractsFromCustomerCprNr(currentCustomerCprNr);
+                customersWithContracts.put(customer, allContracts);
+                allContracts = new ArrayList<>();
             }
 
             previousCustomerCprNr = currentCustomerCprNr;
-            allCustomersContracts().put(customer, (ArrayList<Contract>) allContracts);
         }
-        return allCustomersContracts();*/
-        return null;
+        return customersWithContracts;
+    }
+
+    public Customer getSingleCustomerByCpr(String cprNr) {
+        return customerRepository.getCustomerFromCprNr(cprNr);
     }
 
 
     public static void main(String[] args) {
-        CustomerContractService customerContractService = new CustomerContractService();
+
+        CustomerRepository customerRepository = new CustomerRepository();
+        ContractRepository contractRepository = new ContractRepository();
+
+        CustomerContractService customerContractService = new CustomerContractService(customerRepository, contractRepository);
         HashMap<Customer, ArrayList<Contract>> allCustomersContracts = customerContractService.allCustomersContracts();
 
 
