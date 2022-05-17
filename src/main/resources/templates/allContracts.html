@@ -21,9 +21,13 @@
         <td th:text="${contract.getEndDate()}"></td>
         <td th:text="${contract.isReturned()}"></td>
         <td th:text="${contract.getDamage()}"></td>
-        <a th:href="@{/damageReport?id={id}(id=${contract.getId()})}">
+        <!--<a th:href="@{/(id=${userId})}"> User [[${userId}]]</a> <br/>-->
+
+        <a th:ref="@{/damageReport(id=${contract.getId(),cpr=${contract.getCprNr()})}"></a>
+        <!--<a th:href="@{/damageReport?id={id} (id= ${contract.getId()})
+                                 + ?cpr={cpr} (cpr= ${contract.getCprNr()}) }">
             <button>t</button>
-        </a>
+        </a>-->
 
     </tr>
 </table>

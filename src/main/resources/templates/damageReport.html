@@ -46,6 +46,12 @@
 
   <main>
     <section id="damage-report">
+        <div class="customer">
+            <span th:text="${customer.getId()}"></span>
+            <span th:text="${customer.cprNr()}"></span>
+            <span th:text="${customer.firstName()}"></span>
+            <span th:text="${customer.lastName()}"></span>
+        </div>
         <!--<div class="damage-report-contract">
             <table>
                 <tr>
