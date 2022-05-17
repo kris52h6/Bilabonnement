@@ -108,5 +108,4 @@ public class DamageRepository implements IDamageRepository {
     public List<String> getAllDamagesFromContracts() {
         return null;
     }
-    
 }

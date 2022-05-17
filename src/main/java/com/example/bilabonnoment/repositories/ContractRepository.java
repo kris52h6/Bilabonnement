@@ -3,10 +3,7 @@ package com.example.bilabonnoment.repositories;
 import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,5 +126,39 @@ public class ContractRepository implements  IContractRepository {
             e.printStackTrace();
         }
         return allContractsFromCustomer;
+    }
+
+    public boolean editContract(Contract contract){
+        Connection conn = DatabaseConnectionManager.getConnection();
+        boolean result = false;
+        int id = contract.getId();
+        try{
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET customer_cpr_nr = ?, vin_no = ?, contract_price = ?, car_pickup_place = ?, car_return_place = ?, contract_start_date = ?, contract_end_date = ?, is_returned = ?, contract_damage = ? WHERE (contract_id = " + id + ");");
+            pstmt.setString(1, contract.getCprNr());
+            pstmt.setInt(2, contract.getVin_no());
+            pstmt.setDouble(3, contract.getPrice());
+            pstmt.setString(4, contract.getPickupPlace());
+            pstmt.setString(5, contract.getReturnPlace());
+            pstmt.setDate(6, contract.getStartDate());
+            pstmt.setDate(7, contract.getEndDate());
+            pstmt.setBoolean(8, contract.isReturned());
+            pstmt.setString(9, contract.getDamage().name());
+
+            pstmt.executeUpdate();
+            result = true;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static void main(String[] args)
+    {
+        ContractRepository contractRepository = new ContractRepository();
+        String str = "2000-05-05";
+        Date date = Date.valueOf(str);
+        Contract editContract = new Contract(1, "123", 1415, 1000, "her", "her", date, date, true, Contract.Damage.YES);
+        contractRepository.editContract(editContract);
     }
 }
