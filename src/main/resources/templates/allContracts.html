@@ -21,7 +21,9 @@
         <td th:text="${contract.getEndDate()}"></td>
         <td th:text="${contract.isReturned()}"></td>
         <td th:text="${contract.getDamage()}"></td>
-
+        <a th:href="@{/damageReport?id={id}(id=${contract.getId()})}">
+            <button>t</button>
+        </a>
 
     </tr>
 </table>

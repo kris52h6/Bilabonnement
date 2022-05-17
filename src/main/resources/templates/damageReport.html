@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Damage Report</title>
+    <link rel="stylesheet" th:href="@{style.css}" href="../static/style.css">
+
+</head>
+
+<style>
+    /*.damage-report .contract {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }*/
+
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contract {
+        border: 1px solid black;
+        padding: 10px;
+        width: 400px;
+    }
+
+    .contract h2 {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .inner {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        border-bottom: 1px dotted black;
+    }
+
+    .inner span:first-child {
+        font-weight: bold;
+    }
+
+</style>
+<body>
+
+  <main>
+    <section id="damage-report">
+        <!--<div class="damage-report-contract">
+            <table>
+                <tr>
+                    <td th:text="${contract.getId()}"></td>
+                    <td th:text="${contract.getCprNr()}"></td>
+                    <td th:text="${contract.getPrice()}"></td>
+                    <td th:text="${contract.getPickupPlace()}"></td>
+                    <td th:text="${contract.getReturnPlace()}"></td>
+                    <td th:text="${contract.getStartDate()}"></td>
+                    <td th:text="${contract.getEndDate()}"></td>
+                    <td th:text="${contract.isReturned()}"></td>
+                    <td th:text="${contract.getDamage()}"></td>
+                </tr>
+            </table>
+        </div>-->
+        <div class="damage-report" th:each="entry, stat : ${damages}">
+            <div class="contract">
+                <h2>Kontraktinformation</h2>
+                <span th:each="contract : ${entry.key}">
+                    <div class="row">
+                        <div class="inner">
+                        <span>Kontrakt ID:</span>
+                        <span th:text="${contract.getId()}"></span>
+                        </div>
+                        <div class="inner">
+                            <span>CPR-nummer:</span>
+                            <span th:text="${contract.getCprNr()}"></span>
+                        </div>
+                        <div class="inner">
+                            <span>Pris:</span>
+                            <span th:text="${contract.getPrice()} + ',-'"></span>
+                        </div>
+                        <div class="inner">
+                            <span>Afhentningssted:</span>
+                            <span th:text="${contract.getPickupPlace()}"></span>
+                        </div>
+                        <div class="inner">
+                            <span>Afleveringssted:</span>
+                            <span th:text="${contract.getReturnPlace()}"></span>
+                        </div>
+                        <div class="inner">
+                            <span>Startdato:</span>
+                            <span th:text="${contract.getStartDate()}"></span>
+                        </div>
+                        <div class="inner">
+                            <span>Slutdato:</span>
+                            <span th:text="${contract.getEndDate()}"></span>
+                        </div>
+                        <div class="inner">
+                            <span>Er bilen returneret?:</span>
+                            <span th:text="${contract.isReturned()}"></span>
+                        </div>
+                        <div class="inner">
+                            <span>Er bilen skadet?:</span>
+                            <span th:text="${contract.getDamage()}"></span>
+                        </div>
+                    </div>
+                </span>
+
+                <!--<table>
+                    <tr th:each="damage : ${entry.value}">
+                        <td th:text="${damage.getId()}"></td>
+                        <td th:text="${damage.getPrice()}"></td>
+                        <td th:text="${damage.getDescription()}"></td>
+                        <td th:text="${damage.getContractId()}"></td>
+                    </tr>
+                </table>-->
+
+<!--            <span th:each="damage : ${damages}">
+                <span th:text="${damage.getId()}"></span>
+                <span th:text="${damage.getPrice()}"></span>
+                <span th:text="${damage.getDescription()}"></span>
+                <span th:text="${damage.getContractId()}"></span>
+            </span>-->
+                </div>
+        </div>
+    </section>
+  </main>
+
+</body>
+</html>

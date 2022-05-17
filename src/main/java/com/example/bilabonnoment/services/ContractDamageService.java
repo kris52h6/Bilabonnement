@@ -34,7 +34,6 @@ public class ContractDamageService {
         return ContractWithDamages;
     }
 
-
     public HashMap<Contract, ArrayList<Damage>> contractWithDamage(int contractId){
         ContractRepository contractRepository = new ContractRepository();
 
