@@ -5,10 +5,6 @@ import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 import org.springframework.web.context.request.WebRequest;
 
 import java.sql.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -133,13 +129,10 @@ public class ContractRepository implements  IContractRepository {
         }
         return allContractsFromCustomer;
     }
-
     @Override
     public void createContract(WebRequest data) {
-
-
         System.out.println(data.getParameter("contractStartDate"));
-        
+
         //java.sql.Date startDate = Date.valueOf(data.getParameter("contractStartDate"));
         //java.sql.Date endDate = Date.valueOf(data.getParameter("contractEndDate"));
 
@@ -157,5 +150,40 @@ public class ContractRepository implements  IContractRepository {
         );
 
         create(contract);
+    }
+
+
+    public boolean editContract(Contract contract){
+        Connection conn = DatabaseConnectionManager.getConnection();
+        boolean result = false;
+        int id = contract.getId();
+        try{
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET customer_cpr_nr = ?, vin_no = ?, contract_price = ?, car_pickup_place = ?, car_return_place = ?, contract_start_date = ?, contract_end_date = ?, is_returned = ?, contract_damage = ? WHERE (contract_id = " + id + ");");
+            pstmt.setString(1, contract.getCprNr());
+            pstmt.setInt(2, contract.getVin_no());
+            pstmt.setDouble(3, contract.getPrice());
+            pstmt.setString(4, contract.getPickupPlace());
+            pstmt.setString(5, contract.getReturnPlace());
+            pstmt.setDate(6, contract.getStartDate());
+            pstmt.setDate(7, contract.getEndDate());
+            pstmt.setBoolean(8, contract.isReturned());
+            pstmt.setString(9, contract.getDamage().name());
+
+            pstmt.executeUpdate();
+            result = true;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static void main(String[] args)
+    {
+        ContractRepository contractRepository = new ContractRepository();
+        String str = "2000-05-05";
+        Date date = Date.valueOf(str);
+        Contract editContract = new Contract(1, "123", 1415, 1000, "her", "her", date, date, true, Contract.Damage.YES);
+        contractRepository.editContract(editContract);
     }
 }
