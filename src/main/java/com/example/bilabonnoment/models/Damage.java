@@ -7,11 +7,11 @@ public class Damage {
     private String description;
     private int contractId;
 
-    public Damage(int id, double price, String description, int reportId) {
+    public Damage(int id, double price, String description, int contractId) {
         this.id = id;
         this.price = price;
         this.description = description;
-        this.contractId = reportId;
+        this.contractId = contractId;
     }
 
     public int getId() {
