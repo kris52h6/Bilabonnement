@@ -76,6 +76,8 @@ public class ContractRepository implements  IContractRepository {
         return temp;
     }
 
+
+
     @Override
     public boolean create(Contract contract) {
         Connection conn = DatabaseConnectionManager.getConnection();
@@ -129,5 +131,23 @@ public class ContractRepository implements  IContractRepository {
             e.printStackTrace();
         }
         return allContractsFromCustomer;
+    }
+
+    @Override
+    public String getCprNrFromContractId(int id) {
+        Connection conn = DatabaseConnectionManager.getConnection();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("SELECT customer_cpr_nr FROM bilabonnement.contract WHERE contract_id = " + id);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Something wrong in statement");
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

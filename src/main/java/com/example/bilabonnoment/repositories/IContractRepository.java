@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IContractRepository extends IRepository<Contract>{
     public List<Contract> getAllContractsFromCustomerCprNr(String cprNr);
+    public String getCprNrFromContractId(int id);
 }

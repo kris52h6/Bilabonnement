@@ -25,12 +25,13 @@ public class DamageController {
     private final CustomerRepository customerRepository = new CustomerRepository();
 
     @GetMapping("/damageReport")
-    public String damageReport(@RequestParam int id, @RequestParam String cpr, Model model) {
+    public String damageReport(@RequestParam int id, Model model) {
         ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
         CustomerContractService customerContractService = new CustomerContractService(customerRepository, contractRepository);
-        /*model.addAttribute("contract", id);*/
-        model.addAttribute("customer", customerContractService.getSingleCustomerByCpr(cpr));
-        model.addAttribute("damages", contractDamageService.contractWithDamage(id));
+        String cprNr = contractDamageService.getCprNrFromContractId(id);
+        model.addAttribute("customer", customerContractService.getSingleCustomerByCpr(cprNr));
+        /*model.addAttribute("damages",contractDamageService.getAllDamagesFromContract(id));*/
+        model.addAttribute("contract", contractDamageService.contractWithDamage(id));
         return "damageReport";
     }
 

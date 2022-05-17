@@ -53,6 +53,10 @@ public class ContractDamageService {
         return (ArrayList<Damage>) damageRepository.getAllDamagesFromContract(id);
     }
 
+    public String getCprNrFromContractId(int id) {
+        return contractRepository.getCprNrFromContractId(id);
+    }
+
     public static void main(String[] args) {
         DamageRepository damageRepository = new DamageRepository();
         ContractRepository contractRepository = new ContractRepository();
