@@ -13,25 +13,32 @@ import java.util.List;
 import java.util.Map;
 
 public class CustomerContractService {
+
+    CustomerRepository customerRepository = new CustomerRepository();
+    ContractRepository contractRepository = new ContractRepository();
+
+    List<Contract> allContracts = new ArrayList<>();
+    List<Customer> allCustomers = new ArrayList<>();
+
     public HashMap<Customer, ArrayList<Contract>> allCustomersContracts(){
-
-        CustomerRepository customerRepository = new CustomerRepository();
-        ContractRepository contractRepository = new ContractRepository();
-
+        /*customerRepository.getAllEntities();
         String previousCustomerCprNr = null;
         String currentCustomerCprNr = "";
-        ArrayList<Contract> allContracts = new ArrayList<>();
-        for (Customer customer : customerRepository.getAllEntities()) {
+
+        for (Customer customer : allCustomers) {
             currentCustomerCprNr = customer.getCPR();
 
             if (!currentCustomerCprNr.equals(previousCustomerCprNr)) {
-                allContracts = (ArrayList<Contract>) contractRepository.getAllContractsFromCustomerCprNr(currentCustomerCprNr);
-                allCustomersContracts().put(customer, allContracts);
-                allContracts = new ArrayList<>();
+                allContracts = contractRepository.getAllContractsFromCustomerCprNr(currentCustomerCprNr);
+                //allContracts = new ArrayList<>();
+                allContracts.add(contractRepository.getAllContractsFromCustomerCprNr(currentCustomerCprNr))
             }
+
             previousCustomerCprNr = currentCustomerCprNr;
+            allCustomersContracts().put(customer, (ArrayList<Contract>) allContracts);
         }
-        return allCustomersContracts();
+        return allCustomersContracts();*/
+        return null;
     }
 
 
