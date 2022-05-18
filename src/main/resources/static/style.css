@@ -14,10 +14,23 @@
 
 /**** HEADER & NAV STYLING ****/
 
-nav {
-    background-color: red;
+.navbar {
+    display: flex;
+    justify-content: space-between;
     padding: 20px;
 }
+
+.navbar button {
+    background-color: var(--button-bg-color);
+    color: var(--secondary-color);
+    border-radius: 5px;
+    border: 0;
+    font-size: 14px;
+    padding: 8px;
+    cursor: pointer;
+    box-shadow: 1px 4px lightblue;
+}
+
 
 
 

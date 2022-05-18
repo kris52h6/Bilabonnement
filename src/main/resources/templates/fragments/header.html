@@ -5,18 +5,14 @@
     <title>Title</title>
 </head>
 
-<style>
-    nav {
-        background-color: red;
-        padding: 20px;
-    }
-</style>
 <body>
     <header>
         <nav>
+            <div class="navbar">
             <!--TODO add logout to button-->
-            <button>Tilbage</button>
-            <button>Log ud</button>
+            <button onclick="history.back()">Tilbage</button>
+            <button class="logout-button">Log ud</button>
+            </div>
         </nav>
     </header>
 </body>

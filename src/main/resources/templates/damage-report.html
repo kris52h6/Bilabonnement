@@ -18,7 +18,7 @@
         width: 80%;
         margin: 0 auto;
     }
-    
+
 
     .customer {
         border: 1px solid black;
@@ -77,13 +77,32 @@
         margin-top: 10px
     }
 
+    .add-damage-button button {
+        background-color: var(--button-bg-color);
+        color: var(--secondary-color);
+        margin-top: 20px;
+        width: 100%;
+        border-radius: 5px;
+        border: 0;
+        font-size: 14px;
+        padding: 8px;
+        cursor: pointer;
+        box-shadow: 1px 4px lightblue;
+    }
+
+    .add-damage-button button:hover {
+        background-color: var(--secondary-color);
+        color: var(--button-bg-color);
+        border: 1px solid black;
+    }
+
 
 </style>
 <body>
 
-   <header th:insert="fragments/header.html :: header"></header>
+<header th:insert="fragments/header.html :: header"></header>
 
-  <main>
+<main>
     <section id="damage-report">
         <div class="customer">
             <h2>Kundeinformation</h2>
@@ -109,10 +128,12 @@
             <div class="contract">
                 <h2>Kontraktinformation</h2>
                 <span th:each="contract : ${entry.key}">
+                    <div id="" th:with="contractId=${contract.getId()}"></div>
                     <div class="row">
                         <div class="inner">
                         <span>Kontrakt ID:</span>
                         <span th:text="${contract.getId()}"></span>
+
                         </div>
                         <div class="inner">
                             <span>CPR-nummer:</span>
@@ -156,27 +177,33 @@
                     <h3 class="title">Beskrivelse</h3>
                     <h3 class="title">Pris</h3>
                 </div>
-                    <div th:each="damage : ${entry.value}">
-                        <div class="wrapper">
-
-                            <div class="col">
-                                <span th:text="${damage.getDescription()}"></span>
-                            </div>
-                            <div class="col">
-                                <span th:text="${damage.getPrice()} + ',-'"></span>
-                            </div>
-                            <div class="col">
-                                <!--TODO a href -->
-                                <button>Rediger</button>
-                                <button>Slet</button>
-                                </div>
-                                </div>
+                <div th:each="damage : ${entry.value}">
+                    <div class="wrapper">
+                        <div class="col">
+                            <span th:text="${damage.getDescription()}"></span>
+                        </div>
+                        <div class="col">
+                            <span th:text="${damage.getPrice()} + ',-'"></span>
+                        </div>
+                        <div class="col">
+                            <!--TODO a href -->
+                            <button>Rediger</button>
+                            <button>Slet</button>
+                        </div>
                     </div>
                 </div>
-            <div class=""
+                <!--<a th:href="@{/damageReport?id={id}(id=${contract.getId()})}">-->
+                <div class="add-damage-button">
+                    <span th:each="contract : ${entry.key}">
+                    <a th:href="@{/damageForm?contractId={contractId}(contractId=${contract.getId()})}">
+                        <button>Tilføj Skade</button>
+                    </a>
+                    </span>
+                </div>
+            </div>
         </div>
     </section>
-  </main>
+</main>
 
 </body>
 </html>

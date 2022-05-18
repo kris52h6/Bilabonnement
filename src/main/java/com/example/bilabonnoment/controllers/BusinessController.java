@@ -22,4 +22,10 @@ public class BusinessController {
         System.out.println(businessService.totalValueOfAllRentedCars(carRepository.getAllRentedCars()));
         return "business-development";
     }
+
+    @GetMapping("/login")
+        public String login() {
+            return "login";
+        }
+
 }
