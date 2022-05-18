@@ -26,7 +26,7 @@ public class DamageController {
         model.addAttribute("customer", customerContractService.getSingleCustomerByCpr(cprNr));
         /*model.addAttribute("damages",contractDamageService.getAllDamagesFromContract(id));*/
         model.addAttribute("contract", contractDamageService.contractWithDamage(id));
-        return "damageReport";
+        return "damage-report";
     }
 
     @GetMapping("/damageForm")

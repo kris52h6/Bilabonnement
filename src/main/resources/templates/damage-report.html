@@ -10,12 +10,17 @@
 <style>
 
     main {
+        background-color: #f2f2f2;
+        padding: 30px;
+    }
+
+    #damage-report {
         width: 80%;
         margin: 0 auto;
     }
+    
 
     .customer {
-        width: 400px;
         border: 1px solid black;
         padding: 10px;
     }
@@ -76,6 +81,8 @@
 </style>
 <body>
 
+   <header th:insert="fragments/header.html :: header"></header>
+
   <main>
     <section id="damage-report">
         <div class="customer">
@@ -109,7 +116,7 @@
                         </div>
                         <div class="inner">
                             <span>CPR-nummer:</span>
-                            <span th:text="${contract.getCprNr()}"></span>
+                            <span th:text="${contract.getCprNum()}"></span>
                         </div>
                         <div class="inner">
                             <span>Pris:</span>
