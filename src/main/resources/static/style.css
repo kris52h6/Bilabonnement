@@ -12,6 +12,17 @@
     --button-bg-color: #1892c3;
 }
 
+/**** HEADER & NAV STYLING ****/
+
+nav {
+    background-color: red;
+    padding: 20px;
+}
+
+
+
+
+
 h1 {
     font-size: 40px;
 }

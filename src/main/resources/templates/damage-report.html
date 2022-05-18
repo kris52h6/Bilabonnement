@@ -8,10 +8,26 @@
 </head>
 
 <style>
-    /*.damage-report .contract {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-    }*/
+
+    main {
+        background-color: #f2f2f2;
+        padding: 30px;
+    }
+
+    #damage-report {
+        width: 80%;
+        margin: 0 auto;
+    }
+    
+
+    .customer {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    .damage-report {
+        display: flex;
+    }
 
     .row {
         display: flex;
@@ -24,7 +40,7 @@
         width: 400px;
     }
 
-    .contract h2, .customer h2 {
+    .contract h2, .customer h2, .damages h2 {
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
@@ -41,14 +57,31 @@
         font-weight: bold;
     }
 
-    .customer {
-        width: 400px;
+    .damages {
         border: 1px solid black;
+        width: 600px;
         padding: 10px;
     }
 
+    .damages .wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .title-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .col {
+        margin-top: 10px
+    }
+
+
 </style>
 <body>
+
+   <header th:insert="fragments/header.html :: header"></header>
 
   <main>
     <section id="damage-report">
@@ -83,7 +116,7 @@
                         </div>
                         <div class="inner">
                             <span>CPR-nummer:</span>
-                            <span th:text="${contract.getCprNr()}"></span>
+                            <span th:text="${contract.getCprNum()}"></span>
                         </div>
                         <div class="inner">
                             <span>Pris:</span>
@@ -115,25 +148,32 @@
                         </div>
                     </div>
                 </span>
-                <div class="damages">
+            </div>
 
-                <table>
-                    <tr th:each="damage : ${entry.value}">
-                        <td th:text="${damage.getId()}"></td>
-                        <td th:text="${damage.getPrice()}"></td>
-                        <td th:text="${damage.getDescription()}"></td>
-                        <td th:text="${damage.getContractId()}"></td>
-                    </tr>
-                </table>
+            <div class="damages">
+                <h2>Skader</h2>
+                <div class="title-wrapper">
+                    <h3 class="title">Beskrivelse</h3>
+                    <h3 class="title">Pris</h3>
                 </div>
+                    <div th:each="damage : ${entry.value}">
+                        <div class="wrapper">
 
-            <!--<span th:each="damage : ${damages}">
-                <span th:text="${damage.getId()}"></span>
-                <span th:text="${damage.getPrice()}"></span>
-                <span th:text="${damage.getDescription()}"></span>
-                <span th:text="${damage.getContractId()}"></span>
-            </span>-->
+                            <div class="col">
+                                <span th:text="${damage.getDescription()}"></span>
+                            </div>
+                            <div class="col">
+                                <span th:text="${damage.getPrice()} + ',-'"></span>
+                            </div>
+                            <div class="col">
+                                <!--TODO a href -->
+                                <button>Rediger</button>
+                                <button>Slet</button>
+                                </div>
+                                </div>
+                    </div>
                 </div>
+            <div class=""
         </div>
     </section>
   </main>

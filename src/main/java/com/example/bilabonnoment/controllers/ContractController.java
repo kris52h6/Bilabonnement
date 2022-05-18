@@ -22,7 +22,7 @@ public class ContractController {
     @GetMapping("/allContracts")
     public String allContracts(Model model){
         model.addAttribute("contracts", contractRepository.getAllEntities());
-        return "allContracts";
+        return "all-contracts";
     }
 
     @GetMapping("/contractForm")

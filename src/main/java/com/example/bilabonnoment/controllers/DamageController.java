@@ -26,7 +26,7 @@ public class DamageController {
         model.addAttribute("customer", customerContractService.getSingleCustomerByCpr(cprNr));
         /*model.addAttribute("damages",contractDamageService.getAllDamagesFromContract(id));*/
         model.addAttribute("contract", contractDamageService.contractWithDamage(id));
-        return "damageReport";
+        return "damage-report";
     }
 
     @GetMapping("/damageForm")
@@ -37,7 +37,7 @@ public class DamageController {
     @PostMapping("/createDamage")
     public String createDamage(WebRequest dataFromForm) {
         damageRepository.createDamage(dataFromForm);
-        return "redirect:/allContracts";
+            return "redirect:/allContracts";
     }
 
     @GetMapping("/deleteDamage")
