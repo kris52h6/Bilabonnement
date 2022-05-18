@@ -5,8 +5,8 @@ import java.sql.Date;
 public class Contract {
 
     private int id;
-    private String cprNr;
-    private int vin_no;
+    private String cprNum;
+    private int vinNo;
     private double price;
     private String pickupPlace;
     private String returnPlace;
@@ -22,16 +22,10 @@ public class Contract {
 
     private Damage damage;
 
-    @Override
-    public String toString() {
-        return "Contract{" +
-                "id=" + id;
-    }
-
-    public Contract(int id, String cprNr, int vin_no, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned, Damage damage) {
+    public Contract(int id, String cprNum, int vinNo, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned, Damage damage) {
         this.id = id;
-        this.cprNr = cprNr;
-        this.vin_no = vin_no;
+        this.cprNum = cprNum;
+        this.vinNo = vinNo;
         this.price = price;
         this.pickupPlace = pickupPlace;
         this.returnPlace = returnPlace;
@@ -53,12 +47,12 @@ public class Contract {
         return id;
     }
 
-    public String getCprNr() {
-        return cprNr;
+    public String getCprNum() {
+        return cprNum;
     }
 
-    public int getVin_no() {
-        return vin_no;
+    public int getVinNo() {
+        return vinNo;
     }
 
     public double getPrice() {
@@ -90,8 +84,8 @@ public class Contract {
     }
 
 
-    public void setVin_no(int vin_no) {
-        this.vin_no = vin_no;
+    public void setVinNo(int vinNo) {
+        this.vinNo = vinNo;
     }
 
     public void setPrice(double price) {
@@ -118,8 +112,8 @@ public class Contract {
         isReturned = returned;
     }
 
-    public void setCprNr(String cprNr) {
-        this.cprNr = cprNr;
+    public void setCprNum(String cprNum) {
+        this.cprNum = cprNum;
     }
 
     /*@Override
@@ -138,4 +132,10 @@ public class Contract {
                 ", damage=" + damage +
                 '}';
     }*/
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id;
+    }
 }

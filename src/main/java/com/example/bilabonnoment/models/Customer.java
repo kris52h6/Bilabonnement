@@ -3,13 +3,13 @@ package com.example.bilabonnoment.models;
 public class Customer {
 
     private int id;
-    private String cprNr;
+    private String cprNum;
     private String firstname;
     private String lastname;
 
-    public Customer(int id, String cprNr, String firstname, String lastname) {
+    public Customer(int id, String cprNum, String firstname, String lastname) {
         this.id = id;
-        this.cprNr = cprNr;
+        this.cprNum = cprNum;
         this.firstname = firstname;
         this.lastname = lastname;
     }
@@ -19,7 +19,7 @@ public class Customer {
     }
 
     public String getCPR() {
-        return cprNr;
+        return cprNum;
     }
 
     public String getFirstname() {
@@ -42,7 +42,7 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "id=" + id +
-                ", cprNr=" + cprNr +
+                ", cprNum=" + cprNum +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 '}';

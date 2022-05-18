@@ -81,8 +81,8 @@ public class ContractRepository implements  IContractRepository {
         boolean result = false;
         try {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.contract (customer_cpr_nr, vin_no, contract_price, car_pickup_place, car_return_place, contract_start_date, contract_end_date, is_returned, contract_damage) VALUES (?,?,?,?,?,?,?,?,?)");
-            pstmt.setString(1, contract.getCprNr());
-            pstmt.setInt(2, contract.getVin_no());
+            pstmt.setString(1, contract.getCprNum());
+            pstmt.setInt(2, contract.getVinNo());
             pstmt.setDouble(3, contract.getPrice());
             pstmt.setString(4, contract.getPickupPlace());
             pstmt.setString(5, contract.getReturnPlace());
@@ -131,10 +131,10 @@ public class ContractRepository implements  IContractRepository {
     }
 
     @Override
-    public String getCprNrFromContractId(int id) {
+    public String getCprNrFromContractId(int contractId) {
         Connection conn = DatabaseConnectionManager.getConnection();
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT customer_cpr_nr FROM bilabonnement.contract WHERE contract_id = " + id);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT customer_cpr_nr FROM bilabonnement.contract WHERE contract_id = " + contractId);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 return rs.getString(1);
@@ -151,9 +151,6 @@ public class ContractRepository implements  IContractRepository {
     @Override
     public void createContract(WebRequest data) {
         System.out.println(data.getParameter("contractStartDate"));
-
-        //java.sql.Date startDate = Date.valueOf(data.getParameter("contractStartDate"));
-        //java.sql.Date endDate = Date.valueOf(data.getParameter("contractEndDate"));
 
         Contract contract = new Contract(
                 -1,
@@ -178,8 +175,8 @@ public class ContractRepository implements  IContractRepository {
         int id = contract.getId();
         try{
             PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET customer_cpr_nr = ?, vin_no = ?, contract_price = ?, car_pickup_place = ?, car_return_place = ?, contract_start_date = ?, contract_end_date = ?, is_returned = ?, contract_damage = ? WHERE (contract_id = " + id + ");");
-            pstmt.setString(1, contract.getCprNr());
-            pstmt.setInt(2, contract.getVin_no());
+            pstmt.setString(1, contract.getCprNum());
+            pstmt.setInt(2, contract.getVinNo());
             pstmt.setDouble(3, contract.getPrice());
             pstmt.setString(4, contract.getPickupPlace());
             pstmt.setString(5, contract.getReturnPlace());

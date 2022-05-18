@@ -26,7 +26,7 @@ public class CustomerContractService {
         ContractRepository contractRepository = new ContractRepository();
 
         String previousCustomerCprNr = null;
-        String currentCustomerCprNr = "";
+        String currentCustomerCprNr;
         ArrayList<Contract> allContracts = new ArrayList<>();
         HashMap<Customer, ArrayList<Contract>> customersWithContracts = new HashMap<>();
 

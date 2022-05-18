@@ -1,12 +1,8 @@
 package com.example.bilabonnoment.controllers;
 
-import com.example.bilabonnoment.models.Customer;
-import com.example.bilabonnoment.models.Damage;
 import com.example.bilabonnoment.repositories.ContractRepository;
 import com.example.bilabonnoment.repositories.CustomerRepository;
 import com.example.bilabonnoment.repositories.DamageRepository;
-import com.example.bilabonnoment.repositories.IDamageRepository;
-import com.example.bilabonnoment.services.ContractCustomerService;
 import com.example.bilabonnoment.services.ContractDamageService;
 import com.example.bilabonnoment.services.CustomerContractService;
 import org.springframework.stereotype.Controller;
@@ -15,10 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 @Controller
 public class DamageController {
@@ -50,7 +42,6 @@ public class DamageController {
 
     @GetMapping("/deleteDamage")
     public String deleteDamage(@RequestParam int contractId, int damageId){
-        System.out.println("JEg er her");
         damageRepository.deleteDamage(damageId);
         return "redirect:/damageReport?id=" + contractId;
     }
