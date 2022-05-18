@@ -28,8 +28,8 @@ public class User
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", user_username='" + username + '\'' +
-                ", user_password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

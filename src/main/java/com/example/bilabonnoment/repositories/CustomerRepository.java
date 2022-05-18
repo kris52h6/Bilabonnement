@@ -1,6 +1,5 @@
 package com.example.bilabonnoment.repositories;
 
-import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Customer;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 

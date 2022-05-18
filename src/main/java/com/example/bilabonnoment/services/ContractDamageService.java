@@ -53,8 +53,8 @@ public class ContractDamageService {
         return (ArrayList<Damage>) damageRepository.getAllDamagesFromContract(id);
     }
 
-    public String getCprNrFromContractId(int id) {
-        return contractRepository.getCprNrFromContractId(id);
+    public String getCprNrFromContractId(int contractId) {
+        return contractRepository.getCprNrFromContractId(contractId);
     }
 
     public static void main(String[] args) {

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret ny skade til skaderapport</title>
+</head>
+<body>
+<h1>Create new damage</h1>
+<form method="POST" action="/createDamage">
+    <label for="damagePrice">Skadepris</label>
+    <input id="damagePrice" type="number" name="damagePrice">
+    <label for="damageDescription">Skadebeskrivelse</label>
+    <input id="damageDescription" type="text" name="damageDescription">
+    <label for="contractId" hidden>contractId</label>
+    <input id="contractId" type="number" name="contractId" th:value="${param.contractId}" hidden>
+    <input type="submit">
+</form>
+</body>
+</html>

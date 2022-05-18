@@ -7,11 +7,11 @@ public class Damage {
     private String description;
     private int contractId;
 
-    public Damage(int id, double price, String description, int reportId) {
+    public Damage(int id, double price, String description, int contractId) {
         this.id = id;
         this.price = price;
         this.description = description;
-        this.contractId = reportId;
+        this.contractId = contractId;
     }
 
     public int getId() {
@@ -49,10 +49,10 @@ public class Damage {
     @Override
     public String toString() {
         return "Damage{" +
-                "damage_id=" + id +
-                ", damage_price=" + price +
-                ", damage_description='" + description + '\'' +
-                ", report_id=" + contractId +
+                "id=" + id +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", contractId=" + contractId +
                 '}';
     }
 }

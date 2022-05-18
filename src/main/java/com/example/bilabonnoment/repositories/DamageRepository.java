@@ -2,13 +2,12 @@ package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Damage;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
+import org.springframework.web.context.request.WebRequest;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DamageRepository implements IDamageRepository {
 
@@ -61,15 +60,15 @@ public class DamageRepository implements IDamageRepository {
     }
 
     @Override
-    public boolean create(Damage entity) {
+    public boolean create(Damage damage) {
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
         try
         {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.damage (damage_price, damage_description, contract_id) VALUES (?,?,?)");
-            pstmt.setDouble(1, entity.getPrice());
-            pstmt.setString(2, entity.getDescription());
-            pstmt.setInt(3, entity.getContractId());
+            pstmt.setDouble(1, damage.getPrice());
+            pstmt.setString(2, damage.getDescription());
+            pstmt.setInt(3, damage.getContractId());
 
             pstmt.executeUpdate();
             result = true;
@@ -107,5 +106,33 @@ public class DamageRepository implements IDamageRepository {
     @Override
     public List<String> getAllDamagesFromContracts() {
         return null;
+    }
+
+    @Override
+    public void createDamage(WebRequest data) {
+        Damage damage = new Damage(
+                -1,
+                Double.parseDouble(Objects.requireNonNull(data.getParameter("damagePrice"))),
+                data.getParameter("damageDescription"),
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("contractId")))
+
+        );
+        create(damage);
+    }
+
+    @Override
+    public void deleteDamage(int damageId) {
+        Connection conn = DatabaseConnectionManager.getConnection();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM bilabonnement.damage WHERE damage_id = " + damageId);
+            int rs = pstmt.executeUpdate();
+            System.out.println(rs);
+        }
+        catch(SQLException e){
+        System.out.println("Something wrong in statement");
+        e.printStackTrace();
+    }
+
+
     }
 }
