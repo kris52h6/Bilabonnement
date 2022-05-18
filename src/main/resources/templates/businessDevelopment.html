@@ -22,8 +22,8 @@
 
         </section>
     </main>
-    <p
-    <p class="header" th:text="${totalValue}">should display the total value of all the rented cars</p>
+    <p class="totalt-rented-cars">total value of the rented cars:</p>
+    <p class="totalt-rented-cars" th:text="${totalValue}">should display the total value of all the rented cars</p>
     <table>
         <tr
                 th:each="car : ${cars}">
