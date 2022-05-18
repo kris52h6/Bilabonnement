@@ -10,7 +10,7 @@
     <tr
             th:each="contract : ${contracts}">
         <td th:text="${contract.getId()}"></td>
-        <td th:text="${contract.getCprNr()}"></td>
+        <td th:text="${contract.getCprNum()}"></td>
         <td th:text="${contract.getPrice()}"></td>
         <td th:text="${contract.getPickupPlace()}"></td>
         <td th:text="${contract.getReturnPlace()}"></td>
