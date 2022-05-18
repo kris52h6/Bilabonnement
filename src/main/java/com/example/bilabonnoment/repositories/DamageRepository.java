@@ -135,4 +135,23 @@ public class DamageRepository implements IDamageRepository {
 
 
     }
+
+    public boolean editDamage(Damage damage){
+        Connection conn = DatabaseConnectionManager.getConnection();
+        boolean result = false;
+        int id = damage.getId();
+        try{
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.damage SET damage_price = ?, damage_description = ?, contract_id = ? WHERE (damage_id = " + id + ");");
+            pstmt.setDouble(1, damage.getPrice());
+            pstmt.setString(2, damage.getDescription());
+            pstmt.setInt(3, damage.getContractId());
+
+            pstmt.executeUpdate();
+            result = true;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

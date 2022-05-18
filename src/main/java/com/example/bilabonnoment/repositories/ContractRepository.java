@@ -159,7 +159,7 @@ public class ContractRepository implements  IContractRepository {
                 Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
                 data.getParameter("carPickupPlace"),
                 data.getParameter("carReturnPlace"),
-                Date.valueOf(data.getParameter("contractEndDate")),
+                Date.valueOf(data.getParameter("contractStartDate")),
                 Date.valueOf(data.getParameter("contractEndDate")),
                 false,
                 Contract.Damage.UNCHECKED
