@@ -37,7 +37,7 @@ public class DamageController {
     @PostMapping("/createDamage")
     public String createDamage(WebRequest dataFromForm) {
         damageRepository.createDamage(dataFromForm);
-        return "redirect:/allContracts";
+            return "redirect:/allContracts";
     }
 
     @GetMapping("/deleteDamage")
