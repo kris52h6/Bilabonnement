@@ -1,12 +1,13 @@
-package com.example.bilabonnoment.repositories;
+package repositories;
 
 import com.example.bilabonnoment.models.Customer;
+import com.example.bilabonnoment.repositories.ICustomerRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CustomerTestRepository implements ICustomerRepository{
+public class CustomerTestRepository implements ICustomerRepository {
     ArrayList<Customer> allCustomers = new ArrayList<>(
             Arrays.asList(
                     new Customer(1,"12", "hans", "hansen"),

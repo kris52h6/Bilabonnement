@@ -1,6 +1,7 @@
-package com.example.bilabonnoment.repositories;
+package repositories;
 
 import com.example.bilabonnoment.models.Contract;
+import com.example.bilabonnoment.repositories.IContractRepository;
 import org.springframework.web.context.request.WebRequest;
 
 import java.sql.Date;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ContractTestRepository implements IContractRepository{
+public class ContractTestRepository implements IContractRepository {
     String str = "2200-05-05";
     Date date = Date.valueOf(str);
     ArrayList<Contract> allContracts = new ArrayList<Contract>(
@@ -32,6 +33,7 @@ public class ContractTestRepository implements IContractRepository{
         return null;
     }
 
+
     @Override
     public void createContract(WebRequest data)
     {
@@ -39,7 +41,7 @@ public class ContractTestRepository implements IContractRepository{
     }
 
     @Override
-    public int changeContractDamage(int contractId, Contract.Damage updatedDamageStatus) {
+    public int changeContractDamage(int contractId, String updatedDamageStatus) {
         return 0;
     }
 

@@ -1,9 +1,10 @@
 package com.example.bilabonnoment.services;
 
-import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Customer;
 import com.example.bilabonnoment.repositories.*;
 import org.junit.jupiter.api.Test;
+import repositories.ContractTestRepository;
+import repositories.CustomerTestRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
