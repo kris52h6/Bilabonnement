@@ -53,7 +53,7 @@ public class DamageController {
     }
 
     @GetMapping("/deleteDamage")
-    public String deleteDamage(@RequestParam int contractId, int damageId){
+    public String deleteDamage(int contractId, int damageId){
         damageRepository.deleteDamage(damageId);
         return "redirect:/damageReport?id=" + contractId;
     }

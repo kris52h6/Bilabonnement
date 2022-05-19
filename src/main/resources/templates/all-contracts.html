@@ -7,34 +7,88 @@
     <link rel="stylesheet" th:href="@{style.css}" href="../static/style.css">
 
 </head>
+<style>
+
+    #all-contracts {
+        width: 80%;
+        height: 100vh;
+        margin: 0 auto;
+    }
+
+    #all-contracts h1 {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .title-wrapper {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+    }
+
+    .title-wrapper h3 {
+        font-size: 16px;
+    }
+
+    .contracts {
+        border: 1px solid black;
+    }
+
+    .contract {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        padding: 10px 5px 10px 5px;
+        border-bottom: 1px solid black;
+        cursor: pointer;
+    }
+
+    .title-wrapper > * {
+        display: flex;
+        justify-content: center;
+    }
+
+    .contract > * {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
 <body>
-<h1>An overview of an contract</h1>
-<table>
-    <tr
-            th:each="contract : ${contracts}">
-        <td th:text="${contract.getId()}"></td>
-        <td th:text="${contract.getCprNum()}"></td>
-        <td th:text="${contract.getPrice()}"></td>
-        <td th:text="${contract.getPickupPlace()}"></td>
-        <td th:text="${contract.getReturnPlace()}"></td>
-        <td th:text="${contract.getStartDate()}"></td>
-        <td th:text="${contract.getEndDate()}"></td>
-        <td th:text="${contract.isReturned()}"></td>
-        <td th:text="${contract.getDamage()}"></td>
+<header th:insert="fragments/header.html :: header"></header>
+<main>
+    <section id="all-contracts">
+        <h1>Alle aktuelle lejekontrakter</h1>
 
-        <!--th:href="@{/manager/add(param1=1,param2=${person.id})}"-->
-        <!--<a th:ref="@{/damageReport(id='1',cpr='2')}">
-            <button>t</button>
-        </a>-->
-        <a th:href="@{/damageReport?id={id}(id=${contract.getId()})}">
-            <button>t</button>
-        </a>
-        <!--<a th:href="@{/damageReport?id={id} (id= ${contract.getId()})
-                                 + ?cpr={cpr} (cpr= ${contract.getCprNr()}) }">
-            <button>t</button>
-        </a>-->
+        <div class="title-wrapper">
+            <h3>CPR</h3>
+            <h3>Pris</h3>
+            <h3>Afhentningssted</h3>
+            <h3>Afleveringssted</h3>
+            <h3>Startdato</h3>
+            <h3>Slutdato</h3>
+            <h3>Er returneret?</h3>
+        </div>
 
-    </tr>
-</table>
+        <div class="contracts">
+        <span th:each="contract : ${contracts}">
+            <div class="contract">
+            <span th:text="${contract.getCprNum()}"></span>
+            <span th:text="${contract.getPrice()}"></span>
+            <span th:text="${contract.getPickupPlace()}"></span>
+            <span th:text="${contract.getReturnPlace()}"></span>
+            <span th:text="${contract.getStartDate()}"></span>
+            <span th:text="${contract.getEndDate()}"></span>
+            <span th:text="${contract.isReturned()}"></span>
+                <a th:href="@{/contract?id={id}(id=${contract.getId()})}">
+                    <button>Se lejekontrakt</button>
+                </a>
+                <!--<a th:href="@{/damageReport?id={id}(id=${contract.getId()})}">
+                    <button>Se lejekontrakt</button>
+                </a>-->
+            </div>
+        </span>
+        </div>
+    </section>
+</main>
 </body>
 </html>
