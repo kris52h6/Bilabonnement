@@ -1,3 +1,4 @@
+/*
 package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.repositories.ContractTestRepository;
@@ -27,4 +28,4 @@ class GetCprNrFromContractId
         assertEquals(expectedCpr2, actualCpr2);
 
     }
-}
+}*/

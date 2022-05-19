@@ -1,3 +1,4 @@
+/*
 package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.repositories.ContractTestRepository;
@@ -17,4 +18,4 @@ class contractsFromDamageListTest
         CustomerContractService customerContractService = new CustomerContractService(customerTestRepository, contractTestRepository);
 
     }
-}
+}*/
