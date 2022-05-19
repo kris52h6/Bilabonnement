@@ -192,7 +192,6 @@ public class ContractRepository implements  IContractRepository {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE is_returned = 1 AND contract_damage = 'UNCHECKED'");
             ResultSet rs = pstmt.executeQuery();
 
-
             while (rs.next()) {
                 Contract temp = new Contract(
                         rs.getInt(1),

@@ -39,6 +39,21 @@ public class ContractTestRepository implements IContractRepository{
     }
 
     @Override
+    public int changeContractDamage(int contractId, Contract.Damage updatedDamageStatus) {
+        return 0;
+    }
+
+    @Override
+    public List<Contract> getAllReturnedUncheckedContracts() {
+        return null;
+    }
+
+    @Override
+    public List<Contract> getAllReturnedDamagedContracts() {
+        return null;
+    }
+
+    @Override
     public List<Contract> getAllEntities()
     {
         return null;

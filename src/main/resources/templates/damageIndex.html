@@ -9,31 +9,9 @@
 </head>
 <body>
 
-<div id="unchecked" class="damageBox">
+<div id="unchecked" class="damageBox" th:each="uncheckedContract: ${uncheckedContracts}">
     <div id="uncheckedSingle">
-        <span>customer cpr nr</span>
-        <span>vin no</span>
-        <span>contract price</span>
-        <span>car pick up</span>
-        <span>car return</span>
-        <span>contract start date</span>
-        <span>contract end date</span>
-        <button>YES</button>
-        <button>NO</button>
-    </div>
-    <div id="uncheckedSingle">
-        <span>customer cpr nr</span>
-        <span>vin no</span>
-        <span>contract price</span>
-        <span>car pick up</span>
-        <span>car return</span>
-        <span>contract start date</span>
-        <span>contract end date</span>
-        <button>YES</button>
-        <button>NO</button>
-    </div>
-    <div id="uncheckedSingle">
-        <span>customer cpr nr</span>
+        <span th:text="${uncheckedContract.getCprNum()}"></span>
         <span>vin no</span>
         <span>contract price</span>
         <span>car pick up</span>
@@ -45,8 +23,8 @@
     </div>
 </div>
 
-<div id="damaged">
-    <div id="uncheckedSingle">
+<div id="damaged" >
+    <div id="damagedSingle">
         <span>customer cpr nr</span>
         <span>vin no</span>
         <span>contract price</span>
