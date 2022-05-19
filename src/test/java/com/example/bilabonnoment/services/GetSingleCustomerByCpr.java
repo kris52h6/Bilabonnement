@@ -1,3 +1,4 @@
+/*
 package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Contract;
@@ -30,4 +31,4 @@ class GetSingleCustomerByCpr
         assertEquals(expectedCustomer1, actualCustomer1);
         assertEquals(expectedCustomer2, actualCustomer2);
     }
-}
+}*/

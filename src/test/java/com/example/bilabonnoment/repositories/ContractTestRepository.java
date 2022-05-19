@@ -1,3 +1,4 @@
+/*
 package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Contract;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ContractTestRepository implements IContractRepository{
+public class ContractTestRepository implements IContractRepository<Contract>{
     String str = "2200-05-05";
     Date date = Date.valueOf(str);
     ArrayList<Contract> allContracts = new ArrayList<Contract>(
@@ -56,3 +57,4 @@ public class ContractTestRepository implements IContractRepository{
         return false;
     }
 }
+*/

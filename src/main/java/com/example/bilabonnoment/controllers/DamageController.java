@@ -35,8 +35,8 @@ public class DamageController {
         ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
         CustomerContractService customerContractService = new CustomerContractService(customerRepository, contractRepository);
         String cprNr = contractDamageService.getCprNrFromContractId(id);
+
         model.addAttribute("customer", customerContractService.getSingleCustomerByCpr(cprNr));
-        /*model.addAttribute("damages",contractDamageService.getAllDamagesFromContract(id));*/
         model.addAttribute("contract", contractDamageService.contractWithDamage(id));
         return "damage-report";
     }
@@ -53,7 +53,7 @@ public class DamageController {
     }
 
     @GetMapping("/deleteDamage")
-    public String deleteDamage(int contractId, int damageId){
+    public String deleteDamage(@RequestParam int contractId, @RequestParam int damageId){
         damageRepository.deleteDamage(damageId);
         return "redirect:/damageReport?id=" + contractId;
     }

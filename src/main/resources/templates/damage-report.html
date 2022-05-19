@@ -202,8 +202,7 @@
                     <div class="col" th:each="contract : ${entry.key}">
                         <!--TODO a href -->
                         <button>Rediger</button>
-                        <!--<a th:href="@{/deleteDamage?contractId={contractId}(contractId=${contract.getId()})&damageId={damageId}(damageId=${damage.getId()})}">-->
-                        <a th:href="@{/deleteDamage?contractId={contractId}&damageId={damageId}(contractId=${contract.getId()})(damageId=${damage.getId()})}">
+                        <a th:href="@{/deleteDamage(contractId=${contract.getId()},damageId=${damage.getId()})}">
                             <button class="delete-button">Slet</button>
                         </a>
                     </div>
