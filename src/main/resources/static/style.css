@@ -43,6 +43,9 @@ main {
 
 h1 {
     font-size: 40px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 button {

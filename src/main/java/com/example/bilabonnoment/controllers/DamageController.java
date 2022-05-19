@@ -48,8 +48,9 @@ public class DamageController {
 
     @PostMapping("/createDamage")
     public String createDamage(WebRequest dataFromForm) {
+        String redirectId = dataFromForm.getParameter("contractId");
         damageRepository.createDamage(dataFromForm);
-            return "redirect:/allContracts";
+            return "redirect:/damageReport?id=" + redirectId;
     }
 
     @GetMapping("/deleteDamage")
@@ -57,5 +58,23 @@ public class DamageController {
         damageRepository.deleteDamage(damageId);
         return "redirect:/damageReport?id=" + contractId;
     }
+
+    @GetMapping("/editDamageForm")
+        public String editForm(@RequestParam int damageId, Model model) {
+        ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
+        model.addAttribute("damage", contractDamageService.getSingleDamageById(damageId));
+        return "edit-damage";
+    }
+
+
+    @PostMapping("/editDamage")
+        public String editDamage(WebRequest dataFromForm) {
+        ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
+        String redirectId = dataFromForm.getParameter("contractId");
+        contractDamageService.editDamage(dataFromForm);
+
+        return "redirect:/damageReport?id=" + redirectId;
+    }
+
 
 }

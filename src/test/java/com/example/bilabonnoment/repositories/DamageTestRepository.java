@@ -41,6 +41,12 @@ public class DamageTestRepository implements IDamageRepository{
     }
 
     @Override
+    public void createTempDamageObj(WebRequest data)
+    {
+
+    }
+
+    @Override
     public void deleteDamage(int damageId)
     {
 

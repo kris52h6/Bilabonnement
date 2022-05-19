@@ -86,18 +86,6 @@
         margin-top: 10px
     }
 
-    /*.wrapper:nth-child(3):first-child {
-        margin-right: 5px;
-    }*/
-
-    /*.wrapper:nth-child(3) {
-        margin-right: 100px;
-    }*/
-
-    .wrapper:nth-child(3) > .col:nth-child(1) {
-        margin-right: 100px;
-    }
-
     .add-damage-button button {
         background-color: var(--button-bg-color);
         color: var(--secondary-color);
@@ -201,14 +189,15 @@
                     </div>
                     <div class="col" th:each="contract : ${entry.key}">
                         <!--TODO a href -->
-                        <button>Rediger</button>
+                        <a th:href="@{/editDamageForm?damageId={damageId}(damageId=${damage.getId()})}">
+                            <button>Rediger</button>
+                        </a>
                         <a th:href="@{/deleteDamage(contractId=${contract.getId()},damageId=${damage.getId()})}">
                             <button class="delete-button">Slet</button>
                         </a>
                     </div>
                 </div>
 
-                <!--<a th:href="@{/damageReport?id={id}(id=${contract.getId()})}">-->
                 <div class="add-damage-button">
                     <span th:each="contract : ${entry.key}">
                     <a th:href="@{/damageForm?contractId={contractId}(contractId=${contract.getId()})}">

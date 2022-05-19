@@ -6,6 +6,7 @@ import com.example.bilabonnoment.repositories.ContractRepository;
 import com.example.bilabonnoment.repositories.DamageRepository;
 import com.example.bilabonnoment.repositories.IContractRepository;
 import com.example.bilabonnoment.repositories.IDamageRepository;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,11 +49,21 @@ public class ContractDamageService {
         return contractWithDamages;
     }
 
-
     public ArrayList<Damage> getAllDamagesFromContract(int id) {
         DamageRepository damageRepository = new DamageRepository();
         return (ArrayList<Damage>) damageRepository.getAllDamagesFromContract(id);
     }
+
+    public Damage getSingleDamageById(int damageId) {
+        DamageRepository damageRepository = new DamageRepository();
+        return damageRepository.getSingleById(damageId);
+    }
+
+    public void editDamage(WebRequest dataFromForm) {
+        DamageRepository damageRepository = new DamageRepository();
+        damageRepository.createTempDamageObj(dataFromForm);
+    }
+
 
     public String getCprNrFromContractId(int contractId) {
         return contractRepository.getCprNrFromContractId(contractId);

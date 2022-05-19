@@ -13,6 +13,8 @@ public interface IDamageRepository extends IRepository<Damage> {
 
     public void createDamage(WebRequest data);
 
+    public void createTempDamageObj(WebRequest data);
+
     public void deleteDamage(int damageId);
 
 

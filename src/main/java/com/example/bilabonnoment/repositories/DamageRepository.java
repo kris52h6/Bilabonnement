@@ -121,6 +121,17 @@ public class DamageRepository implements IDamageRepository {
     }
 
     @Override
+    public void createTempDamageObj(WebRequest data) {
+        Damage damage = new Damage(
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("damageId"))),
+                Double.parseDouble(Objects.requireNonNull(data.getParameter("damagePrice"))),
+                data.getParameter("damageDescription"),
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("contractId")))
+        );
+        editDamage(damage);
+    }
+
+    @Override
     public void deleteDamage(int damageId) {
         Connection conn = DatabaseConnectionManager.getConnection();
         try {
@@ -140,11 +151,14 @@ public class DamageRepository implements IDamageRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
         int id = damage.getId();
+
+        System.out.println(damage.getPrice());
+        System.out.println(damage.getDescription());
+        System.out.println(damage.getId());
         try{
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.damage SET damage_price = ?, damage_description = ?, contract_id = ? WHERE (damage_id = " + id + ");");
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.damage SET damage_price = ?, damage_description = ? WHERE (damage_id = " + id + ");");
             pstmt.setDouble(1, damage.getPrice());
             pstmt.setString(2, damage.getDescription());
-            pstmt.setInt(3, damage.getContractId());
 
             pstmt.executeUpdate();
             result = true;
