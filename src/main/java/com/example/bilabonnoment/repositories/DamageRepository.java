@@ -143,8 +143,6 @@ public class DamageRepository implements IDamageRepository {
         System.out.println("Something wrong in statement");
         e.printStackTrace();
     }
-
-
     }
 
     public boolean editDamage(Damage damage){

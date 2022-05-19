@@ -1,14 +1,15 @@
-package com.example.bilabonnoment.repositories;
+package repositories;
 
 import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Damage;
+import com.example.bilabonnoment.repositories.IDamageRepository;
 import org.springframework.web.context.request.WebRequest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DamageTestRepository implements IDamageRepository{
+public class DamageTestRepository implements IDamageRepository {
     ArrayList<Damage> allDamages = new ArrayList<>(
             Arrays.asList(
                  new Damage(1, 50, "tire", 1),

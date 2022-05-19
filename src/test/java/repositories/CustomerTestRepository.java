@@ -1,12 +1,18 @@
-package com.example.bilabonnoment.repositories;
+package repositories;
 
 import com.example.bilabonnoment.models.Customer;
+import com.example.bilabonnoment.utility.DatabaseConnectionManager;
+import com.example.bilabonnoment.repositories.ICustomerRepository;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CustomerTestRepository implements ICustomerRepository{
+public class CustomerTestRepository implements ICustomerRepository {
     ArrayList<Customer> allCustomers = new ArrayList<>(
             Arrays.asList(
                     new Customer(1,"12", "hans", "hansen"),
@@ -19,7 +25,13 @@ public class CustomerTestRepository implements ICustomerRepository{
     @Override
     public Customer getCustomerFromCprNr(String cprNr)
     {
-        return null;
+        Customer temp = null;
+        for (Customer customer : allCustomers){
+            if (customer.getCPR().equals(cprNr)){
+                temp = customer;
+            }
+        }
+        return temp;
     }
 
     @Override

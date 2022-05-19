@@ -1,7 +1,7 @@
-/*
-package com.example.bilabonnoment.repositories;
+package repositories;
 
 import com.example.bilabonnoment.models.Contract;
+import com.example.bilabonnoment.repositories.IContractRepository;
 import org.springframework.web.context.request.WebRequest;
 
 import java.sql.Date;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ContractTestRepository implements IContractRepository<Contract>{
+public class ContractTestRepository implements IContractRepository {
     String str = "2200-05-05";
     Date date = Date.valueOf(str);
     ArrayList<Contract> allContracts = new ArrayList<Contract>(
@@ -30,13 +30,36 @@ public class ContractTestRepository implements IContractRepository<Contract>{
     @Override
     public String getCprNrFromContractId(int contractId)
     {
-        return null;
+        String temp = null;
+        for (Contract contract : allContracts){
+            if (contract.getId() == contractId){
+                temp = contract.getCprNum();
+            }
+        }
+        return temp;
     }
+
 
     @Override
     public void createContract(WebRequest data)
     {
 
+    }
+
+    @Override
+    public int changeContractDamage(int contractId, String updatedDamageStatus) {
+        return 0;
+    }
+
+    @Override
+    public List<Contract> getAllReturnedUncheckedContracts() {
+
+        return null;
+    }
+
+    @Override
+    public List<Contract> getAllReturnedDamagedContracts() {
+        return null;
     }
 
     @Override
@@ -57,4 +80,3 @@ public class ContractTestRepository implements IContractRepository<Contract>{
         return false;
     }
 }
-*/

@@ -19,7 +19,7 @@ public class DamageController {
     private final CustomerRepository customerRepository = new CustomerRepository();
 
 
-    @GetMapping("damageIndex")
+    @GetMapping("/damageIndex")
     public String damageIndex(Model model){
         CustomerContractService customerContractService = new CustomerContractService(customerRepository, contractRepository);
         ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
@@ -28,6 +28,13 @@ public class DamageController {
         model.addAttribute("damagedContracts", contractDamageService.getAllReturnedDamagedContracts());
 
         return "damageIndex";
+    }
+
+    @GetMapping("/updateContractDamage")
+    public String updatedContractDamage(@RequestParam int contractId, @RequestParam String updatedDamageStatus)
+    {
+        contractRepository.changeContractDamage(contractId, updatedDamageStatus);
+        return "redirect:/damageIndex";
     }
 
     @GetMapping("/damageReport")

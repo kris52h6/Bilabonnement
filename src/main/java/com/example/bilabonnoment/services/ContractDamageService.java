@@ -18,7 +18,7 @@ public class ContractDamageService {
     private final IDamageRepository damageRepository;
     private final IContractRepository contractRepository;
 
-    public ContractDamageService(DamageRepository damageRepository, ContractRepository contractRepository) {
+    public ContractDamageService(IDamageRepository damageRepository, IContractRepository contractRepository) {
         this.damageRepository = damageRepository;
         this.contractRepository = contractRepository;
     }
@@ -76,7 +76,23 @@ public class ContractDamageService {
         return contractRepository.getAllReturnedDamagedContracts();
     }
 
-    public static void main(String[] args) {
+    public int changeContractDamage(int contractId, String updatedDamageStatus) {
+        return contractRepository.changeContractDamage(contractId, updatedDamageStatus);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public static void main(String[] args) {
         DamageRepository damageRepository = new DamageRepository();
         ContractRepository contractRepository = new ContractRepository();
         ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);

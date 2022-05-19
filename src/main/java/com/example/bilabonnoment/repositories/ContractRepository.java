@@ -169,11 +169,21 @@ public class ContractRepository implements  IContractRepository {
     }
 
     @Override
-    public int changeContractDamage(int contractId, Contract.Damage updatedDamageStatus) {
+    public int changeContractDamage(int contractId, String updatedDamageStatus) {
+
+        Contract.Damage DamageStatus = Contract.Damage.UNCHECKED;
+
+        switch (updatedDamageStatus) {
+            case "YES" -> DamageStatus = Contract.Damage.YES;
+            case "NO" -> DamageStatus = Contract.Damage.NO;
+        }
+
+
         Connection conn = DatabaseConnectionManager.getConnection();
+
         try {
             PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET contract_damage = ? WHERE (contract_id = " + contractId + ");");
-            pstmt.setString(1, updatedDamageStatus.name());
+            pstmt.setString(1, DamageStatus.name());
             pstmt.executeUpdate();
             return pstmt.executeUpdate();
 
@@ -191,7 +201,6 @@ public class ContractRepository implements  IContractRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE is_returned = 1 AND contract_damage = 'UNCHECKED'");
             ResultSet rs = pstmt.executeQuery();
-
 
             while (rs.next()) {
                 Contract temp = new Contract(
@@ -284,6 +293,4 @@ public class ContractRepository implements  IContractRepository {
         Contract editContract = new Contract(1, "123", 1415, 1000, "her", "her", date, date, true, Contract.Damage.YES);
         contractRepository.editContract(editContract);
     }
-
-
 }
