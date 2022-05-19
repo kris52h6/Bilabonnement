@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GetAllReturnedUncheckedContracts
 {
-
     @Test
     void getAllReturnedUncheckedContracts()
     {
@@ -22,4 +21,6 @@ class GetAllReturnedUncheckedContracts
 
         List<Contract> contracts =
     }
-}*/
+}
+
+ */

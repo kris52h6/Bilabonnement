@@ -28,4 +28,6 @@ class GetCprNrFromContractId
         assertEquals(expectedCpr2, actualCpr2);
 
     }
-}*/
+}
+
+ */

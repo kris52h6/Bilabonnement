@@ -18,4 +18,6 @@ class contractsFromDamageListTest
         CustomerContractService customerContractService = new CustomerContractService(customerTestRepository, contractTestRepository);
 
     }
-}*/
+}
+
+ */
