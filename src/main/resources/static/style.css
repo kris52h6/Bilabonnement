@@ -21,6 +21,12 @@
 }
 
 .navbar button {
+    font-size: 16px;
+    padding: 10px;
+    box-shadow: 0px 3px lightblue;
+}
+
+/*.navbar button {
     background-color: var(--button-bg-color);
     color: var(--secondary-color);
     border-radius: 5px;
@@ -29,15 +35,18 @@
     padding: 8px;
     cursor: pointer;
     box-shadow: 1px 4px lightblue;
+}*/
+
+main {
+    background-color: #f2f2f2;
 }
-
-
-
-
-
 
 h1 {
     font-size: 40px;
+}
+
+button {
+    cursor: pointer;
 }
 
 table, th, td {
@@ -59,6 +68,20 @@ form #submit {
 
 form input {
     border-radius: 5px;
+}
+
+.general-button {
+    background-color: var(--button-bg-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 40px;
+}
+
+.delete-button {
+    padding: 2px 10px 2px 10px;
+    background-color: #D22B2B;
+    color: white;
+    border: none;
 }
 
 

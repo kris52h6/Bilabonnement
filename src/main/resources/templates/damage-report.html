@@ -10,7 +10,7 @@
 <style>
 
     main {
-        background-color: #f2f2f2;
+        /*background-color: #f2f2f2;*/
         padding: 30px;
     }
 
@@ -23,6 +23,7 @@
     .customer {
         border: 1px solid black;
         padding: 10px;
+        margin-bottom: 5px;
     }
 
     .damage-report {
@@ -38,6 +39,7 @@
         border: 1px solid black;
         padding: 10px;
         width: 400px;
+        margin-right: 5px;
     }
 
     .contract h2, .customer h2, .damages h2 {
@@ -73,8 +75,27 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
+    .title-wrapper > * {
+        display: flex;
+        justify-content: center;
+    }
+
     .col {
+        display: flex;
+        justify-content: center;
         margin-top: 10px
+    }
+
+    /*.wrapper:nth-child(3):first-child {
+        margin-right: 5px;
+    }*/
+
+    /*.wrapper:nth-child(3) {
+        margin-right: 100px;
+    }*/
+
+    .wrapper:nth-child(3) > .col:nth-child(1) {
+        margin-right: 100px;
     }
 
     .add-damage-button button {
@@ -82,18 +103,11 @@
         color: var(--secondary-color);
         margin-top: 20px;
         width: 100%;
-        border-radius: 5px;
         border: 0;
         font-size: 14px;
         padding: 8px;
         cursor: pointer;
         box-shadow: 1px 4px lightblue;
-    }
-
-    .add-damage-button button:hover {
-        background-color: var(--secondary-color);
-        color: var(--button-bg-color);
-        border: 1px solid black;
     }
 
 
@@ -128,7 +142,7 @@
             <div class="contract">
                 <h2>Kontraktinformation</h2>
                 <span th:each="contract : ${entry.key}">
-                    <div id="" th:with="contractId=${contract.getId()}"></div>
+                    <!--<div id="" th:with="contractId=${contract.getId()}"></div>-->
                     <div class="row">
                         <div class="inner">
                         <span>Kontrakt ID:</span>
@@ -177,26 +191,29 @@
                     <h3 class="title">Beskrivelse</h3>
                     <h3 class="title">Pris</h3>
                 </div>
-                <div th:each="damage : ${entry.value}">
-                    <div class="wrapper">
-                        <div class="col">
-                            <span th:text="${damage.getDescription()}"></span>
-                        </div>
-                        <div class="col">
-                            <span th:text="${damage.getPrice()} + ',-'"></span>
-                        </div>
-                        <div class="col">
-                            <!--TODO a href -->
-                            <button>Rediger</button>
-                            <button>Slet</button>
-                        </div>
+
+                <div class="wrapper" th:each="damage : ${entry.value}">
+                    <div class="col">
+                        <span th:text="${damage.getDescription()}"></span>
+                    </div>
+                    <div class="col">
+                        <span th:text="${damage.getPrice()} + ',-'"></span>
+                    </div>
+                    <div class="col" th:each="contract : ${entry.key}">
+                        <!--TODO a href -->
+                        <button>Rediger</button>
+                        <!--<a th:href="@{/deleteDamage?contractId={contractId}(contractId=${contract.getId()})&damageId={damageId}(damageId=${damage.getId()})}">-->
+                        <a th:href="@{/deleteDamage?contractId={contractId}&damageId={damageId}(contractId=${contract.getId()})(damageId=${damage.getId()})}">
+                            <button class="delete-button">Slet</button>
+                        </a>
                     </div>
                 </div>
+
                 <!--<a th:href="@{/damageReport?id={id}(id=${contract.getId()})}">-->
                 <div class="add-damage-button">
                     <span th:each="contract : ${entry.key}">
                     <a th:href="@{/damageForm?contractId={contractId}(contractId=${contract.getId()})}">
-                        <button>Tilføj Skade</button>
+                        <button class="general-button">Tilføj Skade</button>
                     </a>
                     </span>
                 </div>
