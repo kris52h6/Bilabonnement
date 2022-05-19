@@ -168,6 +168,88 @@ public class ContractRepository implements  IContractRepository {
         create(contract);
     }
 
+    @Override
+    public int changeContractDamage(int contractId, Contract.Damage updatedDamageStatus) {
+        Connection conn = DatabaseConnectionManager.getConnection();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET contract_damage = ? WHERE (contract_id = " + contractId + ");");
+            pstmt.setString(1, updatedDamageStatus.name());
+            pstmt.executeUpdate();
+            return pstmt.executeUpdate();
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+            return 0;
+    }
+
+    public List<Contract> getAllReturnedUncheckedContracts() {
+        Connection conn = DatabaseConnectionManager.getConnection();
+        List<Contract> allContracts = new ArrayList<>();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE is_returned = 1 AND contract_damage = 'UNCHECKED'");
+            ResultSet rs = pstmt.executeQuery();
+
+
+            while (rs.next()) {
+                Contract temp = new Contract(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getDouble(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getDate(7),
+                        rs.getDate(8),
+                        rs.getBoolean(9),
+                        Contract.Damage.valueOf(rs.getString(10))
+
+                );
+                allContracts.add(temp);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Something wrong in statement");
+            e.printStackTrace();
+        }
+        return allContracts;
+    }
+
+    @Override
+    public List<Contract> getAllReturnedDamagedContracts() {
+        Connection conn = DatabaseConnectionManager.getConnection();
+        List<Contract> allContracts = new ArrayList<>();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE is_returned = 1 AND contract_damage = 'YES'");
+            ResultSet rs = pstmt.executeQuery();
+
+
+            while (rs.next()) {
+                Contract temp = new Contract(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getDouble(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getDate(7),
+                        rs.getDate(8),
+                        rs.getBoolean(9),
+                        Contract.Damage.valueOf(rs.getString(10))
+
+                );
+                allContracts.add(temp);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Something wrong in statement");
+            e.printStackTrace();
+        }
+        return allContracts;
+    }
+
 
     public boolean editContract(Contract contract){
         Connection conn = DatabaseConnectionManager.getConnection();
@@ -202,4 +284,6 @@ public class ContractRepository implements  IContractRepository {
         Contract editContract = new Contract(1, "123", 1415, 1000, "her", "her", date, date, true, Contract.Damage.YES);
         contractRepository.editContract(editContract);
     }
+
+
 }

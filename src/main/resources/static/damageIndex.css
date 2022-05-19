@@ -1,0 +1,15 @@
+*{
+}
+
+#damaged {
+    margin-top: 300px;
+    width: 100%;
+    height:20%;
+    background-color: palevioletred;
+}
+
+#unchecked {
+    width: 100%;
+    height:20%;
+    background-color: darkgrey;
+}

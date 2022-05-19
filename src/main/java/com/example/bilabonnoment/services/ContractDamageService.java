@@ -9,6 +9,7 @@ import com.example.bilabonnoment.repositories.IDamageRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ContractDamageService {
@@ -55,6 +56,13 @@ public class ContractDamageService {
 
     public String getCprNrFromContractId(int contractId) {
         return contractRepository.getCprNrFromContractId(contractId);
+    }
+
+    public List<Contract> getAllReturnedUncheckedContracts(){
+        return contractRepository.getAllReturnedUncheckedContracts();
+    }
+    public List<Contract> getAllReturnedDamagedContracts() {
+        return contractRepository.getAllReturnedDamagedContracts();
     }
 
     public static void main(String[] args) {

@@ -18,6 +18,18 @@ public class DamageController {
     private final ContractRepository contractRepository = new ContractRepository();
     private final CustomerRepository customerRepository = new CustomerRepository();
 
+
+    @GetMapping("damageIndex")
+    public String damageIndex(Model model){
+        CustomerContractService customerContractService = new CustomerContractService(customerRepository, contractRepository);
+        ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
+
+        model.addAttribute("uncheckedContracts",contractDamageService.getAllReturnedUncheckedContracts());
+        model.addAttribute("damagedContracts", contractDamageService.getAllReturnedDamagedContracts());
+
+        return "damageIndex";
+    }
+
     @GetMapping("/damageReport")
     public String damageReport(@RequestParam int id, Model model) {
         ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
