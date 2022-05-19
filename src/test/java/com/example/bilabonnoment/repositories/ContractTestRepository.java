@@ -29,7 +29,13 @@ public class ContractTestRepository implements IContractRepository{
     @Override
     public String getCprNrFromContractId(int contractId)
     {
-        return null;
+        String temp = null;
+        for (Contract contract : allContracts){
+            if (contract.getId() == contractId){
+                temp = contract.getCprNum();
+            }
+        }
+        return temp;
     }
 
     @Override
@@ -45,6 +51,7 @@ public class ContractTestRepository implements IContractRepository{
 
     @Override
     public List<Contract> getAllReturnedUncheckedContracts() {
+
         return null;
     }
 

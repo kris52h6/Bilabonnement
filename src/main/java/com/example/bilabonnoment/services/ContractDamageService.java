@@ -17,7 +17,7 @@ public class ContractDamageService {
     private final IDamageRepository damageRepository;
     private final IContractRepository contractRepository;
 
-    public ContractDamageService(DamageRepository damageRepository, ContractRepository contractRepository) {
+    public ContractDamageService(IDamageRepository damageRepository, IContractRepository contractRepository) {
         this.damageRepository = damageRepository;
         this.contractRepository = contractRepository;
     }

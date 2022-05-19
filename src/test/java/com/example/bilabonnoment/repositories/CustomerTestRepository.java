@@ -1,7 +1,12 @@
 package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Customer;
+import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +24,13 @@ public class CustomerTestRepository implements ICustomerRepository{
     @Override
     public Customer getCustomerFromCprNr(String cprNr)
     {
-        return null;
+        Customer temp = null;
+        for (Customer customer : allCustomers){
+            if (customer.getCPR().equals(cprNr)){
+                temp = customer;
+            }
+        }
+        return temp;
     }
 
     @Override
