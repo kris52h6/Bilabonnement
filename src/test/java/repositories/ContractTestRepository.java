@@ -15,11 +15,15 @@ public class ContractTestRepository implements IContractRepository {
     ArrayList<Contract> allContracts = new ArrayList<Contract>(
             Arrays.asList(
                     new Contract(1, "12", 12, 100, "her", "her", date, date, true, Contract.Damage.UNCHECKED),
-                    new Contract(2, "34", 13, 110, "her", "her", date, date, false, Contract.Damage.YES),
+                    new Contract(2, "34", 13, 110, "her", "her", date, date, false, Contract.Damage.UNCHECKED),
                     new Contract(3, "56", 14, 90, "her", "her", date, date, true, Contract.Damage.NO),
                     new Contract(4, "78", 15, 105, "her", "her", date, date, false, Contract.Damage.YES)
             )
     );
+
+    public List<Contract> getContracts(){
+        return allContracts;
+    }
 
     @Override
     public List<Contract> getAllContractsFromCustomerCprNr(String cprNr)
@@ -53,8 +57,13 @@ public class ContractTestRepository implements IContractRepository {
 
     @Override
     public List<Contract> getAllReturnedUncheckedContracts() {
-
-        return null;
+        List<Contract> uncheckedContracts = new ArrayList<>();
+        for (Contract contract : allContracts){
+            if (contract.getDamage().equals(Contract.Damage.UNCHECKED)){
+                uncheckedContracts.add(contract);
+            }
+        }
+        return uncheckedContracts;
     }
 
     @Override
@@ -71,7 +80,13 @@ public class ContractTestRepository implements IContractRepository {
     @Override
     public Contract getSingleById(int id)
     {
-        return null;
+        Contract contract = null;
+        for (Contract currentContract : allContracts){
+            if (contract.getId() == id){
+                contract = currentContract;
+            }
+        }
+        return contract;
     }
 
     @Override

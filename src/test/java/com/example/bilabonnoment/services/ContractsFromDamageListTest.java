@@ -3,28 +3,21 @@ package com.example.bilabonnoment.services;
 import com.example.bilabonnoment.repositories.*;
 import org.junit.jupiter.api.Test;
 import repositories.ContractTestRepository;
+import repositories.CustomerTestRepository;
 import repositories.DamageTestRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GetCprNrFromContractId
+class ContractsFromDamageListTest
 {
 
     @Test
-    void getCprNrFromContractId()
+    void contractsFromDamageList()
     {
         DamageTestRepository damageTestRepository = new DamageTestRepository();
         ContractTestRepository contractTestRepository = new ContractTestRepository();
         ContractDamageService contractDamageService = new ContractDamageService(damageTestRepository, contractTestRepository);
 
-        String expectedCpr1 = "12";
-        String expectedCpr2 = null;
-
-        String actualCpr1 = contractDamageService.getCprNrFromContractId(1);
-        String actualCpr2 = contractDamageService.getCprNrFromContractId(5);
-
-        assertEquals(expectedCpr1, actualCpr1);
-        assertEquals(expectedCpr2, actualCpr2);
 
     }
 }
