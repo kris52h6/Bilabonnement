@@ -4,20 +4,18 @@ import com.example.bilabonnoment.repositories.*;
 import org.junit.jupiter.api.Test;
 import repositories.ContractTestRepository;
 import repositories.CustomerTestRepository;
-import repositories.DamageTestRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ContractsFromDamageListTest
+class contractsFromDamageListTest
 {
 
     @Test
     void contractsFromDamageList()
     {
-        DamageTestRepository damageTestRepository = new DamageTestRepository();
+        CustomerTestRepository customerTestRepository = new CustomerTestRepository();
         ContractTestRepository contractTestRepository = new ContractTestRepository();
-        ContractDamageService contractDamageService = new ContractDamageService(damageTestRepository, contractTestRepository);
-
+        CustomerContractService customerContractService = new CustomerContractService(customerTestRepository, contractTestRepository);
 
     }
 }
