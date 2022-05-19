@@ -65,7 +65,23 @@ public class ContractDamageService {
         return contractRepository.getAllReturnedDamagedContracts();
     }
 
-    public static void main(String[] args) {
+    public int changeContractDamage(int contractId, String updatedDamageStatus) {
+        return contractRepository.changeContractDamage(contractId, updatedDamageStatus);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public static void main(String[] args) {
         DamageRepository damageRepository = new DamageRepository();
         ContractRepository contractRepository = new ContractRepository();
         ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
