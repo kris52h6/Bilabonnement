@@ -40,6 +40,4 @@ public class DamageService {
         damageRepository.deleteDamage(damageId);
     }
 
-
-
-    }
+}
