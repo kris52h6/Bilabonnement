@@ -32,7 +32,7 @@ public class DamageController {
         model.addAttribute("uncheckedContracts",contractDamageService.getAllReturnedUncheckedContracts());
         model.addAttribute("damagedContracts", contractDamageService.getAllReturnedDamagedContracts());
 
-        return "damage-index";
+        return "damage-templates/damage-index";
         }
             return "redirect:/error";
     }
@@ -58,7 +58,7 @@ public class DamageController {
 
             model.addAttribute("customer", customerContractService.getSingleCustomerByCpr(cprNr));
             model.addAttribute("contract", contractDamageService.contractWithDamage(id));
-            return "damage-report";
+            return "damage-templates/damage-report";
         }
         return "redirect:/error";
     }
@@ -66,7 +66,7 @@ public class DamageController {
     @GetMapping("/damageForm")
     public String contractForm(@RequestParam int contractId, HttpSession session){
         if(session.getAttribute("userRole").equals(AREA)) {
-            return "create-damage";
+            return "damage-templates/create-damage";
         }
         return "redirect:/error";
     }
@@ -95,7 +95,7 @@ public class DamageController {
         if(session.getAttribute("userRole").equals(AREA)) {
             ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
             model.addAttribute("damage", contractDamageService.getSingleDamageById(damageId));
-            return "edit-damage";
+            return "damage-templates/edit-damage";
         }
         return "redirect:/error";
     }

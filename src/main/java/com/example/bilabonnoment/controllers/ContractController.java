@@ -20,7 +20,7 @@ public class ContractController {
     public String getContract(@RequestParam int id, Model model, HttpSession session) {
         if(session.getAttribute("userRole").equals(AREA)) {
             model.addAttribute("contracts", contractRepository.getSingleById(id));
-            return "contract";
+            return "contract-templates/contract";
         }
         return "redirect:/error";
     }
@@ -29,7 +29,7 @@ public class ContractController {
     public String allContracts(Model model, HttpSession session){
         if(session.getAttribute("userRole").equals(AREA)) {
             model.addAttribute("contracts", contractRepository.getAllEntities());
-            return "all-contracts";
+            return "contract-templates/all-contracts";
         }
         return "redirect:/error";
     }
@@ -37,7 +37,7 @@ public class ContractController {
     @GetMapping("/contractForm")
     public String contractForm(HttpSession session){
         if(session.getAttribute("userRole").equals(AREA)) {
-            return "create-contract";
+            return "contract-templates/create-contract";
         }
         return "redirect:/error";
     }

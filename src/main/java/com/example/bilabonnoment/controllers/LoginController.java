@@ -16,7 +16,7 @@ public class LoginController {
     private final LoginRepository loginRepository = new LoginRepository();
 
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String login() {
         return "login";
     }
