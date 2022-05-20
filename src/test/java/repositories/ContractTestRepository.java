@@ -79,6 +79,11 @@ public class ContractTestRepository implements IContractRepository {
     }
 
     @Override
+    public Contract createTempContractObj(WebRequest data) {
+        return null;
+    }
+
+    @Override
     public List<Contract> getAllEntities()
     {
         return null;

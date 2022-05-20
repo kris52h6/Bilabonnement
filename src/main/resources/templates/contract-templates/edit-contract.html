@@ -39,6 +39,12 @@
             <label for="contractEndDate">Kontrakts slutdato</label>
             <input id="contractEndDate" type="date" name="contractEndDate" th:value="${contract.getEndDate()}">
 
+            <label for="isReturned" hidden>isReturned</label>
+            <input id="isReturned" type="text" name="isReturned" th:value="${contract.isReturned()}" hidden>
+
+            <label for="isDamaged" hidden>damageId</label>
+            <input id="isDamaged" type="text" name="isDamaged" th:value="${contract.getDamage()}" hidden>
+
             <input type="submit" id="submit">
         </form>
     </section>

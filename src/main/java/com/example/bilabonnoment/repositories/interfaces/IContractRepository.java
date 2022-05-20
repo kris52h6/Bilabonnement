@@ -13,4 +13,5 @@ public interface IContractRepository extends IRepository<Contract>{
     public List<Contract> getAllReturnedUncheckedContracts();
     public List<Contract> getAllReturnedDamagedContracts();
     public boolean editContract(Contract contract);
+    public Contract createTempContractObj(WebRequest data);
 }

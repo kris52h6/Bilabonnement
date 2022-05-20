@@ -289,6 +289,22 @@ public class ContractRepository implements IContractRepository {
         return result;
     }
 
+    @Override
+    public Contract createTempContractObj(WebRequest data) {
+        return new Contract(
+                Integer.parseInt(data.getParameter("contractId")),
+                data.getParameter("customerCprNr"),
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("vinNo"))),
+                Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
+                data.getParameter("carPickupPlace"),
+                data.getParameter("carReturnPlace"),
+                Date.valueOf(data.getParameter("contractStartDate")),
+                Date.valueOf(data.getParameter("contractEndDate")),
+                false,
+                Contract.Damage.UNCHECKED
+        );
+    }
+
     public static void main(String[] args)
     {
         ContractRepository contractRepository = new ContractRepository();
