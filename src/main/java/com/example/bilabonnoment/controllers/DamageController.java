@@ -24,17 +24,16 @@ public class DamageController {
 
     @GetMapping("/damageIndex")
     public String damageIndex(Model model, HttpSession session){
+        if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
+                CustomerContractService customerContractService = new CustomerContractService(customerRepository, contractRepository);
+                ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
 
-        if(session.getAttribute("userRole").equals(AREA)) {
-            CustomerContractService customerContractService = new CustomerContractService(customerRepository, contractRepository);
-            ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
+                model.addAttribute("uncheckedContracts", contractDamageService.getAllReturnedUncheckedContracts());
+                model.addAttribute("damagedContracts", contractDamageService.getAllReturnedDamagedContracts());
 
-        model.addAttribute("uncheckedContracts",contractDamageService.getAllReturnedUncheckedContracts());
-        model.addAttribute("damagedContracts", contractDamageService.getAllReturnedDamagedContracts());
-
-        return "damage-templates/damage-index";
-        }
-            return "redirect:/error";
+                return "damage-templates/damage-index";
+            }
+            return "access-error";
     }
 
     @GetMapping("/updateContractDamage")
@@ -45,7 +44,7 @@ public class DamageController {
                 return "redirect:/damageIndex";
             }
         }
-        return "redirect:/error";
+        return "redirect:/access-error";
     }
 
 
@@ -60,7 +59,7 @@ public class DamageController {
             model.addAttribute("contract", contractDamageService.contractWithDamage(id));
             return "damage-templates/damage-report";
         }
-        return "redirect:/error";
+        return "redirect:/access-error";
     }
 
     @GetMapping("/damageForm")
@@ -68,7 +67,7 @@ public class DamageController {
         if(session.getAttribute("userRole").equals(AREA)) {
             return "damage-templates/create-damage";
         }
-        return "redirect:/error";
+        return "redirect:/access-error";
     }
 
     @PostMapping("/createDamage")
@@ -78,7 +77,7 @@ public class DamageController {
             damageRepository.createDamage(dataFromForm);
             return "redirect:/damageReport?id=" + redirectId;
         }
-        return "redirect:/error";
+        return "redirect:/access-error";
     }
 
     @GetMapping("/deleteDamage")
@@ -87,7 +86,7 @@ public class DamageController {
             damageRepository.deleteDamage(damageId);
             return "redirect:/damageReport?id=" + contractId;
         }
-        return "redirect:/error";
+        return "redirect:/access-error";
     }
 
     @GetMapping("/editDamageForm")
@@ -97,7 +96,7 @@ public class DamageController {
             model.addAttribute("damage", contractDamageService.getSingleDamageById(damageId));
             return "damage-templates/edit-damage";
         }
-        return "redirect:/error";
+        return "redirect:/access-error";
     }
 
 
@@ -109,8 +108,6 @@ public class DamageController {
             contractDamageService.editDamage(dataFromForm);
             return "redirect:/damageReport?id=" + redirectId;
         }
-        return "redirect:/error";
+        return "redirect:/access-error";
     }
-
-
 }

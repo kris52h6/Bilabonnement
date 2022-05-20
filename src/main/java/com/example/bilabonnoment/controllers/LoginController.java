@@ -44,4 +44,16 @@ public class LoginController {
         //Tjek hvilke userrole brugeren har
         return loginService.reDirectUser(session);
     }
+
+    @GetMapping("/logOut")
+    public String logOut(HttpSession session)
+    {
+        if(session != null){
+            session.removeAttribute("userId");
+            session.removeAttribute("username");
+            session.removeAttribute("userRole");
+        }
+
+        return "redirect:/";
+    }
 }
