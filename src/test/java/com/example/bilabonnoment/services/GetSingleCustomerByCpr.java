@@ -16,15 +16,13 @@ class GetSingleCustomerByCpr
     {
         //arrange
         CustomerTestRepository customerTestRepository = new CustomerTestRepository();
-        ContractTestRepository contractTestRepository = new ContractTestRepository();
-        CustomerContractService customerContractService = new CustomerContractService(customerTestRepository, contractTestRepository);
+        CustomerService customerService = new CustomerService(customerTestRepository);
 
         Customer expectedCustomer1 = new Customer(1, "12", "hans", "hansen");
 
-
         //act
-        Customer actualCustomer1 = customerContractService.getSingleCustomerByCpr("12");
-        Customer nonExistentCustomer2 = customerContractService.getSingleCustomerByCpr("3");
+        Customer actualCustomer1 = customerService.getCustomerFromCprNr("12");
+        Customer nonExistentCustomer2 = customerService.getCustomerFromCprNr("3");
 
         //assert
         assertEquals(expectedCustomer1.getId(), actualCustomer1.getId());
