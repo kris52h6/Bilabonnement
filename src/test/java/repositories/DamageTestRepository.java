@@ -41,9 +41,9 @@ public class DamageTestRepository implements IDamageRepository {
     }
 
     @Override
-    public void createDamage(WebRequest data)
+    public Damage createDamage(WebRequest data)
     {
-
+        return null;
     }
 
     @Override
