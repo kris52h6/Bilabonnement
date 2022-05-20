@@ -12,5 +12,5 @@ public interface IContractRepository extends IRepository<Contract>{
     public int changeContractDamage(int contractId, String updatedDamageStatus);
     public List<Contract> getAllReturnedUncheckedContracts();
     public List<Contract> getAllReturnedDamagedContracts();
-
+    public boolean editContract(Contract contract);
 }

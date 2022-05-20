@@ -20,14 +20,14 @@ public class BusinessController {
 
     @GetMapping("/businessDevelopment")
     public String getAllCars(Model model, HttpSession session) {
-        if(session.getAttribute("userRole").equals(AREA)) {
+        if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
             model.addAttribute("cars", carRepository.getAllRentedCars());
             model.addAttribute("totalValue", businessService.totalValueOfAllRentedCars(carRepository.getAllRentedCars()));
             System.out.println(carRepository.getAllRentedCars());
             System.out.println(businessService.totalValueOfAllRentedCars(carRepository.getAllRentedCars()));
             return "business-template/business-development";
         }
-        return "redirect:/error";
+        return "access-error";
     }
 
 }
