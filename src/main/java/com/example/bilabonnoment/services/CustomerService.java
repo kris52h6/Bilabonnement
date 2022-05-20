@@ -23,14 +23,4 @@ public class CustomerService {
     public Customer getCustomerFromCprNr(String cprNr) {
         return customerRepository.getCustomerFromCprNr(cprNr);
     }
-
-
-
-
-
-        public Customer getSingleCustomerByCpr(String cprNr) {
-        return customerRepository.getCustomerFromCprNr(cprNr);
-    }
-
-
 }

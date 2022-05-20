@@ -41,9 +41,10 @@ public class CustomerContractService {
         return customersWithContracts;
     }
 
-    public Customer getSingleCustomerByCpr(String cprNr) {
-        return customerRepository.getCustomerFromCprNr(cprNr);
-    }
+
+
+
+
 
 
     public static void main(String[] args) {

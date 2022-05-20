@@ -3,10 +3,7 @@ package com.example.bilabonnoment.controllers;
 import com.example.bilabonnoment.repositories.ContractRepository;
 import com.example.bilabonnoment.repositories.CustomerRepository;
 import com.example.bilabonnoment.repositories.DamageRepository;
-import com.example.bilabonnoment.services.ContractDamageService;
-import com.example.bilabonnoment.services.CustomerContractService;
-import com.example.bilabonnoment.services.CustomerService;
-import com.example.bilabonnoment.services.DamageService;
+import com.example.bilabonnoment.services.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,11 +24,9 @@ public class DamageController {
     @GetMapping("/damageIndex")
     public String damageIndex(Model model, HttpSession session){
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
-                CustomerContractService customerContractService = new CustomerContractService(customerRepository, contractRepository);
-                ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
-
-                model.addAttribute("uncheckedContracts", contractDamageService.getAllReturnedUncheckedContracts());
-                model.addAttribute("damagedContracts", contractDamageService.getAllReturnedDamagedContracts());
+                ContractService contractService = new ContractService(contractRepository);
+                model.addAttribute("uncheckedContracts", contractService.getAllReturnedUncheckedContracts());
+                model.addAttribute("damagedContracts", contractService.getAllReturnedDamagedContracts());
 
                 return "damage-templates/damage-index";
             }
@@ -42,7 +37,8 @@ public class DamageController {
     public String updatedContractDamage(@RequestParam int contractId, @RequestParam String updatedDamageStatus, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
             if (session.getAttribute("userRole").equals(AREA)) {
-                contractRepository.changeContractDamage(contractId, updatedDamageStatus);
+                ContractService contractService = new ContractService(contractRepository);
+                contractService.changeContractDamage(contractId, updatedDamageStatus);
                 return "redirect:/damageIndex";
             }
         }
@@ -55,9 +51,10 @@ public class DamageController {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
             ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
             CustomerService customerService = new CustomerService(customerRepository);
-            String cprNr = contractDamageService.getCprNrFromContractId(id);
+            ContractService contractService = new ContractService(contractRepository);
+            String cprNr = contractService.getCprNrFromContractId(id);
 
-            model.addAttribute("customer", customerService.getSingleCustomerByCpr(cprNr));
+            model.addAttribute("customer", customerService.getCustomerFromCprNr(cprNr));
             model.addAttribute("contract", contractDamageService.contractWithDamage(id));
             return "damage-templates/damage-report";
         }
