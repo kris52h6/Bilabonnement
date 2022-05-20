@@ -289,7 +289,7 @@ public class ContractRepository implements IContractRepository {
 
     @Override
     public Contract createTempContractObj(WebRequest data) {
-        return new Contract(
+        Contract temp = new Contract(
                 Integer.parseInt(data.getParameter("contractId")),
                 data.getParameter("customerCprNr"),
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("vinNo"))),
@@ -299,8 +299,10 @@ public class ContractRepository implements IContractRepository {
                 Date.valueOf(data.getParameter("contractStartDate")),
                 Date.valueOf(data.getParameter("contractEndDate")),
                 false,
-                Contract.Damage.UNCHECKED
+                Contract.Damage.valueOf(data.getParameter("isDamaged"))
+
         );
+        return temp;
     }
 
     public static void main(String[] args)
