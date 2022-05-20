@@ -74,6 +74,11 @@ public class ContractTestRepository implements IContractRepository {
     }
 
     @Override
+    public boolean editContract(Contract contract) {
+        return false;
+    }
+
+    @Override
     public List<Contract> getAllEntities()
     {
         return null;

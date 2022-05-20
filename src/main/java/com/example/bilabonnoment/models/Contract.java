@@ -133,9 +133,25 @@ public class Contract {
                 '}';
     }*/
 
-    @Override
+    /*@Override
     public String toString() {
         return "Contract{" +
                 "id=" + id;
+    }*/
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id +
+                ", cprNum='" + cprNum + '\'' +
+                ", vinNo=" + vinNo +
+                ", price=" + price +
+                ", pickupPlace='" + pickupPlace + '\'' +
+                ", returnPlace='" + returnPlace + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", isReturned=" + isReturned +
+                ", damage=" + damage +
+                '}';
     }
 }

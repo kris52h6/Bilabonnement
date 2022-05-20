@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rediger kontrakt</title>
+    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
+    <link rel="stylesheet" th:href="@{form.css}" href="../../static/form.css">
+</head>
+
+<body>
+<header th:insert="fragments/header.html :: header"></header>
+
+<main>
+
+    <h1>Rediger kontrakt</h1>
+    <section id="edit-contract-wrapper">
+        <form method="POST" action="/editContract">
+            <label for="contractId" hidden>damageId</label>
+            <input id="contractId" type="number" name="contractId" th:value="${contract.getId()}" hidden>
+
+            <label for="customerCprNr">Kunde Cpr Nr.</label>
+            <input id="customerCprNr" type="text" name="customerCprNr" th:value="${contract.getCprNum()}">
+
+            <label for="vinNo">Stelnummer</label>
+            <input id="vinNo" type="text" name="vinNo" th:value="${contract.getVinNo()}">
+
+            <label for="contractPrice">Kontrakt Pris</label>
+            <input id="contractPrice" type="number" name="contractPrice" th:value="${contract.getPrice()}">
+
+            <label for="carPickupPlace">Afhentningssted</label>
+            <input id="carPickupPlace" type="text" name="carPickupPlace" th:value="${contract.getPickupPlace()}">
+
+            <label for="carReturnPlace">Returneringsted</label>
+            <input id="carReturnPlace" type="text" name="carReturnPlace" th:value="${contract.getReturnPlace()}">
+
+            <label for="contractStartDate">Kontrakts startdato</label>
+            <input id="contractStartDate" type="date" name="contractStartDate" th:value="${contract.getStartDate()}">
+
+            <label for="contractEndDate">Kontrakts slutdato</label>
+            <input id="contractEndDate" type="date" name="contractEndDate" th:value="${contract.getEndDate()}">
+
+            <input type="submit" id="submit">
+        </form>
+    </section>
+</main>
+</body>
+</html>

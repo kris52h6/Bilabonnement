@@ -56,7 +56,11 @@
                             <span th:text="${contract.getDamage()}"></span>
                         </div>
                         <!--TODO a href til rediger-->
-                        <button class="general-button">Rediger lejekontrakt</button>
+                        <a th:href="@{/editContractForm?contractId={contractId}(contractId=${contract.getId()})}">
+                            <button class="general-button">Rediger lejekontrakt</button>
+                        </a>
+
+
                     </div>
                 </span>
         </div>

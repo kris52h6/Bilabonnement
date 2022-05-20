@@ -1,6 +1,7 @@
 package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Contract;
+import com.example.bilabonnoment.models.Damage;
 import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 import org.springframework.web.context.request.WebRequest;
@@ -260,8 +261,10 @@ public class ContractRepository implements IContractRepository {
         return allContracts;
     }
 
-
+    @Override
     public boolean editContract(Contract contract){
+
+        System.out.println(contract);
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
         int id = contract.getId();
