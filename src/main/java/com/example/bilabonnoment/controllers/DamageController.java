@@ -51,7 +51,6 @@ public class DamageController {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
             ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
             CustomerService customerService = new CustomerService(customerRepository);
-
             ContractService contractService = new ContractService(contractRepository);
             String cprNr = contractService.getCprNrFromContractId(id);
 

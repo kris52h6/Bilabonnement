@@ -151,10 +151,10 @@ public class ContractRepository implements IContractRepository {
     }
 
     @Override
-    public void createContract(WebRequest data) {
+    public Contract createContract(WebRequest data) {
         System.out.println(data.getParameter("contractStartDate"));
 
-        Contract contract = new Contract(
+        return new Contract(
                 -1,
                 data.getParameter("customerCprNr"),
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("vinNo"))),
@@ -166,8 +166,6 @@ public class ContractRepository implements IContractRepository {
                 false,
                 Contract.Damage.UNCHECKED
         );
-
-        create(contract);
     }
 
     @Override

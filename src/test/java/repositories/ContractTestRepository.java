@@ -47,9 +47,9 @@ public class ContractTestRepository implements IContractRepository {
 
 
     @Override
-    public void createContract(WebRequest data)
+    public Contract createContract(WebRequest data)
     {
-
+        return null;
     }
 
     @Override

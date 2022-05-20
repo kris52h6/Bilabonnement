@@ -20,7 +20,8 @@ public class ContractController {
     @GetMapping("/contract")
     public String getContract(@RequestParam int id, Model model, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
-            model.addAttribute("contracts", contractRepository.getSingleById(id));
+            ContractService contractService = new ContractService(contractRepository);
+            model.addAttribute("contracts", contractService.getSingleById(id));
             return "contract-templates/contract";
         }
         return "access-error";
@@ -29,7 +30,8 @@ public class ContractController {
     @GetMapping("/allContracts")
     public String allContracts(Model model, HttpSession session){
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
-            model.addAttribute("contracts", contractRepository.getAllEntities());
+            ContractService contractService = new ContractService(contractRepository);
+            model.addAttribute("contracts", contractService.getAllEntities());
             return "contract-templates/all-contracts";
         }
         return "access-error";

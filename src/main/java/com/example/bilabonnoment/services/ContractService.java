@@ -39,4 +39,21 @@ public class ContractService {
         return contractRepository.changeContractDamage(contractId, updatedDamageStatus);
     }
 
+    public Contract getSingleById(int id) {
+        return contractRepository.getSingleById(id);
+    }
+
+    public List<Contract> getAllEntities() {
+        return contractRepository.getAllEntities();
+    }
+
+    public void createContract(WebRequest data) {
+        Contract contract = contractRepository.createContract(data);
+        create(contract);
+    }
+
+    public void create(Contract contract) {
+        contractRepository.create(contract);
+    }
+
     }
