@@ -21,10 +21,6 @@ public class CustomerContractService {
     }
 
     public HashMap<Customer, ArrayList<Contract>> allCustomersContracts(){
-
-        CustomerRepository customerRepository = new CustomerRepository();
-        ContractRepository contractRepository = new ContractRepository();
-
         String previousCustomerCprNr = null;
         String currentCustomerCprNr;
         ArrayList<Contract> allContracts = new ArrayList<>();

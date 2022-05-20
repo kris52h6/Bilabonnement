@@ -24,6 +24,7 @@ public class ContractDamageService {
     }
 
     public HashMap<Contract, ArrayList<Damage>> contractsFromDamageList(){
+        
         HashMap<Contract, ArrayList<Damage>> ContractWithDamages = new HashMap<>();
         ArrayList<Damage> damagesToContract = new ArrayList<>();
 
@@ -35,7 +36,6 @@ public class ContractDamageService {
             if (currentContractId != previousContractId) {
                 damagesToContract = getAllDamagesFromContract(currentContractId);
                 ContractWithDamages.put(contractRepository.getSingleById(currentContractId), damagesToContract);
-                damagesToContract = new ArrayList<>();
             }
             previousContractId = currentContractId;
         }
@@ -43,27 +43,14 @@ public class ContractDamageService {
     }
 
     public HashMap<Contract, ArrayList<Damage>> contractWithDamage(int contractId){
-        ContractRepository contractRepository = new ContractRepository();
         HashMap<Contract, ArrayList<Damage>> contractWithDamages = new HashMap<>();
         contractWithDamages.put(contractRepository.getSingleById(contractId), getAllDamagesFromContract(contractId));
         return contractWithDamages;
     }
 
     public ArrayList<Damage> getAllDamagesFromContract(int id) {
-        DamageRepository damageRepository = new DamageRepository();
-        return (ArrayList<Damage>) damageRepository.getAllDamagesFromContract(id);
+        return damageRepository.getAllDamagesFromContract(id);
     }
-
-    public Damage getSingleDamageById(int damageId) {
-        DamageRepository damageRepository = new DamageRepository();
-        return damageRepository.getSingleById(damageId);
-    }
-
-    public void editDamage(WebRequest dataFromForm) {
-        DamageRepository damageRepository = new DamageRepository();
-        damageRepository.createTempDamageObj(dataFromForm);
-    }
-
 
     public String getCprNrFromContractId(int contractId) {
         return contractRepository.getCprNrFromContractId(contractId);

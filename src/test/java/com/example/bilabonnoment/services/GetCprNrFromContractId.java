@@ -22,7 +22,7 @@ class GetCprNrFromContractId
         String expectedCpr2 = null;
 
         String actualCpr1 = contractDamageService.getCprNrFromContractId(1);
-        String actualCpr2 = contractDamageService.getCprNrFromContractId(5);
+        String actualCpr2 = contractDamageService.getCprNrFromContractId(100);
 
         assertEquals(expectedCpr1, actualCpr1);
         assertEquals(expectedCpr2, actualCpr2);
