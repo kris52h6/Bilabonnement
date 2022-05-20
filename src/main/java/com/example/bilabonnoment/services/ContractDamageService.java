@@ -4,8 +4,8 @@ import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Damage;
 import com.example.bilabonnoment.repositories.ContractRepository;
 import com.example.bilabonnoment.repositories.DamageRepository;
-import com.example.bilabonnoment.repositories.IContractRepository;
-import com.example.bilabonnoment.repositories.IDamageRepository;
+import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
+import com.example.bilabonnoment.repositories.interfaces.IDamageRepository;
 import org.springframework.web.context.request.WebRequest;
 
 import java.util.ArrayList;

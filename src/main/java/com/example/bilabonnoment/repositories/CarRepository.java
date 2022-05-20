@@ -1,11 +1,12 @@
 package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Car;
+import com.example.bilabonnoment.repositories.interfaces.IRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 import java.sql.*;
 import java.util.*;
 
-public class CarRepository implements IRepository{
+public class CarRepository implements IRepository {
 
     @Override
     public List<Car> getAllEntities() {

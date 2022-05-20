@@ -3,57 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Contract</title>
-    <link rel="stylesheet" th:href="@{style.css}" href="../static/style.css">
+    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
+    <link rel="stylesheet" th:href="@{contract-css/single-contract.css}" href="../../static/contract-css/single-contract.css">
 </head>
 <body>
-<style>
 
-    h1 {
-        display: flex;
-        justify-content: center;
-        padding-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    h2 {
-        display: flex;
-        justify-content: center;
-    }
-
-    button {
-        height: 40px;
-        box-shadow: 0px 3px lightblue;
-    }
-
-    #single-contract {
-        width: 80%;
-        margin: 0 auto;
-        height: 100vh;
-    }
-
-    .contract {
-        border: 1px solid black;
-        padding: 10px;
-        width: 600px;
-        margin: 0 auto;
-        box-shadow: 3px 5px lightgrey;
-    }
-
-    .row {
-        display: flex;
-        flex-direction: column;
-    }
-    .inner {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 15px;
-        border-bottom: 1px dotted black;
-    }
-
-    .inner span:first-child {
-        font-weight: bold;
-    }
-</style>
 <header th:insert="fragments/header.html :: header"></header>
 <main>
     <h1>Oversigt over kontrakt</h1>

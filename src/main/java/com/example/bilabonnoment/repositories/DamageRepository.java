@@ -1,6 +1,7 @@
 package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Damage;
+import com.example.bilabonnoment.repositories.interfaces.IDamageRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 import org.springframework.web.context.request.WebRequest;
 

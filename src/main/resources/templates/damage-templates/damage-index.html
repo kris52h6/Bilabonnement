@@ -3,53 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{style.css}" href="../static/style.css">
-    <link rel="stylesheet" th:href="@{damageIndex.css}" href="../static/damageIndex.css">
+    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
+    <link rel="stylesheet" th:href="@{damage-css/damage-index.css}" href="../../static/damage-css/damage-index.css">
 
 </head>
 <body>
-<style>
-    #damage-index {
-        width: 80%;
-        height: 100vh;
-        margin: 0 auto;
-    }
-
-    .title-wrapper-unchecked {
-        display: grid;
-        grid-template-columns: repeat(8, 1fr);
-    }
-
-    .title-wrapper-checked {
-        display: grid;
-        grid-template-columns: repeat(8, 1fr);
-    }
-
-    .title-wrapper h3 {
-        display: flex;
-        justify-content: center;
-        font-size: 16px;
-    }
-
-    #uncheckedSingle, #checkedSingle {
-        display: grid;
-        grid-template-columns: repeat(8, 1fr);
-        padding: 10px 5px 10px 5px;
-        border-bottom: 1px solid black;
-        cursor: pointer;
-    }
-
-    #uncheckedSingle > *, #checkedSingle > * {
-        display: flex;
-        justify-content: center;
-    }
-
-    #unchecked, #damaged {
-        min-height: 150px;
-    }
-
-
-</style>
 
 <header th:insert="fragments/header.html :: header"></header>
 
@@ -91,7 +49,7 @@
         </div>
 
         <div class="wrapper">
-            <h2>Biler som skal tjekkes for skader</h2>
+            <h2>Biler hvor der skal udføres skadesrapport</h2>
             <div class="title-wrapper-checked title-wrapper">
                 <h3>CPR</h3>
                 <h3>Stel nr</h3>

@@ -12,6 +12,10 @@
     --button-bg-color: #1892c3;
 }
 
+main {
+    height: 100vh;
+}
+
 /**** HEADER & NAV STYLING ****/
 
 .navbar {
@@ -84,6 +88,7 @@ form input {
     padding: 2px 10px 2px 10px;
     background-color: #D22B2B;
     color: white;
+    margin-left: 10px;
     border: none;
 }
 

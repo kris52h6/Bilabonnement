@@ -4,48 +4,10 @@
     <meta charset="UTF-8">
     <title>Contract</title>
     <!--<link rel="stylesheet" th:href="@{style.css}" href="../static/style.css" type="text/css">-->
-    <link rel="stylesheet" th:href="@{style.css}" href="../static/style.css">
+    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
+    <link rel="stylesheet" th:href="@{contract-css/all-contracts.css}" href="../../static/style.css">
 
 </head>
-<style>
-
-    #all-contracts {
-        width: 80%;
-        height: 100vh;
-        margin: 0 auto;
-    }
-
-    .title-wrapper {
-        display: grid;
-        grid-template-columns: repeat(8, 1fr);
-    }
-
-    .title-wrapper h3 {
-        font-size: 16px;
-    }
-
-    .contracts {
-        border: 1px solid black;
-    }
-
-    .contract {
-        display: grid;
-        grid-template-columns: repeat(8, 1fr);
-        padding: 10px 5px 10px 5px;
-        border-bottom: 1px solid black;
-        cursor: pointer;
-    }
-
-    .title-wrapper > * {
-        display: flex;
-        justify-content: center;
-    }
-
-    .contract > * {
-        display: flex;
-        justify-content: center;
-    }
-</style>
 
 <body>
 <header th:insert="fragments/header.html :: header"></header>

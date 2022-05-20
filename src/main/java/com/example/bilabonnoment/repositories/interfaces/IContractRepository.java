@@ -1,9 +1,8 @@
-package com.example.bilabonnoment.repositories;
+package com.example.bilabonnoment.repositories.interfaces;
 
 import com.example.bilabonnoment.models.Contract;
 import org.springframework.web.context.request.WebRequest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface IContractRepository extends IRepository<Contract>{

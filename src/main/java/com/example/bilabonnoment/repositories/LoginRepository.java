@@ -1,7 +1,7 @@
 package com.example.bilabonnoment.repositories;
 
-import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.User;
+import com.example.bilabonnoment.repositories.interfaces.ILoginRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 
 import java.sql.Connection;
@@ -14,7 +14,7 @@ public class LoginRepository implements ILoginRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         User user = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.user WHERE user_username = " + username + " AND user_password = " + password);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.user WHERE user_username = '" + username + "' AND user_password = '" + password + "'");
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                  user = new User(

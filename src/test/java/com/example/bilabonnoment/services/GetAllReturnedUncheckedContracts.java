@@ -1,3 +1,4 @@
+/*
 package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Contract;
@@ -38,3 +39,5 @@ class GetAllReturnedUncheckedContracts
 
     }
 }
+
+ */
