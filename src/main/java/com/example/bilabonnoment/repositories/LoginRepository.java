@@ -1,7 +1,7 @@
 package com.example.bilabonnoment.repositories;
 
-import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.User;
+import com.example.bilabonnoment.repositories.interfaces.ILoginRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 
 import java.sql.Connection;

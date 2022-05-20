@@ -4,8 +4,8 @@ import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Customer;
 import com.example.bilabonnoment.repositories.ContractRepository;
 import com.example.bilabonnoment.repositories.CustomerRepository;
-import com.example.bilabonnoment.repositories.IContractRepository;
-import com.example.bilabonnoment.repositories.ICustomerRepository;
+import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
+import com.example.bilabonnoment.repositories.interfaces.ICustomerRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;

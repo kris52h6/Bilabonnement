@@ -1,13 +1,8 @@
 package repositories;
 
 import com.example.bilabonnoment.models.Customer;
-import com.example.bilabonnoment.utility.DatabaseConnectionManager;
-import com.example.bilabonnoment.repositories.ICustomerRepository;
+import com.example.bilabonnoment.repositories.interfaces.ICustomerRepository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

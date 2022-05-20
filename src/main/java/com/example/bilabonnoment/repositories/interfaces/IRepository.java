@@ -1,4 +1,4 @@
-package com.example.bilabonnoment.repositories;
+package com.example.bilabonnoment.repositories.interfaces;
 
 import java.util.List;
 

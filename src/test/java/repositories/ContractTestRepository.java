@@ -1,7 +1,7 @@
 package repositories;
 
 import com.example.bilabonnoment.models.Contract;
-import com.example.bilabonnoment.repositories.IContractRepository;
+import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
 import org.springframework.web.context.request.WebRequest;
 
 import java.sql.Date;

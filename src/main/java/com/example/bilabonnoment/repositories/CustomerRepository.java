@@ -1,6 +1,7 @@
 package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Customer;
+import com.example.bilabonnoment.repositories.interfaces.ICustomerRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 
 import java.sql.Connection;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerRepository implements ICustomerRepository{
+public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public List<Customer> getAllEntities() {

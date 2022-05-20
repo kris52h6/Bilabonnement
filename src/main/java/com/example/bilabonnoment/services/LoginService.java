@@ -1,7 +1,7 @@
 package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.User;
-import com.example.bilabonnoment.repositories.ILoginRepository;
+import com.example.bilabonnoment.repositories.interfaces.ILoginRepository;
 
 import javax.servlet.http.HttpSession;
 

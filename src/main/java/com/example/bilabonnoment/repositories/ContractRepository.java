@@ -1,6 +1,7 @@
 package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Contract;
+import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 import org.springframework.web.context.request.WebRequest;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class ContractRepository implements  IContractRepository {
+public class ContractRepository implements IContractRepository {
 
     @Override
     public List<Contract> getAllEntities() {
