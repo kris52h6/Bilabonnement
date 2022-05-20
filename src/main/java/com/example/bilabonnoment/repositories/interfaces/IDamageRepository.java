@@ -12,7 +12,7 @@ public interface IDamageRepository extends IRepository<Damage> {
 
     public List<String> getAllDamagesFromContracts();
 
-    public void createDamage(WebRequest data);
+    public Damage createDamage(WebRequest data);
 
     public void createTempDamageObj(WebRequest data);
 

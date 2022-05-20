@@ -110,15 +110,14 @@ public class DamageRepository implements IDamageRepository {
     }
 
     @Override
-    public void createDamage(WebRequest data) {
-        Damage damage = new Damage(
+    public Damage createDamage(WebRequest data) {
+        return new Damage(
                 -1,
                 Double.parseDouble(Objects.requireNonNull(data.getParameter("damagePrice"))),
                 data.getParameter("damageDescription"),
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("contractId")))
 
         );
-        create(damage);
     }
 
     @Override
