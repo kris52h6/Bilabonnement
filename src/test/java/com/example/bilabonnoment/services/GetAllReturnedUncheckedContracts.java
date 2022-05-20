@@ -1,4 +1,3 @@
-/*
 package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Contract;
@@ -8,11 +7,9 @@ import repositories.ContractTestRepository;
 import repositories.DamageTestRepository;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
-
 import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class GetAllReturnedUncheckedContracts
@@ -20,9 +17,8 @@ class GetAllReturnedUncheckedContracts
     @Test
     void getAllReturnedUncheckedContracts()
     {
-        DamageTestRepository damageTestRepository = new DamageTestRepository();
         ContractTestRepository contractTestRepository = new ContractTestRepository();
-        ContractDamageService contractDamageService = new ContractDamageService(damageTestRepository, contractTestRepository);
+        ContractService contractService = new ContractService(contractTestRepository);
 
         String str = "2200-05-05";
         Date date = Date.valueOf(str);
@@ -33,11 +29,9 @@ class GetAllReturnedUncheckedContracts
         );
 
 
-        List<Contract> actualContracts = contractDamageService.getAllReturnedUncheckedContracts();
+        List<Contract> actualContracts = contractService.getAllReturnedUncheckedContracts();
 
         assertThat(actualContracts.size(), is(expectContracts.size()));
 
     }
 }
-
- */
