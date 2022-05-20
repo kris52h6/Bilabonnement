@@ -18,7 +18,5 @@ public interface IDamageRepository extends IRepository<Damage> {
 
     public void deleteDamage(int damageId);
 
-
-
 }
 

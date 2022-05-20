@@ -24,7 +24,7 @@ public class ContractDamageService {
     }
 
     public HashMap<Contract, ArrayList<Damage>> contractsFromDamageList(){
-        
+
         HashMap<Contract, ArrayList<Damage>> ContractWithDamages = new HashMap<>();
         ArrayList<Damage> damagesToContract = new ArrayList<>();
 
@@ -52,20 +52,6 @@ public class ContractDamageService {
         return damageRepository.getAllDamagesFromContract(id);
     }
 
-    public String getCprNrFromContractId(int contractId) {
-        return contractRepository.getCprNrFromContractId(contractId);
-    }
-
-    public List<Contract> getAllReturnedUncheckedContracts(){
-        return contractRepository.getAllReturnedUncheckedContracts();
-    }
-    public List<Contract> getAllReturnedDamagedContracts() {
-        return contractRepository.getAllReturnedDamagedContracts();
-    }
-
-    public int changeContractDamage(int contractId, String updatedDamageStatus) {
-        return contractRepository.changeContractDamage(contractId, updatedDamageStatus);
-    }
 
 
 
