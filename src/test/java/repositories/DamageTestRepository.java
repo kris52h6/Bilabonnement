@@ -17,21 +17,27 @@ import java.util.List;
 public class DamageTestRepository implements IDamageRepository {
     ArrayList<Damage> allDamages = new ArrayList<>(
             Arrays.asList(
-                 new Damage(1, 50, "tire", 1),
-                 new Damage(2, 70, "door handle", 1),
-                 new Damage(3, 80, "rear view mirror", 2),
+                 new Damage(1, 50, "tire", 5),
+                 new Damage(2, 70, "door handle", 5),
+                 new Damage(3, 80, "rear view mirror", 1),
                  new Damage(4, 60, "engien", 2),
                  new Damage(5, 40, "front door", 3),
-                 new Damage(6, 90, "trunk handle", 3),
-                 new Damage(7, 20, "door", 4),
-                 new Damage(8, 300, "passenger door ", 4)
+                 new Damage(6, 90, "trunk handle", 4),
+                 new Damage(7, 20, "door", 1),
+                 new Damage(8, 300, "passenger door ", 2)
             )
     );
 
     @Override
-    public List<Damage> getAllDamagesFromContract(int contractId)
+    public ArrayList<Damage> getAllDamagesFromContract(int contractId)
     {
-        return null;
+        ArrayList<Damage> damages = new ArrayList<>();
+        for (Damage damage : allDamages){
+            if (damage.getContractId() == contractId){
+                damages.add(damage);
+            }
+        }
+        return damages;
     }
 
     @Override

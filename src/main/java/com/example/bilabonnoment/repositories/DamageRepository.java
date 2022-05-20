@@ -80,9 +80,9 @@ public class DamageRepository implements IDamageRepository {
     }
 
     @Override
-    public List<Damage> getAllDamagesFromContract(int contractId) {
+    public ArrayList<Damage> getAllDamagesFromContract(int contractId) {
         Connection conn = DatabaseConnectionManager.getConnection();
-        List<Damage> allDamages = new ArrayList<>();
+        ArrayList<Damage> allDamages = new ArrayList<>();
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE contract_id = " + contractId);
             ResultSet rs = pstmt.executeQuery();

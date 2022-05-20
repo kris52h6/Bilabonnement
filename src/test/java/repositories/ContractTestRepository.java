@@ -17,7 +17,9 @@ public class ContractTestRepository implements IContractRepository {
                     new Contract(1, "12", 12, 100, "her", "her", date, date, true, Contract.Damage.UNCHECKED),
                     new Contract(2, "34", 13, 110, "her", "her", date, date, false, Contract.Damage.UNCHECKED),
                     new Contract(3, "56", 14, 90, "her", "her", date, date, true, Contract.Damage.NO),
-                    new Contract(4, "78", 15, 105, "her", "her", date, date, false, Contract.Damage.YES)
+                    new Contract(4, "78", 15, 120, "her", "her", date, date, false, Contract.Damage.NO),
+                    new Contract(5, "90", 16, 115, "her", "her", date, date, true, Contract.Damage.YES),
+                    new Contract(6, "123", 17, 105, "her", "her", date, date, false, Contract.Damage.UNCHECKED)
             )
     );
 
@@ -82,7 +84,7 @@ public class ContractTestRepository implements IContractRepository {
     {
         Contract contract = null;
         for (Contract currentContract : allContracts){
-            if (contract.getId() == id){
+            if (currentContract.getId() == id){
                 contract = currentContract;
             }
         }
