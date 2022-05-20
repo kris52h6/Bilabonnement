@@ -27,7 +27,7 @@ public class DamageController {
         model.addAttribute("uncheckedContracts",contractDamageService.getAllReturnedUncheckedContracts());
         model.addAttribute("damagedContracts", contractDamageService.getAllReturnedDamagedContracts());
 
-        return "damageIndex";
+        return "damage-index";
     }
 
     @GetMapping("/updateContractDamage")

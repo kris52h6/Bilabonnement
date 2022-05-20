@@ -3,34 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Rediger skade</title>
-    <link rel="stylesheet" th:href="@{style.css}" href="../static/style.css">
-    <link rel="stylesheet" th:href="@{form.css}" href="../static/form.css">
+    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
+    <link rel="stylesheet" th:href="@{form.css}" href="../../static/form.css">
+    <link rel="stylesheet" th:href="@{damage-css/edit-damage.css}" href="../../static/damage-css/edit-damage.css">
 </head>
 <body>
-
-<style>
-    #edit-damage {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    main {
-        width: 100vh;
-    }
-
-    form {
-        width: 300px;
-    }
-
-    form > * {
-        width: 300px;
-    }
-
-    .form-wrapper {
-        display: flex;
-        justify-content: center;
-    }
-</style>
 <header th:insert="fragments/header.html :: header"></header>
 <main>
     <section id="edit-damage">
