@@ -1,7 +1,6 @@
 package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Contract;
-import com.example.bilabonnoment.models.Damage;
 import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 import org.springframework.web.context.request.WebRequest;
@@ -18,7 +17,6 @@ public class ContractRepository implements IContractRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         List<Contract> allContracts = new ArrayList<>();
         try {
-            //PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract JOIN bilabonnement.customer ON contract.customer_cpr_nr = customer.customer_cpr_nr");
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract");
             ResultSet rs = pstmt.executeQuery();
 
@@ -262,7 +260,6 @@ public class ContractRepository implements IContractRepository {
     @Override
     public boolean editContract(Contract contract){
 
-        System.out.println(contract);
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
         int id = contract.getId();
