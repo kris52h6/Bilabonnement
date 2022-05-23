@@ -55,15 +55,21 @@ public class ContractController {
     }
 
     @GetMapping("/editContractForm")
-    public String editContractForm(@RequestParam int contractId, Model model) {
-        model.addAttribute("contract", contractService.getSingleContractById(contractId));
-        return "contract-templates/edit-contract";
+    public String editContractForm(@RequestParam int contractId, Model model, HttpSession session) {
+        if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
+            model.addAttribute("contract", contractService.getSingleContractById(contractId));
+            return "contract-templates/edit-contract";
+        }
+        return "access-error";
     }
 
     @PostMapping("/editContract")
-    public String editContract(WebRequest dataFromForm) {
-        String redirectId = dataFromForm.getParameter("contractId");
-        contractService.editContract(dataFromForm);
-        return "redirect:/contract?id=" + redirectId;
+    public String editContract(WebRequest dataFromForm, HttpSession session) {
+        if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
+            String redirectId = dataFromForm.getParameter("contractId");
+            contractService.editContract(dataFromForm);
+            return "redirect:/contract?id=" + redirectId;
+        }
+        return "access-error";
     }
 }
