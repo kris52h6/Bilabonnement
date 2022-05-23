@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
+    <link rel="stylesheet" th:href="@{business-css/business.css}" href="../../static/business-css/business.css">
+</head>
+<body>
+<header th:insert="fragments/header.html :: header"></header>
+
+
+<main>
+    <h1>Alle udlejede biler</h1>
+    <section id="business-wrapper">
+
+
+        <p class="totalt-rented-cars">Total pris på udlejede biler:</p>
+        <p class="totalt-rented-cars" th:text="${totalValue}">should display the total value of all the rented cars</p>
+
+
+        <div class="title-wrapper-cars title-wrapper">
+            <h3>ID</h3>
+            <h3>Stel nr</h3>
+            <h3>Mærke</h3>
+            <h3>Model</h3>
+            <h3>Udstyr</h3>
+            <h3>Værdi før skat</h3>
+            <h3>Registrering</h3>
+            <h3>Co2 Udslip</h3>
+            <h3>Er leased?</h3>
+        </div>
+        <div class="car-wrapper">
+            <div class="car" th:each="car : ${cars}">
+                <span th:text="${car.getId()}"></span>
+                <span th:text="${car.getVinNo()}"></span>
+                <span th:text="${car.getMake()}"></span>
+                <span th:text="${car.getModel()}"></span>
+                <span th:text="${car.getEquipmentLevel()}"></span>
+                <span th:text="${car.getValuePreTax()}"></span>
+                <span th:text="${car.getRegistrationTax()}"></span>
+                <span th:text="${car.getCo2Emission()}"></span>
+                <span th:text="${car.getIs_leased()}"></span>
+            </div>
+        </div>
+
+        <!--<table>
+            <tr
+                    th:each="car : ${cars}">
+
+            </tr>
+        </table>-->
+    </section>
+</main>
+</body>
+</html>

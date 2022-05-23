@@ -1,13 +1,15 @@
 package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Car;
+import com.example.bilabonnoment.repositories.interfaces.IRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 import java.sql.*;
 import java.util.*;
 
-public class CarRepository implements IRepository{
+public class CarRepository implements IRepository {
+
     @Override
-    public List getAllEntities() {
+    public List<Car> getAllEntities() {
         Connection conn = DatabaseConnectionManager.getConnection();
         List<Car> allCars = new ArrayList<>();
         try {
@@ -35,7 +37,7 @@ public class CarRepository implements IRepository{
         return allCars;
     }
 
-    public List getAllRentedCars(){
+    public List<Car> getAllRentedCars(){
         Connection conn = DatabaseConnectionManager.getConnection();
         List<Car> allRentedCars = new ArrayList<>();
         try {

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rediger skade</title>
+    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
+    <link rel="stylesheet" th:href="@{form.css}" href="../../static/form.css">
+    <link rel="stylesheet" th:href="@{damage-css/edit-damage.css}" href="../../static/damage-css/edit-damage.css">
+</head>
+<body>
+<header th:insert="fragments/header.html :: header"></header>
+<main>
+    <section id="edit-damage">
+        <h1>Rediger skade</h1>
+        <div class="form-wrapper">
+            <form method="POST" action="/editDamage">
+                <label for="damagePrice">Skadepris</label>
+                <input id="damagePrice" type="number" name="damagePrice" th:value="${damage.getPrice()}">
+                <label for="damageDescription">Skadebeskrivelse</label>
+                <input id="damageDescription" type="text" name="damageDescription" th:value="${damage.getDescription()}">
+                <label for="damageId" hidden>damageId</label>
+                <input id="damageId" type="number" name="damageId" th:value="${damage.getId()}" hidden>
+                <label for="contractId" hidden>contractId</label>
+                <input id="contractId" type="number" name="contractId" th:value="${damage.getContractId()}" hidden>
+                <input type="submit" id="submit">
+            </form>
+        </div>
+    </section>
+</main>
+</body>
+</html>

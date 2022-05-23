@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contract</title>
+    <!--<link rel="stylesheet" th:href="@{style.css}" href="../static/style.css" type="text/css">-->
+    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
+    <link rel="stylesheet" th:href="@{contract-css/all-contracts.css}" href="../../static/style.css">
+
+</head>
+
+<body>
+<header th:insert="fragments/header.html :: header"></header>
+<main>
+    <section id="all-contracts">
+        <h1>Alle aktuelle lejekontrakter</h1>
+
+        <div class="title-wrapper">
+            <h3>CPR</h3>
+            <h3>Pris</h3>
+            <h3>Afhentningssted</h3>
+            <h3>Afleveringssted</h3>
+            <h3>Startdato</h3>
+            <h3>Slutdato</h3>
+            <h3>Er returneret?</h3>
+        </div>
+
+        <div class="contracts">
+        <span th:each="contract : ${contracts}">
+            <div class="contract">
+            <span th:text="${contract.getCprNum()}"></span>
+            <span th:text="${contract.getPrice()}"></span>
+            <span th:text="${contract.getPickupPlace()}"></span>
+            <span th:text="${contract.getReturnPlace()}"></span>
+            <span th:text="${contract.getStartDate()}"></span>
+            <span th:text="${contract.getEndDate()}"></span>
+            <span th:text="${contract.isReturned()}"></span>
+                <a th:href="@{/contract?id={id}(id=${contract.getId()})}">
+                    <button>Se lejekontrakt</button>
+                </a>
+                <!--<a th:href="@{/damageReport?id={id}(id=${contract.getId()})}">
+                    <button>Se lejekontrakt</button>
+                </a>-->
+            </div>
+        </span>
+        </div>
+    </section>
+</main>
+</body>
+</html>

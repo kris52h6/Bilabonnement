@@ -1,7 +1,7 @@
 package com.example.bilabonnoment.repositories;
 
-import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Customer;
+import com.example.bilabonnoment.repositories.interfaces.ICustomerRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 
 import java.sql.Connection;
@@ -11,12 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerRepository implements ICustomerRepository{
-
-    private final Connection conn = DatabaseConnectionManager.getConnection();
+public class CustomerRepository implements ICustomerRepository {
 
     @Override
-    public List getAllEntities() {
+    public List<Customer> getAllEntities() {
+        Connection conn = DatabaseConnectionManager.getConnection();
         List<Customer> allContracts = new ArrayList<>();
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer");
@@ -40,6 +39,7 @@ public class CustomerRepository implements ICustomerRepository{
 
     @Override
     public Customer getSingleById(int id) {
+        Connection conn = DatabaseConnectionManager.getConnection();
         Customer temp = null;
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_id = " + id);
@@ -68,9 +68,10 @@ public class CustomerRepository implements ICustomerRepository{
 
     @Override
     public Customer getCustomerFromCprNr(String cprNr) {
+        Connection conn = DatabaseConnectionManager.getConnection();
         Customer temp = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_cpr_nr = " + cprNr);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_cpr_nr = '" + cprNr + "';");
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 temp = new Customer(
@@ -85,6 +86,7 @@ public class CustomerRepository implements ICustomerRepository{
             System.out.println("Something wrong in statement");
             e.printStackTrace();
         }
+
         return temp;
     }
 }

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
+    <link rel="stylesheet" th:href="@{damage-css/damage-index.css}" href="../../static/damage-css/damage-index.css">
+
+</head>
+<body>
+
+<header th:insert="fragments/header.html :: header"></header>
+
+<main>
+    <section id="damage-index">
+        <h1>Alle skadesrapporter</h1>
+        <div class="wrapper">
+            <h2>Biler som skal tjekkes for skader</h2>
+            <div class="title-wrapper-unchecked title-wrapper">
+                <h3>CPR</h3>
+                <h3>Stel nr</h3>
+                <h3>Pris</h3>
+                <h3>Afhentningssted</h3>
+                <h3>Afleveringssted</h3>
+                <h3>Startdato</h3>
+                <h3>Slutdato</h3>
+                <h3>Er skadet?</h3>
+            </div>
+            <div id="unchecked" class="damageBox">
+
+                <div id="uncheckedSingle" th:each="contract: ${uncheckedContracts}">
+                    <span th:text="${contract.getCprNum()}"></span>
+                    <span th:text="${contract.getVinNo()}">vin no</span>
+                    <span th:text="${contract.getPrice()}">contract price</span>
+                    <span th:text="${contract.getPickupPlace()}">car pick up</span>
+                    <span th:text="${contract.getReturnPlace()}">car return</span>
+                    <span th:text="${contract.getStartDate()}">contract start date</span>
+                    <span th:text="${contract.getEndDate()}">contract end date</span>
+                    <div class="button-wrapper">
+                        <a th:href="@{/updateContractDamage(contractId=${contract.getId()},updatedDamageStatus='YES')}">
+                            <button>YES</button>
+                        </a>
+                        <a th:href="@{/updateContractDamage(contractId=${contract.getId()},updatedDamageStatus='NO')}">
+                            <button>NO</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <h2>Biler hvor der skal udføres skadesrapport</h2>
+            <div class="title-wrapper-checked title-wrapper">
+                <h3>CPR</h3>
+                <h3>Stel nr</h3>
+                <h3>Pris</h3>
+                <h3>Afhentningssted</h3>
+                <h3>Afleveringssted</h3>
+                <h3>Startdato</h3>
+                <h3>Slutdato</h3>
+
+            </div>
+            <div id="damaged">
+                <div id="checkedSingle" th:each="contract: ${damagedContracts}">
+                    <span th:text="${contract.getCprNum()}"></span>
+                    <span th:text="${contract.getVinNo()}">vin no</span>
+                    <span th:text="${contract.getPrice()}">contract price</span>
+                    <span th:text="${contract.getPickupPlace()}">car pick up</span>
+                    <span th:text="${contract.getReturnPlace()}">car return</span>
+                    <span th:text="${contract.getStartDate()}">contract start date</span>
+                    <span th:text="${contract.getEndDate()}">contract end date</span>
+                    <a th:href="@{/damageReport?id={id}(id=${contract.getId()})}">
+                        <button>Se skadesrapport</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

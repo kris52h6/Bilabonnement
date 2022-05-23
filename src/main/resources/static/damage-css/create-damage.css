@@ -1,0 +1,21 @@
+#create-damage {
+    width: 80%;
+    margin: 0 auto;
+}
+
+main {
+    height: 100vh;
+}
+
+form {
+    width: 300px;
+}
+
+form > * {
+    width: 300px;
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Create employee</title>
+        <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
+        <link rel="stylesheet" th:href="@{form.css}" href="../../static/form.css">
+    </head>
+    <body>
+    <h1>Opret ny kontrakt</h1>
+        <form method="POST" action="/createContract">
+            <label for="customerCprNr">Kunde Cpr Nr.</label>
+            <input id="customerCprNr" type="text" name="customerCprNr">
+
+            <label for="vinNo">Stelnummer</label>
+            <input id="vinNo" type="text" name="vinNo">
+
+            <label for="contractPrice">Kontrakt Pris</label>
+            <input id="contractPrice" type="number" name="contractPrice">
+
+            <label for="carPickupPlace">Afhentningssted</label>
+            <input id="carPickupPlace" type="text" name="carPickupPlace">
+
+            <label for="carReturnPlace">Returneringsted</label>
+            <input id="carReturnPlace" type="text" name="carReturnPlace">
+
+            <label for="contractStartDate">Kontrakts startdato</label>
+            <input id="contractStartDate" type="date" name="contractStartDate">
+
+            <label for="contractEndDate">Kontrakts slutdato</label>
+            <input id="contractEndDate" type="date" name="contractEndDate">
+
+            <input type="submit" id="submit">
+        </form>
+    </body>
+</html>
