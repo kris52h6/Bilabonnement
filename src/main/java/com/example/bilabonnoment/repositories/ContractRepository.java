@@ -1,7 +1,6 @@
 package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Contract;
-import com.example.bilabonnoment.models.Damage;
 import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 import org.springframework.web.context.request.WebRequest;
@@ -18,7 +17,6 @@ public class ContractRepository implements IContractRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         List<Contract> allContracts = new ArrayList<>();
         try {
-            //PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract JOIN bilabonnement.customer ON contract.customer_cpr_nr = customer.customer_cpr_nr");
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract");
             ResultSet rs = pstmt.executeQuery();
 
@@ -262,7 +260,6 @@ public class ContractRepository implements IContractRepository {
     @Override
     public boolean editContract(Contract contract){
 
-        System.out.println(contract);
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
         int id = contract.getId();
@@ -285,6 +282,24 @@ public class ContractRepository implements IContractRepository {
             e.printStackTrace();
         }
         return result;
+    }
+
+    @Override
+    public Contract createTempContractObj(WebRequest data) {
+        Contract temp = new Contract(
+                Integer.parseInt(data.getParameter("contractId")),
+                data.getParameter("customerCprNr"),
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("vinNo"))),
+                Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
+                data.getParameter("carPickupPlace"),
+                data.getParameter("carReturnPlace"),
+                Date.valueOf(data.getParameter("contractStartDate")),
+                Date.valueOf(data.getParameter("contractEndDate")),
+                false,
+                Contract.Damage.valueOf(data.getParameter("isDamaged"))
+
+        );
+        return temp;
     }
 
     public static void main(String[] args)

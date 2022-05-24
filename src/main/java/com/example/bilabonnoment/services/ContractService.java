@@ -18,8 +18,7 @@ public class ContractService {
     }
 
     public void editContract(WebRequest dataFromForm) {
-        int contractId = Integer.parseInt(dataFromForm.getParameter("contractId"));
-        Contract contract = contractRepository.getSingleById(contractId);
+        Contract contract = contractRepository.createTempContractObj(dataFromForm);
         contractRepository.editContract(contract);
     }
 

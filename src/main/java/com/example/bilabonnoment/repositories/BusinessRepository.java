@@ -1,12 +1,13 @@
 package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Car;
+import com.example.bilabonnoment.repositories.interfaces.IBusinessRepository;
 import com.example.bilabonnoment.repositories.interfaces.IRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 import java.sql.*;
 import java.util.*;
 
-public class CarRepository implements IRepository {
+public class BusinessRepository implements IBusinessRepository {
 
     @Override
     public List<Car> getAllEntities() {
@@ -68,7 +69,7 @@ public class CarRepository implements IRepository {
 
 
     @Override
-    public Object getSingleById(int id) {
+    public Car getSingleById(int id) {
         Connection conn = DatabaseConnectionManager.getConnection();
         Car temp = null;
         try {
@@ -96,7 +97,7 @@ public class CarRepository implements IRepository {
     }
 
     @Override
-    public boolean create(Object entity) {
+    public boolean create(Car entity) {
         return false;
         /*Connection conn = DatabaseConnectionManager.getConnection();
 
@@ -123,4 +124,5 @@ public class CarRepository implements IRepository {
         }
         return result;*/
     }
+
 }

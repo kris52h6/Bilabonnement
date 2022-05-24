@@ -15,12 +15,13 @@ import javax.servlet.http.HttpSession;
 public class ContractController {
 
     private final ContractRepository contractRepository = new ContractRepository();
+    private final ContractService contractService = new ContractService(contractRepository);
+
     private final String AREA = "CONTRACT";
 
     @GetMapping("/contract")
     public String getContract(@RequestParam int id, Model model, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
-            ContractService contractService = new ContractService(contractRepository);
             model.addAttribute("contracts", contractService.getSingleById(id));
             return "contract-templates/contract";
         }
@@ -30,7 +31,6 @@ public class ContractController {
     @GetMapping("/allContracts")
     public String allContracts(Model model, HttpSession session){
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
-            ContractService contractService = new ContractService(contractRepository);
             model.addAttribute("contracts", contractService.getAllEntities());
             return "contract-templates/all-contracts";
         }
@@ -48,24 +48,28 @@ public class ContractController {
     @PostMapping("/createContract")
     public String createContract(WebRequest dataFromForm, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
-            contractRepository.createContract(dataFromForm);
+            contractService.createContract(dataFromForm);
             return "redirect:/allContracts";
         }
         return "access-error";
     }
 
     @GetMapping("/editContractForm")
-    public String editContractForm(@RequestParam int contractId, Model model) {
-        ContractService contractService = new ContractService(contractRepository);
-        model.addAttribute("contract", contractService.getSingleContractById(contractId));
-        return "contract-templates/edit-contract";
+    public String editContractForm(@RequestParam int contractId, Model model, HttpSession session) {
+        if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
+            model.addAttribute("contract", contractService.getSingleContractById(contractId));
+            return "contract-templates/edit-contract";
+        }
+        return "access-error";
     }
 
     @PostMapping("/editContract")
-    public String editContract(WebRequest dataFromForm) {
-        ContractService contractService = new ContractService(contractRepository);
-        String redirectId = dataFromForm.getParameter("contractId");
-        contractService.editContract(dataFromForm);
-        return "redirect:/contract?id=" + redirectId;
+    public String editContract(WebRequest dataFromForm, HttpSession session) {
+        if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
+            String redirectId = dataFromForm.getParameter("contractId");
+            contractService.editContract(dataFromForm);
+            return "redirect:/contract?id=" + redirectId;
+        }
+        return "access-error";
     }
 }
