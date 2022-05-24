@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Rediger skade</title>
-    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
-    <link rel="stylesheet" th:href="@{form.css}" href="../../static/form.css">
-    <link rel="stylesheet" th:href="@{damage-css/edit-damage.css}" href="../../static/damage-css/edit-damage.css">
+    <link href="../../static/style.css" rel="stylesheet" th:href="@{style.css}">
+    <link href="../../static/form.css" rel="stylesheet" th:href="@{form.css}">
+    <link href="../../static/damage-css/edit-damage.css" rel="stylesheet" th:href="@{damage-css/edit-damage.css}">
 </head>
 <body>
 <header th:insert="fragments/header.html :: header"></header>
@@ -13,16 +13,17 @@
     <section id="edit-damage">
         <h1>Rediger skade</h1>
         <div class="form-wrapper">
-            <form method="POST" action="/editDamage">
+            <form action="/editDamage" method="POST">
                 <label for="damagePrice">Skadepris</label>
-                <input id="damagePrice" type="number" name="damagePrice" th:value="${damage.getPrice()}">
+                <input id="damagePrice" name="damagePrice" th:value="${damage.getPrice()}" type="number">
                 <label for="damageDescription">Skadebeskrivelse</label>
-                <input id="damageDescription" type="text" name="damageDescription" th:value="${damage.getDescription()}">
+                <input id="damageDescription" name="damageDescription" th:value="${damage.getDescription()}"
+                       type="text">
                 <label for="damageId" hidden>damageId</label>
-                <input id="damageId" type="number" name="damageId" th:value="${damage.getId()}" hidden>
+                <input hidden id="damageId" name="damageId" th:value="${damage.getId()}" type="number">
                 <label for="contractId" hidden>contractId</label>
-                <input id="contractId" type="number" name="contractId" th:value="${damage.getContractId()}" hidden>
-                <input type="submit" id="submit">
+                <input hidden id="contractId" name="contractId" th:value="${damage.getContractId()}" type="number">
+                <input id="submit" type="submit">
             </form>
         </div>
     </section>

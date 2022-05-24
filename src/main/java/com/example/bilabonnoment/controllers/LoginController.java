@@ -22,8 +22,7 @@ public class LoginController {
     }
 
     @PostMapping("/authUser")
-    public String authUser(WebRequest dataFromForm, HttpSession session)
-    {
+    public String authUser(WebRequest dataFromForm, HttpSession session) {
         LoginService loginService = new LoginService(loginRepository);
 
         String username = dataFromForm.getParameter("username");
@@ -46,9 +45,8 @@ public class LoginController {
     }
 
     @GetMapping("/logOut")
-    public String logOut(HttpSession session)
-    {
-        if(session != null){
+    public String logOut(HttpSession session) {
+        if (session != null) {
             session.removeAttribute("userId");
             session.removeAttribute("username");
             session.removeAttribute("userRole");

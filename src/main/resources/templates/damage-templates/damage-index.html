@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
-    <link rel="stylesheet" th:href="@{damage-css/damage-index.css}" href="../../static/damage-css/damage-index.css">
+    <link href="../../static/style.css" rel="stylesheet" th:href="@{style.css}">
+    <link href="../../static/damage-css/damage-index.css" rel="stylesheet" th:href="@{damage-css/damage-index.css}">
 
 </head>
 <body>
@@ -26,7 +26,7 @@
                 <h3>Slutdato</h3>
                 <h3>Er skadet?</h3>
             </div>
-            <div id="unchecked" class="damageBox">
+            <div class="damageBox" id="unchecked">
 
                 <div id="uncheckedSingle" th:each="contract: ${uncheckedContracts}">
                     <span th:text="${contract.getCprNum()}"></span>

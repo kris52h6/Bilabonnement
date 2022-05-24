@@ -2,10 +2,14 @@ package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Car;
 import com.example.bilabonnoment.repositories.interfaces.IBusinessRepository;
-import com.example.bilabonnoment.repositories.interfaces.IRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
-import java.sql.*;
-import java.util.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BusinessRepository implements IBusinessRepository {
 
@@ -16,7 +20,7 @@ public class BusinessRepository implements IBusinessRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car");
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Car temp = new Car(
                         rs.getInt(1),
                         rs.getInt(2),
@@ -31,20 +35,20 @@ public class BusinessRepository implements IBusinessRepository {
                 allCars.add(temp);
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Something wrong in statement");
             e.printStackTrace();
         }
         return allCars;
     }
 
-    public List<Car> getAllRentedCars(){
+    public List<Car> getAllRentedCars() {
         Connection conn = DatabaseConnectionManager.getConnection();
         List<Car> allRentedCars = new ArrayList<>();
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car WHERE car_is_leased = 1");
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Car temp = new Car(
                         rs.getInt(1),
                         rs.getInt(2),
@@ -59,13 +63,12 @@ public class BusinessRepository implements IBusinessRepository {
                 allRentedCars.add(temp);
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Something wrong in statement");
             e.printStackTrace();
         }
         return allRentedCars;
     }
-
 
 
     @Override
@@ -75,7 +78,7 @@ public class BusinessRepository implements IBusinessRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car WHERE id = " + id);
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 temp = new Car(
                         rs.getInt(1),
                         rs.getInt(2),
@@ -89,7 +92,7 @@ public class BusinessRepository implements IBusinessRepository {
                 );
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Something wrong in statement");
             e.printStackTrace();
         }

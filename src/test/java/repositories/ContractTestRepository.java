@@ -23,22 +23,20 @@ public class ContractTestRepository implements IContractRepository {
             )
     );
 
-    public List<Contract> getContracts(){
+    public List<Contract> getContracts() {
         return allContracts;
     }
 
     @Override
-    public List<Contract> getAllContractsFromCustomerCprNr(String cprNr)
-    {
+    public List<Contract> getAllContractsFromCustomerCprNr(String cprNr) {
         return null;
     }
 
     @Override
-    public String getCprNrFromContractId(int contractId)
-    {
+    public String getCprNrFromContractId(int contractId) {
         String temp = null;
-        for (Contract contract : allContracts){
-            if (contract.getId() == contractId){
+        for (Contract contract : allContracts) {
+            if (contract.getId() == contractId) {
                 temp = contract.getCprNum();
             }
         }
@@ -47,8 +45,7 @@ public class ContractTestRepository implements IContractRepository {
 
 
     @Override
-    public Contract createContract(WebRequest data)
-    {
+    public Contract createContract(WebRequest data) {
         return null;
     }
 
@@ -60,8 +57,8 @@ public class ContractTestRepository implements IContractRepository {
     @Override
     public List<Contract> getAllReturnedUncheckedContracts() {
         List<Contract> uncheckedContracts = new ArrayList<>();
-        for (Contract contract : allContracts){
-            if (contract.getDamage().equals(Contract.Damage.UNCHECKED)){
+        for (Contract contract : allContracts) {
+            if (contract.getDamage().equals(Contract.Damage.UNCHECKED)) {
                 uncheckedContracts.add(contract);
             }
         }
@@ -84,17 +81,15 @@ public class ContractTestRepository implements IContractRepository {
     }
 
     @Override
-    public List<Contract> getAllEntities()
-    {
+    public List<Contract> getAllEntities() {
         return null;
     }
 
     @Override
-    public Contract getSingleById(int id)
-    {
+    public Contract getSingleById(int id) {
         Contract contract = null;
-        for (Contract currentContract : allContracts){
-            if (currentContract.getId() == id){
+        for (Contract currentContract : allContracts) {
+            if (currentContract.getId() == id) {
                 contract = currentContract;
             }
         }
@@ -102,8 +97,7 @@ public class ContractTestRepository implements IContractRepository {
     }
 
     @Override
-    public boolean create(Contract entity)
-    {
+    public boolean create(Contract entity) {
         return false;
     }
 }

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Rediger kontrakt</title>
-    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
-    <link rel="stylesheet" th:href="@{form.css}" href="../../static/form.css">
+    <link href="../../static/style.css" rel="stylesheet" th:href="@{style.css}">
+    <link href="../../static/form.css" rel="stylesheet" th:href="@{form.css}">
 </head>
 
 <body>
@@ -14,38 +14,38 @@
 
     <h1>Rediger kontrakt</h1>
     <section id="edit-contract-wrapper">
-        <form method="POST" action="/editContract">
+        <form action="/editContract" method="POST">
             <label for="contractId" hidden>damageId</label>
-            <input id="contractId" type="number" name="contractId" th:value="${contract.getId()}" hidden>
+            <input hidden id="contractId" name="contractId" th:value="${contract.getId()}" type="number">
 
             <label for="customerCprNr">Kunde Cpr Nr.</label>
-            <input id="customerCprNr" type="text" name="customerCprNr" th:value="${contract.getCprNum()}">
+            <input id="customerCprNr" name="customerCprNr" th:value="${contract.getCprNum()}" type="text">
 
             <label for="vinNo">Stelnummer</label>
-            <input id="vinNo" type="text" name="vinNo" th:value="${contract.getVinNo()}">
+            <input id="vinNo" name="vinNo" th:value="${contract.getVinNo()}" type="text">
 
             <label for="contractPrice">Kontrakt Pris</label>
-            <input id="contractPrice" type="number" name="contractPrice" th:value="${contract.getPrice()}">
+            <input id="contractPrice" name="contractPrice" th:value="${contract.getPrice()}" type="number">
 
             <label for="carPickupPlace">Afhentningssted</label>
-            <input id="carPickupPlace" type="text" name="carPickupPlace" th:value="${contract.getPickupPlace()}">
+            <input id="carPickupPlace" name="carPickupPlace" th:value="${contract.getPickupPlace()}" type="text">
 
             <label for="carReturnPlace">Returneringsted</label>
-            <input id="carReturnPlace" type="text" name="carReturnPlace" th:value="${contract.getReturnPlace()}">
+            <input id="carReturnPlace" name="carReturnPlace" th:value="${contract.getReturnPlace()}" type="text">
 
             <label for="contractStartDate">Kontrakts startdato</label>
-            <input id="contractStartDate" type="date" name="contractStartDate" th:value="${contract.getStartDate()}">
+            <input id="contractStartDate" name="contractStartDate" th:value="${contract.getStartDate()}" type="date">
 
             <label for="contractEndDate">Kontrakts slutdato</label>
-            <input id="contractEndDate" type="date" name="contractEndDate" th:value="${contract.getEndDate()}">
+            <input id="contractEndDate" name="contractEndDate" th:value="${contract.getEndDate()}" type="date">
 
             <label for="isReturned" hidden>isReturned</label>
-            <input id="isReturned" type="text" name="isReturned" th:value="${contract.isReturned()}" hidden>
+            <input hidden id="isReturned" name="isReturned" th:value="${contract.isReturned()}" type="text">
 
             <label for="isDamaged" hidden>damageId</label>
-            <input id="isDamaged" type="text" name="isDamaged" th:value="${contract.getDamage()}" hidden>
+            <input hidden id="isDamaged" name="isDamaged" th:value="${contract.getDamage()}" type="text">
 
-            <input type="submit" id="submit">
+            <input id="submit" type="submit">
         </form>
     </section>
 </main>

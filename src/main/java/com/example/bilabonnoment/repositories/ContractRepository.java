@@ -12,6 +12,14 @@ import java.util.Objects;
 
 public class ContractRepository implements IContractRepository {
 
+    public static void main(String[] args) {
+        ContractRepository contractRepository = new ContractRepository();
+        String str = "2000-05-05";
+        Date date = Date.valueOf(str);
+        Contract editContract = new Contract(1, "123", 1415, 1000, "her", "her", date, date, true, Contract.Damage.YES);
+        contractRepository.editContract(editContract);
+    }
+
     @Override
     public List<Contract> getAllEntities() {
         Connection conn = DatabaseConnectionManager.getConnection();
@@ -185,12 +193,11 @@ public class ContractRepository implements IContractRepository {
             pstmt.executeUpdate();
             return pstmt.executeUpdate();
 
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
-            return 0;
+        return 0;
     }
 
     public List<Contract> getAllReturnedUncheckedContracts() {
@@ -258,12 +265,12 @@ public class ContractRepository implements IContractRepository {
     }
 
     @Override
-    public boolean editContract(Contract contract){
+    public boolean editContract(Contract contract) {
 
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
         int id = contract.getId();
-        try{
+        try {
             PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET customer_cpr_nr = ?, vin_no = ?, contract_price = ?, car_pickup_place = ?, car_return_place = ?, contract_start_date = ?, contract_end_date = ?, is_returned = ?, contract_damage = ? WHERE (contract_id = " + id + ");");
             pstmt.setString(1, contract.getCprNum());
             pstmt.setInt(2, contract.getVinNo());
@@ -277,8 +284,7 @@ public class ContractRepository implements IContractRepository {
 
             pstmt.executeUpdate();
             result = true;
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
@@ -300,14 +306,5 @@ public class ContractRepository implements IContractRepository {
 
         );
         return temp;
-    }
-
-    public static void main(String[] args)
-    {
-        ContractRepository contractRepository = new ContractRepository();
-        String str = "2000-05-05";
-        Date date = Date.valueOf(str);
-        Contract editContract = new Contract(1, "123", 1415, 1000, "her", "her", date, date, true, Contract.Damage.YES);
-        contractRepository.editContract(editContract);
     }
 }

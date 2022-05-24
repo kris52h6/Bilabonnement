@@ -21,7 +21,30 @@ public class ContractDamageService {
         this.contractRepository = contractRepository;
     }
 
-    public HashMap<Contract, ArrayList<Damage>> contractsFromDamageList(){
+    public static void main(String[] args) {
+        DamageRepository damageRepository = new DamageRepository();
+        ContractRepository contractRepository = new ContractRepository();
+        ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
+
+        HashMap<Contract, ArrayList<Damage>> contractsWithDamages = contractDamageService.contractsFromDamageList();
+
+        System.out.println(contractsWithDamages.size());
+
+        // Iterating HashMap through for loop
+        for (Map.Entry<Contract, ArrayList<Damage>> set :
+                contractsWithDamages.entrySet()) {
+
+            // Printing all elements of a Map
+            String damages = "";
+            for (Damage damage : set.getValue()) {
+                damages += damage.toString();
+            }
+            System.out.println(set.getKey().toString() + " Damages: "
+                    + damages);
+        }
+    }
+
+    public HashMap<Contract, ArrayList<Damage>> contractsFromDamageList() {
 
         HashMap<Contract, ArrayList<Damage>> ContractWithDamages = new HashMap<>();
         ArrayList<Damage> damagesToContract = new ArrayList<>();
@@ -40,7 +63,7 @@ public class ContractDamageService {
         return ContractWithDamages;
     }
 
-    public HashMap<Contract, ArrayList<Damage>> contractWithDamage(int contractId){
+    public HashMap<Contract, ArrayList<Damage>> contractWithDamage(int contractId) {
         HashMap<Contract, ArrayList<Damage>> contractWithDamages = new HashMap<>();
         contractWithDamages.put(contractRepository.getSingleById(contractId), getAllDamagesFromContract(contractId));
         return contractWithDamages;
@@ -48,41 +71,5 @@ public class ContractDamageService {
 
     public ArrayList<Damage> getAllDamagesFromContract(int id) {
         return damageRepository.getAllDamagesFromContract(id);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public static void main(String[] args) {
-        DamageRepository damageRepository = new DamageRepository();
-        ContractRepository contractRepository = new ContractRepository();
-        ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
-
-        HashMap<Contract, ArrayList<Damage>> contractsWithDamages = contractDamageService.contractsFromDamageList();
-
-        System.out.println(contractsWithDamages.size());
-
-        // Iterating HashMap through for loop
-        for (Map.Entry<Contract, ArrayList<Damage>> set :
-                contractsWithDamages.entrySet()) {
-
-            // Printing all elements of a Map
-            String damages = "";
-            for (Damage damage : set.getValue()){
-                damages += damage.toString();
-            }
-            System.out.println(set.getKey().toString() + " Damages: "
-                    + damages);
-        }
     }
 }

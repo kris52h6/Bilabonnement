@@ -45,7 +45,7 @@ table {
     border-bottom: 1px solid black;
 }
 
-.totalt-rented-cars{
+.totalt-rented-cars {
     display: flex;
     justify-content: center;
 }

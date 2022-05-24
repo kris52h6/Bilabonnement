@@ -20,7 +20,7 @@ public class CustomerRepository implements ICustomerRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer");
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Customer temp = new Customer(
                         rs.getInt(1),
                         rs.getString(2),
@@ -30,7 +30,7 @@ public class CustomerRepository implements ICustomerRepository {
                 allContracts.add(temp);
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Something wrong in statement");
             e.printStackTrace();
         }
@@ -44,7 +44,7 @@ public class CustomerRepository implements ICustomerRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_id = " + id);
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 temp = new Customer(
                         rs.getInt(1),
                         rs.getString(2),
@@ -53,7 +53,7 @@ public class CustomerRepository implements ICustomerRepository {
                 );
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Something wrong in statement");
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class CustomerRepository implements ICustomerRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_cpr_nr = '" + cprNr + "';");
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 temp = new Customer(
                         rs.getInt(1),
                         rs.getString(2),
@@ -82,7 +82,7 @@ public class CustomerRepository implements ICustomerRepository {
                 );
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Something wrong in statement");
             e.printStackTrace();
         }

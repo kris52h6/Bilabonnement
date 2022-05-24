@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Contract</title>
-    <link rel="stylesheet" th:href="@{style.css}" href="../../static/style.css">
-    <link rel="stylesheet" th:href="@{contract-css/single-contract.css}" href="../../static/contract-css/single-contract.css">
+    <link href="../../static/style.css" rel="stylesheet" th:href="@{style.css}">
+    <link href="../../static/contract-css/single-contract.css" rel="stylesheet"
+          th:href="@{contract-css/single-contract.css}">
 </head>
 <body>
 
@@ -16,7 +17,7 @@
         <div class="contract">
             <h2>Kontraktinformation</h2>
 
-                    <span th:each="contract : ${contracts}">
+            <span th:each="contract : ${contracts}">
                     <div class="row">
                         <div class="inner">
                         <span>Kontrakt ID:</span>
