@@ -6,7 +6,7 @@ public class Contract {
 
     private int id;
     private String cprNum;
-    private int vinNo;
+    private String vinNo;
     private double price;
     private String pickupPlace;
     private String returnPlace;
@@ -15,7 +15,7 @@ public class Contract {
     private boolean isReturned;
     private Damage damage;
 
-    public Contract(int id, String cprNum, int vinNo, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned, Damage damage) {
+    public Contract(int id, String cprNum, String vinNo, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned, Damage damage) {
         this.id = id;
         this.cprNum = cprNum;
         this.vinNo = vinNo;
@@ -52,11 +52,11 @@ public class Contract {
         this.cprNum = cprNum;
     }
 
-    public int getVinNo() {
+    public String getVinNo() {
         return vinNo;
     }
 
-    public void setVinNo(int vinNo) {
+    public void setVinNo(String vinNo) {
         this.vinNo = vinNo;
     }
 

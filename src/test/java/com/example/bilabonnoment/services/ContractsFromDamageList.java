@@ -48,11 +48,11 @@ class ContractsFromDamageList {
         damages5.add(damage1);
         damages5.add(damage2);
 
-        Contract contract1 = new Contract(1, "12", 12, 100, "her", "her", date, date, true, Contract.Damage.UNCHECKED);
-        Contract contract2 = new Contract(2, "34", 13, 110, "her", "her", date, date, false, Contract.Damage.UNCHECKED);
-        Contract contract3 = new Contract(3, "56", 14, 90, "her", "her", date, date, true, Contract.Damage.NO);
-        Contract contract4 = new Contract(4, "78", 15, 120, "her", "her", date, date, false, Contract.Damage.NO);
-        Contract contract5 = new Contract(5, "90", 16, 115, "her", "her", date, date, true, Contract.Damage.YES);
+        Contract contract1 = new Contract(1, "12", "12", 100, "her", "her", date, date, true, Contract.Damage.UNCHECKED);
+        Contract contract2 = new Contract(2, "34", "13", 110, "her", "her", date, date, false, Contract.Damage.UNCHECKED);
+        Contract contract3 = new Contract(3, "56", "14", 90, "her", "her", date, date, true, Contract.Damage.NO);
+        Contract contract4 = new Contract(4, "78", "15", 120, "her", "her", date, date, false, Contract.Damage.NO);
+        Contract contract5 = new Contract(5, "90", "16", 115, "her", "her", date, date, true, Contract.Damage.YES);
 
         Map<Contract, List<Damage>> expected = new HashMap<>();
         expected.put(contract1, damages1);
