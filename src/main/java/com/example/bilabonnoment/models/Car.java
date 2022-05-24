@@ -1,7 +1,6 @@
 package com.example.bilabonnoment.models;
 
-public class Car
-{
+public class Car {
     private int id;
     private int vinNo;
     private String make;

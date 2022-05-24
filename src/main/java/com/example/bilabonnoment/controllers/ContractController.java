@@ -1,8 +1,8 @@
 package com.example.bilabonnoment.controllers;
 
+import com.example.bilabonnoment.repositories.ContractRepository;
 import com.example.bilabonnoment.services.ContractService;
 import org.springframework.stereotype.Controller;
-import com.example.bilabonnoment.repositories.ContractRepository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +29,7 @@ public class ContractController {
     }
 
     @GetMapping("/allContracts")
-    public String allContracts(Model model, HttpSession session){
+    public String allContracts(Model model, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
             model.addAttribute("contracts", contractService.getAllEntities());
             return "contract-templates/all-contracts";
@@ -38,7 +38,7 @@ public class ContractController {
     }
 
     @GetMapping("/contractForm")
-    public String contractForm(HttpSession session){
+    public String contractForm(HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
             return "contract-templates/create-contract";
         }

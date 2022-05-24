@@ -3,7 +3,10 @@ package com.example.bilabonnoment.controllers;
 import com.example.bilabonnoment.repositories.ContractRepository;
 import com.example.bilabonnoment.repositories.CustomerRepository;
 import com.example.bilabonnoment.repositories.DamageRepository;
-import com.example.bilabonnoment.services.*;
+import com.example.bilabonnoment.services.ContractDamageService;
+import com.example.bilabonnoment.services.ContractService;
+import com.example.bilabonnoment.services.CustomerService;
+import com.example.bilabonnoment.services.DamageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,20 +26,18 @@ public class DamageController {
     private final ContractService contractService = new ContractService(contractRepository);
 
 
-
-
     private final String AREA = "DAMAGE";
 
 
     @GetMapping("/damageIndex")
-    public String damageIndex(Model model, HttpSession session){
+    public String damageIndex(Model model, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
-                model.addAttribute("uncheckedContracts", contractService.getAllReturnedUncheckedContracts());
-                model.addAttribute("damagedContracts", contractService.getAllReturnedDamagedContracts());
+            model.addAttribute("uncheckedContracts", contractService.getAllReturnedUncheckedContracts());
+            model.addAttribute("damagedContracts", contractService.getAllReturnedDamagedContracts());
 
-                return "damage-templates/damage-index";
-            }
-            return "access-error";
+            return "damage-templates/damage-index";
+        }
+        return "access-error";
     }
 
     @GetMapping("/updateContractDamage")
@@ -67,7 +68,7 @@ public class DamageController {
     }
 
     @GetMapping("/damageForm")
-    public String contractForm(@RequestParam int contractId, HttpSession session){
+    public String contractForm(@RequestParam int contractId, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
             return "damage-templates/create-damage";
         }
@@ -86,7 +87,7 @@ public class DamageController {
     }
 
     @GetMapping("/deleteDamage")
-    public String deleteDamage(@RequestParam int contractId, @RequestParam int damageId, HttpSession session){
+    public String deleteDamage(@RequestParam int contractId, @RequestParam int damageId, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
             damageService.deleteDamage(damageId);
             return "redirect:/damageReport?id=" + contractId;
@@ -95,7 +96,7 @@ public class DamageController {
     }
 
     @GetMapping("/editDamageForm")
-        public String editForm(@RequestParam int damageId, Model model, HttpSession session) {
+    public String editForm(@RequestParam int damageId, Model model, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
             model.addAttribute("damage", damageService.getSingleDamageById(damageId));
             return "damage-templates/edit-damage";
@@ -104,7 +105,7 @@ public class DamageController {
     }
 
     @PostMapping("/editDamage")
-        public String editDamage(WebRequest dataFromForm, HttpSession session) {
+    public String editDamage(WebRequest dataFromForm, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
             String redirectId = dataFromForm.getParameter("contractId");
             damageService.editDamage(dataFromForm);

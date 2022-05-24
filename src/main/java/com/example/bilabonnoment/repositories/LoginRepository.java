@@ -17,11 +17,11 @@ public class LoginRepository implements ILoginRepository {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.user WHERE user_username = '" + username + "' AND user_password = '" + password + "'");
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                 user = new User(
+                user = new User(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                         rs.getString(4)
+                        rs.getString(4)
                 );
             }
 

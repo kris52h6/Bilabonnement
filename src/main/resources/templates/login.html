@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" th:href="@{style.css}" href="../static/style.css">
-    <link rel="stylesheet" th:href="@{login.css}" href="../static/login.css">
+    <link href="../static/style.css" rel="stylesheet" th:href="@{style.css}">
+    <link href="../static/login.css" rel="stylesheet" th:href="@{login.css}">
 
 </head>
 <body>
-  <main>
+<main>
     <section id="login">
         <div class="login-wrapper">
             <!--TODO action/endpoint-->
-            <form method="POST" action="/authUser">
+            <form action="/authUser" method="POST">
                 <label for="username">Brugernavn</label>
-                <input id="username" type="text" name="username">
+                <input id="username" name="username" type="text">
                 <label for="password">Kodeord</label>
-                <input id="password" type="password" name="password">
-                <input type="submit" value="Log ind" id="submit">
+                <input id="password" name="password" type="password">
+                <input id="submit" type="submit" value="Log ind">
             </form>
         </div>
     </section>
-  </main>
+</main>
 </body>
 </html>

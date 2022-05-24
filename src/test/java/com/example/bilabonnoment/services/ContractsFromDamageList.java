@@ -2,23 +2,23 @@ package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Damage;
-import com.example.bilabonnoment.repositories.*;
-import org.hamcrest.collection.IsMapContaining;
 import org.junit.jupiter.api.Test;
 import repositories.ContractTestRepository;
 import repositories.DamageTestRepository;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 
 import java.sql.Date;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-class ContractsFromDamageList
-{
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+class ContractsFromDamageList {
 
     @Test
-    void contractsFromDamageList()
-    {
+    void contractsFromDamageList() {
         DamageTestRepository damageTestRepository = new DamageTestRepository();
         ContractTestRepository contractTestRepository = new ContractTestRepository();
         ContractDamageService contractDamageService = new ContractDamageService(damageTestRepository, contractTestRepository);

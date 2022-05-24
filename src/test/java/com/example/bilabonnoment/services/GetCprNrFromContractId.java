@@ -1,19 +1,14 @@
-
 package com.example.bilabonnoment.services;
 
-import com.example.bilabonnoment.repositories.*;
 import org.junit.jupiter.api.Test;
 import repositories.ContractTestRepository;
-import repositories.DamageTestRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GetCprNrFromContractId
-{
+class GetCprNrFromContractId {
 
     @Test
-    void getCprNrFromContractId()
-    {
+    void getCprNrFromContractId() {
         ContractTestRepository contractTestRepository = new ContractTestRepository();
         ContractService contractService = new ContractService(contractTestRepository);
 

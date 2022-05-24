@@ -5,7 +5,10 @@ import com.example.bilabonnoment.repositories.interfaces.IDamageRepository;
 import com.example.bilabonnoment.utility.DatabaseConnectionManager;
 import org.springframework.web.context.request.WebRequest;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +23,7 @@ public class DamageRepository implements IDamageRepository {
 
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage ORDER BY contract_id");
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Damage temp = new Damage(
                         rs.getInt(1),
                         rs.getDouble(2),
@@ -30,7 +33,7 @@ public class DamageRepository implements IDamageRepository {
                 allDamages.add(temp);
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Something wrong in statement");
             e.printStackTrace();
         }
@@ -44,7 +47,7 @@ public class DamageRepository implements IDamageRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE damage_id = " + id);
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 temp = new Damage(
                         rs.getInt(1),
                         rs.getDouble(2),
@@ -53,7 +56,7 @@ public class DamageRepository implements IDamageRepository {
                 );
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Something wrong in statement");
             e.printStackTrace();
         }
@@ -64,8 +67,7 @@ public class DamageRepository implements IDamageRepository {
     public boolean create(Damage damage) {
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
-        try
-        {
+        try {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.damage (damage_price, damage_description, contract_id) VALUES (?,?,?)");
             pstmt.setDouble(1, damage.getPrice());
             pstmt.setString(2, damage.getDescription());
@@ -73,8 +75,7 @@ public class DamageRepository implements IDamageRepository {
 
             pstmt.executeUpdate();
             result = true;
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
@@ -87,7 +88,7 @@ public class DamageRepository implements IDamageRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE contract_id = " + contractId);
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 Damage temp = new Damage(
                         rs.getInt(1),
                         rs.getDouble(2),
@@ -97,7 +98,7 @@ public class DamageRepository implements IDamageRepository {
                 allDamages.add(temp);
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Something wrong in statement");
             e.printStackTrace();
         }
@@ -138,14 +139,13 @@ public class DamageRepository implements IDamageRepository {
             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM bilabonnement.damage WHERE damage_id = " + damageId);
             int rs = pstmt.executeUpdate();
             System.out.println(rs);
+        } catch (SQLException e) {
+            System.out.println("Something wrong in statement");
+            e.printStackTrace();
         }
-        catch(SQLException e){
-        System.out.println("Something wrong in statement");
-        e.printStackTrace();
-    }
     }
 
-    public boolean editDamage(Damage damage){
+    public boolean editDamage(Damage damage) {
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
         int id = damage.getId();
@@ -153,15 +153,14 @@ public class DamageRepository implements IDamageRepository {
         System.out.println(damage.getPrice());
         System.out.println(damage.getDescription());
         System.out.println(damage.getId());
-        try{
+        try {
             PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.damage SET damage_price = ?, damage_description = ? WHERE (damage_id = " + id + ");");
             pstmt.setDouble(1, damage.getPrice());
             pstmt.setString(2, damage.getDescription());
 
             pstmt.executeUpdate();
             result = true;
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
