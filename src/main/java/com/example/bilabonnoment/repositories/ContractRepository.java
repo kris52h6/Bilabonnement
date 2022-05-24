@@ -16,7 +16,7 @@ public class ContractRepository implements IContractRepository {
         ContractRepository contractRepository = new ContractRepository();
         String str = "2000-05-05";
         Date date = Date.valueOf(str);
-        Contract editContract = new Contract(1, "123", 1415, 1000, "her", "her", date, date, true, Contract.Damage.YES);
+        Contract editContract = new Contract(1, "123", "1415", 1000, "her", "her", date, date, true, Contract.Damage.YES);
         contractRepository.editContract(editContract);
     }
 
@@ -33,7 +33,7 @@ public class ContractRepository implements IContractRepository {
                 Contract temp = new Contract(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getDouble(4),
                         rs.getString(5),
                         rs.getString(6),
@@ -64,7 +64,7 @@ public class ContractRepository implements IContractRepository {
                 temp = new Contract(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getDouble(4),
                         rs.getString(5),
                         rs.getString(6),
@@ -90,7 +90,7 @@ public class ContractRepository implements IContractRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.contract (customer_cpr_nr, vin_no, contract_price, car_pickup_place, car_return_place, contract_start_date, contract_end_date, is_returned, contract_damage) VALUES (?,?,?,?,?,?,?,?,?)");
             pstmt.setString(1, contract.getCprNum());
-            pstmt.setInt(2, contract.getVinNo());
+            pstmt.setString(2, contract.getVinNo());
             pstmt.setDouble(3, contract.getPrice());
             pstmt.setString(4, contract.getPickupPlace());
             pstmt.setString(5, contract.getReturnPlace());
@@ -119,7 +119,7 @@ public class ContractRepository implements IContractRepository {
                 Contract temp = new Contract(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getDouble(4),
                         rs.getString(5),
                         rs.getString(6),
@@ -163,12 +163,12 @@ public class ContractRepository implements IContractRepository {
         return new Contract(
                 -1,
                 data.getParameter("customerCprNr"),
-                Integer.parseInt(Objects.requireNonNull(data.getParameter("vinNo"))),
+                data.getParameter("vinNo"),
                 Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
                 data.getParameter("carPickupPlace"),
                 data.getParameter("carReturnPlace"),
-                Date.valueOf(data.getParameter("contractStartDate")),
-                Date.valueOf(data.getParameter("contractEndDate")),
+                Date.valueOf(Objects.requireNonNull(data.getParameter("contractStartDate"))),
+                Date.valueOf(Objects.requireNonNull(data.getParameter("contractEndDate"))),
                 false,
                 Contract.Damage.UNCHECKED
         );
@@ -211,7 +211,7 @@ public class ContractRepository implements IContractRepository {
                 Contract temp = new Contract(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getDouble(4),
                         rs.getString(5),
                         rs.getString(6),
@@ -244,7 +244,7 @@ public class ContractRepository implements IContractRepository {
                 Contract temp = new Contract(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getDouble(4),
                         rs.getString(5),
                         rs.getString(6),
@@ -273,7 +273,7 @@ public class ContractRepository implements IContractRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET customer_cpr_nr = ?, vin_no = ?, contract_price = ?, car_pickup_place = ?, car_return_place = ?, contract_start_date = ?, contract_end_date = ?, is_returned = ?, contract_damage = ? WHERE (contract_id = " + id + ");");
             pstmt.setString(1, contract.getCprNum());
-            pstmt.setInt(2, contract.getVinNo());
+            pstmt.setString(2, contract.getVinNo());
             pstmt.setDouble(3, contract.getPrice());
             pstmt.setString(4, contract.getPickupPlace());
             pstmt.setString(5, contract.getReturnPlace());
@@ -293,14 +293,14 @@ public class ContractRepository implements IContractRepository {
     @Override
     public Contract createTempContractObj(WebRequest data) {
         Contract temp = new Contract(
-                Integer.parseInt(data.getParameter("contractId")),
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("contractId"))),
                 data.getParameter("customerCprNr"),
-                Integer.parseInt(Objects.requireNonNull(data.getParameter("vinNo"))),
+                data.getParameter("vinNo"),
                 Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
                 data.getParameter("carPickupPlace"),
                 data.getParameter("carReturnPlace"),
-                Date.valueOf(data.getParameter("contractStartDate")),
-                Date.valueOf(data.getParameter("contractEndDate")),
+                Date.valueOf(Objects.requireNonNull(data.getParameter("contractStartDate"))),
+                Date.valueOf(Objects.requireNonNull(data.getParameter("contractEndDate"))),
                 false,
                 Contract.Damage.valueOf(data.getParameter("isDamaged"))
 

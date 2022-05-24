@@ -23,7 +23,7 @@ public class BusinessRepository implements IBusinessRepository {
             while (rs.next()) {
                 Car temp = new Car(
                         rs.getInt(1),
-                        rs.getInt(2),
+                        rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
@@ -51,7 +51,7 @@ public class BusinessRepository implements IBusinessRepository {
             while (rs.next()) {
                 Car temp = new Car(
                         rs.getInt(1),
-                        rs.getInt(2),
+                        rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
@@ -76,12 +76,12 @@ public class BusinessRepository implements IBusinessRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         Car temp = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car WHERE id = " + id);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car WHERE car_id = " + id);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 temp = new Car(
                         rs.getInt(1),
-                        rs.getInt(2),
+                        rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),

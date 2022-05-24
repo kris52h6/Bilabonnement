@@ -20,9 +20,9 @@ class GetAllReturnedUncheckedContracts {
         String str = "2200-05-05";
         Date date = Date.valueOf(str);
         List<Contract> expectContracts = Arrays.asList(
-                new Contract(1, "12", 12, 100, "her", "her", date, date, true, Contract.Damage.UNCHECKED),
-                new Contract(2, "34", 13, 110, "her", "her", date, date, false, Contract.Damage.UNCHECKED),
-                new Contract(6, "123", 17, 105, "her", "her", date, date, false, Contract.Damage.UNCHECKED)
+                new Contract(1, "12", "12", 100, "her", "her", date, date, true, Contract.Damage.UNCHECKED),
+                new Contract(2, "34", "13", 110, "her", "her", date, date, false, Contract.Damage.UNCHECKED),
+                new Contract(6, "123", "17", 105, "her", "her", date, date, false, Contract.Damage.UNCHECKED)
         );
 
 
