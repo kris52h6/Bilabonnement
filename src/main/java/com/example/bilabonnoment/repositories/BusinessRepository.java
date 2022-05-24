@@ -99,6 +99,50 @@ public class BusinessRepository implements IBusinessRepository {
         return temp;
     }
 
+
+    @Override
+    public Car getCarFromVinNo(String vinNo) {
+        Connection conn = DatabaseConnectionManager.getConnection();
+        Car temp = null;
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car WHERE car_vin_no = '" + vinNo + "'");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                temp = new Car(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getDouble(6),
+                        rs.getDouble(7),
+                        rs.getDouble(8),
+                        rs.getBoolean(9)
+                );
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Something wrong in statement");
+            e.printStackTrace();
+        }
+        return temp;
+    }
+
+    @Override
+    public void editCarLeasingStatus(int carId, boolean isLeased) {
+        Connection conn = DatabaseConnectionManager.getConnection();
+        boolean result = false;
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.car SET car_is_leased = ? WHERE (car_id = " + carId + ");");
+            pstmt.setBoolean(1, isLeased);
+            pstmt.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     @Override
     public boolean create(Car entity) {
         return false;
