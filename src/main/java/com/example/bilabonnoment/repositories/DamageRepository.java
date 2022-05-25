@@ -45,7 +45,9 @@ public class DamageRepository implements IDamageRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         Damage temp = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE damage_id = " + id);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE damage_id = ?");
+            pstmt.setInt(1, id);
+
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 temp = new Damage(
@@ -86,8 +88,11 @@ public class DamageRepository implements IDamageRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         ArrayList<Damage> allDamages = new ArrayList<>();
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE contract_id = " + contractId);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE contract_id = ?");
+            pstmt.setInt(1, contractId);
             ResultSet rs = pstmt.executeQuery();
+
+
             while (rs.next()) {
                 Damage temp = new Damage(
                         rs.getInt(1),
@@ -132,11 +137,11 @@ public class DamageRepository implements IDamageRepository {
         editDamage(damage);
     }
 
-    @Override
     public void deleteDamage(int damageId) {
         Connection conn = DatabaseConnectionManager.getConnection();
         try {
-            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM bilabonnement.damage WHERE damage_id = " + damageId);
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM bilabonnement.damage WHERE damage_id = ?");
+            pstmt.setInt(1, damageId);
             int rs = pstmt.executeUpdate();
             System.out.println(rs);
         } catch (SQLException e) {
@@ -154,7 +159,12 @@ public class DamageRepository implements IDamageRepository {
         System.out.println(damage.getDescription());
         System.out.println(damage.getId());
         try {
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.damage SET damage_price = ?, damage_description = ? WHERE (damage_id = " + id + ");");
+            PreparedStatement pstmt =
+
+                    conn.prepareStatement("UPDATE bilabonnement.damage SET damage_price = ?, damage_description = ? WHERE (damage_id =  ?);");
+
+            pstmt.setInt(3, id);
+
             pstmt.setDouble(1, damage.getPrice());
             pstmt.setString(2, damage.getDescription());
 

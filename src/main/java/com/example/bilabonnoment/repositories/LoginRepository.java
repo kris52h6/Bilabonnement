@@ -14,7 +14,9 @@ public class LoginRepository implements ILoginRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         User user = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.user WHERE user_username = '" + username + "' AND user_password = '" + password + "'");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.user WHERE user_username = ? AND user_password = ?");
+            pstmt.setString(1,username);
+            pstmt.setString(2,password);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 user = new User(

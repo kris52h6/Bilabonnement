@@ -105,7 +105,8 @@ public class BusinessRepository implements IBusinessRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         Car temp = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car WHERE car_vin_no = '" + vinNo + "'");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car WHERE car_vin_no = ?");
+            pstmt.setString(1,vinNo);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 temp = new Car(
@@ -133,8 +134,9 @@ public class BusinessRepository implements IBusinessRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.car SET car_is_leased = ? WHERE (car_id = " + carId + ");");
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.car SET car_is_leased = ? WHERE (car_id = ?);");
             pstmt.setBoolean(1, isLeased);
+            pstmt.setInt(2, carId);
             pstmt.executeUpdate();
             result = true;
         } catch (SQLException e) {
