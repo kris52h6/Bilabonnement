@@ -5,6 +5,16 @@
     margin: 0 auto;
 }
 
+#all-contracts a {
+    display: flex;
+    justify-content: center;
+}
+
+#all-contracts .general-button {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
 .title-wrapper {
     display: grid;
     grid-template-columns: repeat(8, 1fr);

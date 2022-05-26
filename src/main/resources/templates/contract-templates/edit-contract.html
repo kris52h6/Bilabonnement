@@ -15,14 +15,15 @@
     <h1>Rediger kontrakt</h1>
     <section id="edit-contract-wrapper">
         <form action="/editContract" method="POST">
+
             <label for="contractId" hidden>damageId</label>
             <input hidden id="contractId" name="contractId" th:value="${contract.getId()}" type="number">
 
-            <label for="customerCprNr">Kunde Cpr Nr.</label>
-            <input id="customerCprNr" name="customerCprNr" th:value="${contract.getCprNum()}" type="text">
+            <label for="customerCprNr">Kunde Cpr Nr. (kan ikke ændres)</label>
+            <input id="customerCprNr" class="not-changeable" name="customerCprNr" th:value="${contract.getCprNum()}" type="text">
 
-            <label for="vinNo">Stelnummer</label>
-            <input id="vinNo" name="vinNo" th:value="${contract.getVinNo()}" type="text">
+            <label for="vinNo">Stelnummer (kan ikke ændres)</label>
+            <input id="vinNo" class="not-changeable" name="vinNo" th:value="${contract.getVinNo()}" type="text">
 
             <label for="contractPrice">Kontrakt Pris</label>
             <input id="contractPrice" name="contractPrice" th:value="${contract.getPrice()}" type="number">

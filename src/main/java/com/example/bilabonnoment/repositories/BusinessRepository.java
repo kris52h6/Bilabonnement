@@ -70,6 +70,35 @@ public class BusinessRepository implements IBusinessRepository {
         return allRentedCars;
     }
 
+    public List<Car> getAllAvailableCars() {
+        Connection conn = DatabaseConnectionManager.getConnection();
+        List<Car> allAvailableCars = new ArrayList<>();
+
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car WHERE car_is_leased = 0");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Car temp = new Car(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getDouble(6),
+                        rs.getDouble(7),
+                        rs.getDouble(8),
+                        rs.getBoolean(9)
+                );
+                allAvailableCars.add(temp);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Something wrong in statement");
+            e.printStackTrace();
+        }
+        return allAvailableCars;
+    }
+
 
     @Override
     public Car getSingleById(int id) {

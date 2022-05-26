@@ -48,6 +48,7 @@ public class ContractService {
 
     public void createContract(WebRequest data) {
         Contract contract = contractRepository.createContract(data);
+        System.out.println(contract);
         create(contract);
     }
 

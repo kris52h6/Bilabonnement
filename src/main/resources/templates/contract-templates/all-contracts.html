@@ -10,10 +10,17 @@
 </head>
 
 <body>
-<header th:insert="fragments/header.html :: header"></header>
+
+<header th:insert="fragments/header.html :: nav"></header>
+
+
 <main>
     <section id="all-contracts">
         <h1>Alle aktuelle lejekontrakter</h1>
+
+        <a th:href="@{/contractForm}">
+        <button class="general-button">Tilføj ny lejekontrakt</button>
+        </a>
 
         <div class="title-wrapper">
             <h3>CPR</h3>
@@ -26,8 +33,7 @@
         </div>
 
         <div class="contracts">
-        <span th:each="contract : ${contracts}">
-            <div class="contract">
+        <span class="contract" th:each="contract : ${contracts}">
             <span th:text="${contract.getCprNum()}"></span>
             <span th:text="${contract.getPrice()}"></span>
             <span th:text="${contract.getPickupPlace()}"></span>
@@ -38,10 +44,6 @@
                 <a th:href="@{/contract?id={id}(id=${contract.getId()})}">
                     <button>Se lejekontrakt</button>
                 </a>
-                <!--<a th:href="@{/damageReport?id={id}(id=${contract.getId()})}">
-                    <button>Se lejekontrakt</button>
-                </a>-->
-            </div>
         </span>
         </div>
     </section>

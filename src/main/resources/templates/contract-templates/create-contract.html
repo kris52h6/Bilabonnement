@@ -7,30 +7,51 @@
     <link href="../../static/form.css" rel="stylesheet" th:href="@{form.css}">
 </head>
 <body>
-<h1>Opret ny kontrakt</h1>
-<form action="/createContract" method="POST">
-    <label for="customerCprNr">Kunde Cpr Nr.</label>
-    <input id="customerCprNr" name="customerCprNr" type="text">
+<header th:insert="fragments/header.html :: nav"></header>
+<main>
 
-    <label for="vinNo">Stelnummer</label>
-    <input id="vinNo" name="vinNo" type="text">
+    <h1>Opret ny kontrakt</h1>
+    <section id="create-contract-wrapper">
+        <form action="/createContract" method="POST">
 
-    <label for="contractPrice">Kontrakt Pris</label>
-    <input id="contractPrice" name="contractPrice" type="number">
+            <label for="customerCprNr">Kunde
+                <select id="customerCprNr" name="customerCprNr">
+                    <option th:each="customer : ${customers}"
+                            th:text="${customer.getCPR() + ' ' + customer.getFirstname() + ' ' + customer.getLastname()}"
+                            th:value="${customer.getCPR()}"></option>
+                </select>
+            </label>
+            <!--<input id="customerCprNr" name="customerCprNr" type="text">-->
 
-    <label for="carPickupPlace">Afhentningssted</label>
-    <input id="carPickupPlace" name="carPickupPlace" type="text">
+            <label for="vinNo">Stelnummer
+                <select id="vinNo" name="vinNo">
+                    <option th:each="car : ${cars}"
+                            th:text="${car.getVinNo() + ' ' + car.getMake() + ' ' + car.getModel()}"
+                            th:value="${car.getVinNo()}"></option>
+                </select>
+            </label>
 
-    <label for="carReturnPlace">Returneringsted</label>
-    <input id="carReturnPlace" name="carReturnPlace" type="text">
+            <!--<label for="vinNo">Stelnummer</label>
+            <input id="vinNo" name="vinNo" type="text">-->
 
-    <label for="contractStartDate">Kontrakts startdato</label>
-    <input id="contractStartDate" name="contractStartDate" type="date">
+            <label for="contractPrice">Kontrakt Pris</label>
+            <input id="contractPrice" name="contractPrice" type="number">
 
-    <label for="contractEndDate">Kontrakts slutdato</label>
-    <input id="contractEndDate" name="contractEndDate" type="date">
+            <label for="carPickupPlace">Afhentningssted</label>
+            <input id="carPickupPlace" name="carPickupPlace" type="text">
 
-    <input id="submit" type="submit">
-</form>
+            <label for="carReturnPlace">Returneringsted</label>
+            <input id="carReturnPlace" name="carReturnPlace" type="text">
+
+            <label for="contractStartDate">Kontrakts startdato</label>
+            <input id="contractStartDate" name="contractStartDate" type="date">
+
+            <label for="contractEndDate">Kontrakts slutdato</label>
+            <input id="contractEndDate" name="contractEndDate" type="date">
+
+            <input id="submit" type="submit">
+        </form>
+    </section>
+</main>
 </body>
 </html>

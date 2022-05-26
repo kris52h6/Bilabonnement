@@ -1,7 +1,11 @@
 package com.example.bilabonnoment.controllers;
 
+import com.example.bilabonnoment.repositories.BusinessRepository;
 import com.example.bilabonnoment.repositories.ContractRepository;
+import com.example.bilabonnoment.repositories.CustomerRepository;
 import com.example.bilabonnoment.services.ContractService;
+import com.example.bilabonnoment.services.CustomerBusinessService;
+import com.example.bilabonnoment.services.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,8 +42,13 @@ public class ContractController {
     }
 
     @GetMapping("/contractForm")
-    public String contractForm(HttpSession session) {
+    public String contractForm(Model model, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
+            CustomerRepository customerRepository = new CustomerRepository();
+            BusinessRepository businessRepository = new BusinessRepository();
+            CustomerBusinessService customerBusinessService = new CustomerBusinessService(customerRepository, businessRepository);
+            model.addAttribute("customers", customerBusinessService.getAllCustomers());
+            model.addAttribute("cars", customerBusinessService.getAllAvailableCars());
             return "contract-templates/create-contract";
         }
         return "access-error";
@@ -48,6 +57,7 @@ public class ContractController {
     @PostMapping("/createContract")
     public String createContract(WebRequest dataFromForm, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
+            System.out.println(dataFromForm.getParameter("customerCprNr"));
             contractService.createContract(dataFromForm);
             return "redirect:/allContracts";
         }
