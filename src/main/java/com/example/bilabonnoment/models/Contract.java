@@ -6,23 +6,16 @@ public class Contract {
 
     private int id;
     private String cprNum;
-    private int vinNo;
+    private String vinNo;
     private double price;
     private String pickupPlace;
     private String returnPlace;
     private Date startDate;
     private Date endDate;
     private boolean isReturned;
-
-    public enum Damage {
-        UNCHECKED,
-        YES,
-        NO
-    }
-
     private Damage damage;
 
-    public Contract(int id, String cprNum, int vinNo, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned, Damage damage) {
+    public Contract(int id, String cprNum, String vinNo, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned, Damage damage) {
         this.id = id;
         this.cprNum = cprNum;
         this.vinNo = vinNo;
@@ -47,73 +40,88 @@ public class Contract {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCprNum() {
         return cprNum;
     }
 
-    public int getVinNo() {
+    public void setCprNum(String cprNum) {
+        this.cprNum = cprNum;
+    }
+
+    public String getVinNo() {
         return vinNo;
+    }
+
+    public void setVinNo(String vinNo) {
+        this.vinNo = vinNo;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public String getPickupPlace() {
-        return pickupPlace;
-    }
-
-    public String getReturnPlace() {
-        return returnPlace;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public boolean isReturned() {
-        return isReturned;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    public void setVinNo(int vinNo) {
-        this.vinNo = vinNo;
-    }
-
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getPickupPlace() {
+        return pickupPlace;
     }
 
     public void setPickupPlace(String pickupPlace) {
         this.pickupPlace = pickupPlace;
     }
 
+    public String getReturnPlace() {
+        return returnPlace;
+    }
+
     public void setReturnPlace(String returnPlace) {
         this.returnPlace = returnPlace;
+    }
+
+    public Date getStartDate() {
+        return startDate;
     }
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
+    public Date getEndDate() {
+        return endDate;
+    }
+
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public boolean isReturned() {
+        return isReturned;
     }
 
     public void setReturned(boolean returned) {
         isReturned = returned;
     }
 
-    public void setCprNum(String cprNum) {
-        this.cprNum = cprNum;
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id +
+                ", cprNum='" + cprNum + '\'' +
+                ", vinNo=" + vinNo +
+                ", price=" + price +
+                ", pickupPlace='" + pickupPlace + '\'' +
+                ", returnPlace='" + returnPlace + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", isReturned=" + isReturned +
+                ", damage=" + damage +
+                '}';
     }
 
     /*@Override
@@ -139,19 +147,9 @@ public class Contract {
                 "id=" + id;
     }*/
 
-    @Override
-    public String toString() {
-        return "Contract{" +
-                "id=" + id +
-                ", cprNum='" + cprNum + '\'' +
-                ", vinNo=" + vinNo +
-                ", price=" + price +
-                ", pickupPlace='" + pickupPlace + '\'' +
-                ", returnPlace='" + returnPlace + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", isReturned=" + isReturned +
-                ", damage=" + damage +
-                '}';
+    public enum Damage {
+        UNCHECKED,
+        YES,
+        NO
     }
 }

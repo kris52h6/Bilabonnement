@@ -1,31 +1,28 @@
 package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Contract;
-import com.example.bilabonnoment.repositories.*;
 import org.junit.jupiter.api.Test;
 import repositories.ContractTestRepository;
-import repositories.DamageTestRepository;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+
 import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
 
-class GetAllReturnedUncheckedContracts
-{
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+class GetAllReturnedUncheckedContracts {
     @Test
-    void getAllReturnedUncheckedContracts()
-    {
+    void getAllReturnedUncheckedContracts() {
         ContractTestRepository contractTestRepository = new ContractTestRepository();
         ContractService contractService = new ContractService(contractTestRepository);
 
         String str = "2200-05-05";
         Date date = Date.valueOf(str);
         List<Contract> expectContracts = Arrays.asList(
-                new Contract(1, "12", 12, 100, "her", "her", date, date, true, Contract.Damage.UNCHECKED),
-                new Contract(2, "34", 13, 110, "her", "her", date, date, false, Contract.Damage.UNCHECKED),
-                new Contract(6, "123", 17, 105, "her", "her", date, date, false, Contract.Damage.UNCHECKED)
+                new Contract(1, "12", "12", 100, "her", "her", date, date, true, Contract.Damage.UNCHECKED),
+                new Contract(2, "34", "13", 110, "her", "her", date, date, false, Contract.Damage.UNCHECKED),
+                new Contract(6, "123", "17", 105, "her", "her", date, date, false, Contract.Damage.UNCHECKED)
         );
 
 

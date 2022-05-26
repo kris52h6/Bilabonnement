@@ -1,19 +1,16 @@
 package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Customer;
-import com.example.bilabonnoment.repositories.*;
 import org.junit.jupiter.api.Test;
-import repositories.ContractTestRepository;
 import repositories.CustomerTestRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-class GetSingleCustomerByCpr
-{
+class GetSingleCustomerByCpr {
 
     @Test
-    void getSingleCustomerByCpr()
-    {
+    void getSingleCustomerByCpr() {
         //arrange
         CustomerTestRepository customerTestRepository = new CustomerTestRepository();
         CustomerService customerService = new CustomerService(customerTestRepository);

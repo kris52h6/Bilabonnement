@@ -12,6 +12,14 @@ import java.util.Objects;
 
 public class ContractRepository implements IContractRepository {
 
+    public static void main(String[] args) {
+        ContractRepository contractRepository = new ContractRepository();
+        String str = "2000-05-05";
+        Date date = Date.valueOf(str);
+        Contract editContract = new Contract(1, "123", "1415", 1000, "her", "her", date, date, true, Contract.Damage.YES);
+        contractRepository.editContract(editContract);
+    }
+
     @Override
     public List<Contract> getAllEntities() {
         Connection conn = DatabaseConnectionManager.getConnection();
@@ -25,7 +33,7 @@ public class ContractRepository implements IContractRepository {
                 Contract temp = new Contract(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getDouble(4),
                         rs.getString(5),
                         rs.getString(6),
@@ -50,13 +58,14 @@ public class ContractRepository implements IContractRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         Contract temp = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE contract_id = " + id);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE contract_id = ?");
+            pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 temp = new Contract(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getDouble(4),
                         rs.getString(5),
                         rs.getString(6),
@@ -82,7 +91,7 @@ public class ContractRepository implements IContractRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.contract (customer_cpr_nr, vin_no, contract_price, car_pickup_place, car_return_place, contract_start_date, contract_end_date, is_returned, contract_damage) VALUES (?,?,?,?,?,?,?,?,?)");
             pstmt.setString(1, contract.getCprNum());
-            pstmt.setInt(2, contract.getVinNo());
+            pstmt.setString(2, contract.getVinNo());
             pstmt.setDouble(3, contract.getPrice());
             pstmt.setString(4, contract.getPickupPlace());
             pstmt.setString(5, contract.getReturnPlace());
@@ -104,14 +113,15 @@ public class ContractRepository implements IContractRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         List<Contract> allContractsFromCustomer = new ArrayList<>();
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE customer_cpr_nr = '" + cprNr + "'");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE customer_cpr_nr = ?");
+            pstmt.setString(1, cprNr);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 Contract temp = new Contract(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getDouble(4),
                         rs.getString(5),
                         rs.getString(6),
@@ -134,9 +144,10 @@ public class ContractRepository implements IContractRepository {
     public String getCprNrFromContractId(int contractId) {
         Connection conn = DatabaseConnectionManager.getConnection();
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT customer_cpr_nr FROM bilabonnement.contract WHERE contract_id = " + contractId);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT customer_cpr_nr FROM bilabonnement.contract WHERE contract_id = ?;");
+            pstmt.setInt(1, contractId);
             ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
+            while(rs.next()) {
                 return rs.getString(1);
             }
 
@@ -150,17 +161,15 @@ public class ContractRepository implements IContractRepository {
 
     @Override
     public Contract createContract(WebRequest data) {
-        System.out.println(data.getParameter("contractStartDate"));
-
         return new Contract(
                 -1,
                 data.getParameter("customerCprNr"),
-                Integer.parseInt(Objects.requireNonNull(data.getParameter("vinNo"))),
+                data.getParameter("vinNo"),
                 Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
                 data.getParameter("carPickupPlace"),
                 data.getParameter("carReturnPlace"),
-                Date.valueOf(data.getParameter("contractStartDate")),
-                Date.valueOf(data.getParameter("contractEndDate")),
+                Date.valueOf(Objects.requireNonNull(data.getParameter("contractStartDate"))),
+                Date.valueOf(Objects.requireNonNull(data.getParameter("contractEndDate"))),
                 false,
                 Contract.Damage.UNCHECKED
         );
@@ -180,17 +189,17 @@ public class ContractRepository implements IContractRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
 
         try {
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET contract_damage = ? WHERE (contract_id = " + contractId + ");");
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET contract_damage = ? WHERE (contract_id = ?);");
             pstmt.setString(1, DamageStatus.name());
+            pstmt.setInt(2,contractId);
             pstmt.executeUpdate();
             return pstmt.executeUpdate();
 
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
-            return 0;
+        return 0;
     }
 
     public List<Contract> getAllReturnedUncheckedContracts() {
@@ -204,7 +213,7 @@ public class ContractRepository implements IContractRepository {
                 Contract temp = new Contract(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getDouble(4),
                         rs.getString(5),
                         rs.getString(6),
@@ -237,7 +246,7 @@ public class ContractRepository implements IContractRepository {
                 Contract temp = new Contract(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getDouble(4),
                         rs.getString(5),
                         rs.getString(6),
@@ -258,15 +267,15 @@ public class ContractRepository implements IContractRepository {
     }
 
     @Override
-    public boolean editContract(Contract contract){
+    public boolean editContract(Contract contract) {
 
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
-        int id = contract.getId();
-        try{
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET customer_cpr_nr = ?, vin_no = ?, contract_price = ?, car_pickup_place = ?, car_return_place = ?, contract_start_date = ?, contract_end_date = ?, is_returned = ?, contract_damage = ? WHERE (contract_id = " + id + ");");
+        int contractId = contract.getId();
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET customer_cpr_nr = ?, vin_no = ?, contract_price = ?, car_pickup_place = ?, car_return_place = ?, contract_start_date = ?, contract_end_date = ?, is_returned = ?, contract_damage = ? WHERE (contract_id = ?);");
             pstmt.setString(1, contract.getCprNum());
-            pstmt.setInt(2, contract.getVinNo());
+            pstmt.setString(2, contract.getVinNo());
             pstmt.setDouble(3, contract.getPrice());
             pstmt.setString(4, contract.getPickupPlace());
             pstmt.setString(5, contract.getReturnPlace());
@@ -274,11 +283,11 @@ public class ContractRepository implements IContractRepository {
             pstmt.setDate(7, contract.getEndDate());
             pstmt.setBoolean(8, contract.isReturned());
             pstmt.setString(9, contract.getDamage().name());
+            pstmt.setInt(10, contractId);
 
             pstmt.executeUpdate();
             result = true;
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
@@ -287,27 +296,18 @@ public class ContractRepository implements IContractRepository {
     @Override
     public Contract createTempContractObj(WebRequest data) {
         Contract temp = new Contract(
-                Integer.parseInt(data.getParameter("contractId")),
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("contractId"))),
                 data.getParameter("customerCprNr"),
-                Integer.parseInt(Objects.requireNonNull(data.getParameter("vinNo"))),
+                data.getParameter("vinNo"),
                 Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
                 data.getParameter("carPickupPlace"),
                 data.getParameter("carReturnPlace"),
-                Date.valueOf(data.getParameter("contractStartDate")),
-                Date.valueOf(data.getParameter("contractEndDate")),
+                Date.valueOf(Objects.requireNonNull(data.getParameter("contractStartDate"))),
+                Date.valueOf(Objects.requireNonNull(data.getParameter("contractEndDate"))),
                 false,
                 Contract.Damage.valueOf(data.getParameter("isDamaged"))
 
         );
         return temp;
-    }
-
-    public static void main(String[] args)
-    {
-        ContractRepository contractRepository = new ContractRepository();
-        String str = "2000-05-05";
-        Date date = Date.valueOf(str);
-        Contract editContract = new Contract(1, "123", 1415, 1000, "her", "her", date, date, true, Contract.Damage.YES);
-        contractRepository.editContract(editContract);
     }
 }
