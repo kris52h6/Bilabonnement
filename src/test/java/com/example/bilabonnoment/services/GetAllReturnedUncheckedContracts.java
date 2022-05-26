@@ -14,6 +14,7 @@ import static org.junit.Assert.assertThat;
 class GetAllReturnedUncheckedContracts {
     @Test
     void getAllReturnedUncheckedContracts() {
+        //arrange
         ContractTestRepository contractTestRepository = new ContractTestRepository();
         ContractService contractService = new ContractService(contractTestRepository);
 
@@ -25,9 +26,10 @@ class GetAllReturnedUncheckedContracts {
                 new Contract(6, "123", "17", 105, "her", "her", date, date, false, Contract.Damage.UNCHECKED)
         );
 
-
+        //act
         List<Contract> actualContracts = contractService.getAllReturnedUncheckedContracts();
 
+        //assert
         assertThat(actualContracts.size(), is(expectContracts.size()));
 
     }
