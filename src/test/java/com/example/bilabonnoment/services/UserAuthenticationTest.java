@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class LoginServiceTest {
+public class UserAuthenticationTest {
 
     LoginTestRepository loginRepository = new LoginTestRepository();
     LoginService loginService = new LoginService(loginRepository);
