@@ -38,7 +38,6 @@ public class LoginService {
             case "CONTRACT" -> pageRedirect = "redirect:/allContracts";
             case "DAMAGE" -> pageRedirect = "redirect:/damageIndex";
         }
-        ;
 
         return pageRedirect;
     }

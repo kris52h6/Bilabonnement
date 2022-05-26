@@ -1,7 +1,7 @@
 package com.example.bilabonnoment.services;
 
 import org.junit.jupiter.api.Test;
-import repositories.ContractTestRepository;
+import com.example.bilabonnoment.repositories.ContractTestRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -23,7 +23,6 @@ class GetCprNrFromContractId {
         //assert
         assertEquals(expectedCpr1, actualCpr1);
         assertEquals(expectedCpr2, actualCpr2);
-
     }
 }
 

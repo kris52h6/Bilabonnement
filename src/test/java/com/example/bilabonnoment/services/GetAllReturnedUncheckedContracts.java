@@ -2,7 +2,7 @@ package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Contract;
 import org.junit.jupiter.api.Test;
-import repositories.ContractTestRepository;
+import com.example.bilabonnoment.repositories.ContractTestRepository;
 
 import java.sql.Date;
 import java.util.Arrays;

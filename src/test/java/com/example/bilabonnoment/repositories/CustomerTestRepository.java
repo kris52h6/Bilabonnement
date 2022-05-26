@@ -1,4 +1,4 @@
-package repositories;
+package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Customer;
 import com.example.bilabonnoment.repositories.interfaces.ICustomerRepository;

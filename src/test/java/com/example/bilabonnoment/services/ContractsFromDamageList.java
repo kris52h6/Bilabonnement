@@ -3,8 +3,8 @@ package com.example.bilabonnoment.services;
 import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Damage;
 import org.junit.jupiter.api.Test;
-import repositories.ContractTestRepository;
-import repositories.DamageTestRepository;
+import com.example.bilabonnoment.repositories.ContractTestRepository;
+import com.example.bilabonnoment.repositories.DamageTestRepository;
 
 import java.sql.Date;
 import java.util.ArrayList;
