@@ -58,7 +58,8 @@ public class ContractRepository implements IContractRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         Contract temp = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE contract_id = " + id);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE contract_id = ?");
+            pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 temp = new Contract(
@@ -112,7 +113,8 @@ public class ContractRepository implements IContractRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         List<Contract> allContractsFromCustomer = new ArrayList<>();
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE customer_cpr_nr = '" + cprNr + "'");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.contract WHERE customer_cpr_nr = ?");
+            pstmt.setString(1, cprNr);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -142,9 +144,10 @@ public class ContractRepository implements IContractRepository {
     public String getCprNrFromContractId(int contractId) {
         Connection conn = DatabaseConnectionManager.getConnection();
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT customer_cpr_nr FROM bilabonnement.contract WHERE contract_id = " + contractId);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT customer_cpr_nr FROM bilabonnement.contract WHERE contract_id = ?;");
+            pstmt.setInt(1, contractId);
             ResultSet rs = pstmt.executeQuery();
-            while (rs.next()) {
+            while(rs.next()) {
                 return rs.getString(1);
             }
 
@@ -158,8 +161,6 @@ public class ContractRepository implements IContractRepository {
 
     @Override
     public Contract createContract(WebRequest data) {
-        System.out.println(data.getParameter("contractStartDate"));
-
         return new Contract(
                 -1,
                 data.getParameter("customerCprNr"),
@@ -188,8 +189,9 @@ public class ContractRepository implements IContractRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
 
         try {
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET contract_damage = ? WHERE (contract_id = " + contractId + ");");
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET contract_damage = ? WHERE (contract_id = ?);");
             pstmt.setString(1, DamageStatus.name());
+            pstmt.setInt(2,contractId);
             pstmt.executeUpdate();
             return pstmt.executeUpdate();
 
@@ -269,9 +271,9 @@ public class ContractRepository implements IContractRepository {
 
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
-        int id = contract.getId();
+        int contractId = contract.getId();
         try {
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET customer_cpr_nr = ?, vin_no = ?, contract_price = ?, car_pickup_place = ?, car_return_place = ?, contract_start_date = ?, contract_end_date = ?, is_returned = ?, contract_damage = ? WHERE (contract_id = " + id + ");");
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE bilabonnement.contract SET customer_cpr_nr = ?, vin_no = ?, contract_price = ?, car_pickup_place = ?, car_return_place = ?, contract_start_date = ?, contract_end_date = ?, is_returned = ?, contract_damage = ? WHERE (contract_id = ?);");
             pstmt.setString(1, contract.getCprNum());
             pstmt.setString(2, contract.getVinNo());
             pstmt.setDouble(3, contract.getPrice());
@@ -281,6 +283,7 @@ public class ContractRepository implements IContractRepository {
             pstmt.setDate(7, contract.getEndDate());
             pstmt.setBoolean(8, contract.isReturned());
             pstmt.setString(9, contract.getDamage().name());
+            pstmt.setInt(10, contractId);
 
             pstmt.executeUpdate();
             result = true;

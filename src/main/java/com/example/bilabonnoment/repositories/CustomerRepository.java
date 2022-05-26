@@ -42,7 +42,8 @@ public class CustomerRepository implements ICustomerRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         Customer temp = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_id = " + id);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_id = ?");
+            pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 temp = new Customer(
@@ -71,7 +72,8 @@ public class CustomerRepository implements ICustomerRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         Customer temp = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_cpr_nr = '" + cprNr + "';");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_cpr_nr = ?;");
+            pstmt.setString(1,cprNr);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 temp = new Customer(
