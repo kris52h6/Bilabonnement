@@ -17,15 +17,15 @@ public class UserAuthenticationTest {
 
         //Arrange
             // Valid Data
-                String validUsername = "bennybooster";
-                String validPassword = "dakkedak";
+                String validUsername = "damageuser";
+                String validPassword = "damagepassword";
 
             // Invalid Data
-                String invalidUsername = "bennysbiks";
-                String invalidPassword = "kagemand";
+                String invalidUsername = "adminuser";
+                String invalidPassword = "adminpassword";
 
             // User with same data
-                User expectedUser = new User(1,"bennybooster","dakkedak", "DAMAGE");
+                User expectedUser = new User(1,"damageuser","damagepassword", "DAMAGE");
 
         //Act
             // Valid username and password
