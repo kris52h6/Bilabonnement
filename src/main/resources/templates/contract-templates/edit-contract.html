@@ -20,10 +20,10 @@
             <input hidden id="contractId" name="contractId" th:value="${contract.getId()}" type="number">
 
             <label for="customerCprNr">Kunde Cpr Nr. (kan ikke ændres)</label>
-            <input id="customerCprNr" class="not-changeable" name="customerCprNr" th:value="${contract.getCprNum()}" type="text">
+            <input id="customerCprNr" class="not-changeable" name="customerCprNum" th:value="${contract.getCprNum()}" type="text">
 
             <label for="vinNo">Stelnummer (kan ikke ændres)</label>
-            <input id="vinNo" class="not-changeable" name="vinNo" th:value="${contract.getVinNo()}" type="text">
+            <input id="vinNo" class="not-changeable" name="vin" th:value="${contract.getVin()}" type="text">
 
             <label for="contractPrice">Kontrakt Pris</label>
             <input id="contractPrice" name="contractPrice" th:value="${contract.getPrice()}" type="number">

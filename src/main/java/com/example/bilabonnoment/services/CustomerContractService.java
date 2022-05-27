@@ -44,22 +44,22 @@ public class CustomerContractService {
     }
 
     public HashMap<Customer, ArrayList<Contract>> allCustomersContracts() {
-        String previousCustomerCprNr = null;
-        String currentCustomerCprNr;
+        String previousCustomerCprNum = null;
+        String currentCustomerCprNum;
         ArrayList<Contract> allContracts = new ArrayList<>();
         HashMap<Customer, ArrayList<Contract>> customersWithContracts = new HashMap<>();
 
         for (Customer customer : customerRepository.getAllEntities()) {
 
-            currentCustomerCprNr = customer.getCPR();
+            currentCustomerCprNum = customer.getCprNum();
 
-            if (!currentCustomerCprNr.equals(previousCustomerCprNr)) {
-                allContracts = (ArrayList<Contract>) contractRepository.getAllContractsFromCustomerCprNr(currentCustomerCprNr);
+            if (!currentCustomerCprNum.equals(previousCustomerCprNum)) {
+                allContracts = (ArrayList<Contract>) contractRepository.getAllContractsFromCustomerCprNum(currentCustomerCprNum);
                 customersWithContracts.put(customer, allContracts);
                 allContracts = new ArrayList<>();
             }
 
-            previousCustomerCprNr = currentCustomerCprNr;
+            previousCustomerCprNum = currentCustomerCprNum;
         }
         return customersWithContracts;
     }

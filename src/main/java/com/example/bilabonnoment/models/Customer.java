@@ -18,7 +18,7 @@ public class Customer {
         return id;
     }
 
-    public String getCPR() {
+    public String getCprNum() {
         return cprNum;
     }
 

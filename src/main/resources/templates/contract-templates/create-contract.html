@@ -15,19 +15,19 @@
         <form action="/createContract" method="POST">
 
             <label for="customerCprNr">Kunde
-                <select id="customerCprNr" name="customerCprNr">
+                <select id="customerCprNr" name="customerCprNum">
                     <option th:each="customer : ${customers}"
-                            th:text="${customer.getCPR() + ' ' + customer.getFirstname() + ' ' + customer.getLastname()}"
-                            th:value="${customer.getCPR()}"></option>
+                            th:text="${customer.getCprNum() + ' ' + customer.getFirstname() + ' ' + customer.getLastname()}"
+                            th:value="${customer.getCprNum()}"></option>
                 </select>
             </label>
             <!--<input id="customerCprNr" name="customerCprNr" type="text">-->
 
             <label for="vinNo">Stelnummer
-                <select id="vinNo" name="vinNo">
+                <select id="vinNo" name="vin">
                     <option th:each="car : ${cars}"
-                            th:text="${car.getVinNo() + ' ' + car.getMake() + ' ' + car.getModel()}"
-                            th:value="${car.getVinNo()}"></option>
+                            th:text="${car.getVin() + ' ' + car.getMake() + ' ' + car.getModel()}"
+                            th:value="${car.getVin()}"></option>
                 </select>
             </label>
 

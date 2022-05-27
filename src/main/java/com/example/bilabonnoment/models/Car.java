@@ -2,7 +2,7 @@ package com.example.bilabonnoment.models;
 
 public class Car {
     private int id;
-    private String vinNo;
+    private String vin;
     private String make;
     private String model;
     private String equipmentLevel;
@@ -11,9 +11,9 @@ public class Car {
     private double co2Emission;
     private boolean is_leased;
 
-    public Car(int id, String vinNo, String make, String model, String equipmentLevel, double valuePreTax, double registrationTax, double co2Emission, boolean is_leased) {
+    public Car(int id, String vin, String make, String model, String equipmentLevel, double valuePreTax, double registrationTax, double co2Emission, boolean is_leased) {
         this.id = id;
-        this.vinNo = vinNo;
+        this.vin = vin;
         this.make = make;
         this.model = model;
         this.equipmentLevel = equipmentLevel;
@@ -31,12 +31,12 @@ public class Car {
         this.id = id;
     }
 
-    public String getVinNo() {
-        return vinNo;
+    public String getVin() {
+        return vin;
     }
 
-    public void setVinNo(String vinNo) {
-        this.vinNo = vinNo;
+    public void setVin(String vinNo) {
+        this.vin = vinNo;
     }
 
     public String getMake() {
@@ -99,7 +99,7 @@ public class Car {
     public String toString() {
         return "Car{" +
                 "id=" + id +
-                ", vinNo=" + vinNo +
+                ", vin=" + vin +
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
                 ", equipmentLevel='" + equipmentLevel + '\'' +

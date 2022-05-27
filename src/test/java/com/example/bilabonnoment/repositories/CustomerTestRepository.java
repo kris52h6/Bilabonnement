@@ -18,10 +18,10 @@ public class CustomerTestRepository implements ICustomerRepository {
     );
 
     @Override
-    public Customer getCustomerFromCprNr(String cprNr) {
+    public Customer getCustomerFromCprNum(String cprNum) {
         Customer temp = null;
         for (Customer customer : allCustomers) {
-            if (customer.getCPR().equals(cprNr)) {
+            if (customer.getCprNum().equals(cprNum)) {
                 temp = customer;
             }
         }

@@ -68,12 +68,12 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public Customer getCustomerFromCprNr(String cprNr) {
+    public Customer getCustomerFromCprNum(String cprNum) {
         Connection conn = DatabaseConnectionManager.getConnection();
         Customer temp = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_cpr_nr = ?;");
-            pstmt.setString(1,cprNr);
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.customer WHERE customer_cpr_num = ?;");
+            pstmt.setString(1,cprNum);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 temp = new Customer(

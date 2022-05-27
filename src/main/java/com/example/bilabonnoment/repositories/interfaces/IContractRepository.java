@@ -6,9 +6,9 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.List;
 
 public interface IContractRepository extends IRepository<Contract> {
-    public List<Contract> getAllContractsFromCustomerCprNr(String cprNr);
+    public List<Contract> getAllContractsFromCustomerCprNum(String cprNum);
 
-    public String getCprNrFromContractId(int contractId);
+    public String getCprNumFromContractId(int contractId);
 
     public Contract createContract(WebRequest data);
 
