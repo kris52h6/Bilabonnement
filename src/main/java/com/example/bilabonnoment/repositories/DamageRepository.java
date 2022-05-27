@@ -47,7 +47,6 @@ public class DamageRepository implements IDamageRepository {
         try {
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.damage WHERE damage_id = ?");
             pstmt.setInt(1, id);
-
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 temp = new Damage(
@@ -143,7 +142,6 @@ public class DamageRepository implements IDamageRepository {
             PreparedStatement pstmt = conn.prepareStatement("DELETE FROM bilabonnement.damage WHERE damage_id = ?");
             pstmt.setInt(1, damageId);
             int rs = pstmt.executeUpdate();
-            System.out.println(rs);
         } catch (SQLException e) {
             System.out.println("Something wrong in statement");
             e.printStackTrace();
@@ -155,9 +153,6 @@ public class DamageRepository implements IDamageRepository {
         boolean result = false;
         int id = damage.getId();
 
-        System.out.println(damage.getPrice());
-        System.out.println(damage.getDescription());
-        System.out.println(damage.getId());
         try {
             PreparedStatement pstmt =
 
