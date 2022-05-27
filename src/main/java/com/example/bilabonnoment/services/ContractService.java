@@ -13,10 +13,6 @@ public class ContractService {
         this.contractRepository = repo;
     }
 
-    public Contract getSingleContractById(int contractId) {
-        return contractRepository.getSingleById(contractId);
-    }
-
     public boolean editContract(WebRequest dataFromForm) {
         Contract contract = contractRepository.createTempContractObj(dataFromForm);
         if (contract != null) {
@@ -38,8 +34,8 @@ public class ContractService {
         return contractRepository.getAllReturnedDamagedContracts();
     }
 
-    public int changeContractDamage(int contractId, String updatedDamageStatus) {
-        return contractRepository.changeContractDamage(contractId, updatedDamageStatus);
+    public void changeContractDamage(int contractId, String updatedDamageStatus) {
+        contractRepository.changeContractDamage(contractId, updatedDamageStatus);
     }
 
     public Contract getSingleById(int id) {

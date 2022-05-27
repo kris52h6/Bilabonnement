@@ -182,6 +182,24 @@ public class ContractRepository implements IContractRepository {
     }
 
     @Override
+    public Contract createTempContractObj(WebRequest data) {
+        Contract temp = new Contract(
+                Integer.parseInt(Objects.requireNonNull(data.getParameter("contractId"))),
+                data.getParameter("customerCprNum"),
+                data.getParameter("vin"),
+                Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
+                data.getParameter("carPickupPlace"),
+                data.getParameter("carReturnPlace"),
+                Date.valueOf(Objects.requireNonNull(data.getParameter("contractStartDate"))),
+                Date.valueOf(Objects.requireNonNull(data.getParameter("contractEndDate"))),
+                false,
+                Contract.Damage.valueOf(data.getParameter("isDamaged"))
+
+        );
+        return temp;
+    }
+
+    @Override
     public int changeContractDamage(int contractId, String updatedDamageStatus) {
 
         Contract.Damage DamageStatus = Contract.Damage.UNCHECKED;
@@ -297,23 +315,5 @@ public class ContractRepository implements IContractRepository {
             e.printStackTrace();
         }
         return result;
-    }
-
-    @Override
-    public Contract createTempContractObj(WebRequest data) {
-        Contract temp = new Contract(
-                Integer.parseInt(Objects.requireNonNull(data.getParameter("contractId"))),
-                data.getParameter("customerCprNum"),
-                data.getParameter("vin"),
-                Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
-                data.getParameter("carPickupPlace"),
-                data.getParameter("carReturnPlace"),
-                Date.valueOf(Objects.requireNonNull(data.getParameter("contractStartDate"))),
-                Date.valueOf(Objects.requireNonNull(data.getParameter("contractEndDate"))),
-                false,
-                Contract.Damage.valueOf(data.getParameter("isDamaged"))
-
-        );
-        return temp;
     }
 }
