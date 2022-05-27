@@ -1,4 +1,4 @@
-package repositories;
+package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
@@ -34,13 +34,12 @@ public class ContractTestRepository implements IContractRepository {
 
     @Override
     public String getCprNrFromContractId(int contractId) {
-        String temp = null;
         for (Contract contract : allContracts) {
             if (contract.getId() == contractId) {
-                temp = contract.getCprNum();
+                return contract.getCprNum();
             }
         }
-        return temp;
+        return null;
     }
 
 

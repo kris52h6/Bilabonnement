@@ -2,7 +2,7 @@ package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Customer;
 import org.junit.jupiter.api.Test;
-import repositories.CustomerTestRepository;
+import com.example.bilabonnoment.repositories.CustomerTestRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;

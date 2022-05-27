@@ -18,11 +18,9 @@ public class DatabaseConnectionManager {
             return conn;
         }
 
-
         url = System.getenv("db.url");
         username = System.getenv("db.username");
         password = System.getenv("db.password");
-
 
         try {
             // Class.forName("com.mysql.jdbc.Driver");

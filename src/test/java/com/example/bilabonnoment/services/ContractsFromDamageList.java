@@ -3,8 +3,8 @@ package com.example.bilabonnoment.services;
 import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Damage;
 import org.junit.jupiter.api.Test;
-import repositories.ContractTestRepository;
-import repositories.DamageTestRepository;
+import com.example.bilabonnoment.repositories.ContractTestRepository;
+import com.example.bilabonnoment.repositories.DamageTestRepository;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -19,6 +19,7 @@ class ContractsFromDamageList {
 
     @Test
     void contractsFromDamageList() {
+        //arrange
         DamageTestRepository damageTestRepository = new DamageTestRepository();
         ContractTestRepository contractTestRepository = new ContractTestRepository();
         ContractDamageService contractDamageService = new ContractDamageService(damageTestRepository, contractTestRepository);
@@ -61,8 +62,10 @@ class ContractsFromDamageList {
         expected.put(contract4, damages4);
         expected.put(contract5, damages5);
 
+        //act
         Map<Contract, ArrayList<Damage>> actual = contractDamageService.contractsFromDamageList();
 
+        //assert
         assertThat(actual.size(), is(expected.size()));
 
     }

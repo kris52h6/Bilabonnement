@@ -1,4 +1,4 @@
-package repositories;
+package com.example.bilabonnoment.repositories;
 
 import com.example.bilabonnoment.models.Damage;
 import com.example.bilabonnoment.repositories.interfaces.IDamageRepository;

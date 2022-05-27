@@ -25,5 +25,4 @@ public class BusinessService {
     public List<Car> getAllRentedCars() {
         return businessRepository.getAllRentedCars();
     }
-
 }
