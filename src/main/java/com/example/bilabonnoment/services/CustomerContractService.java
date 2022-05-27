@@ -20,29 +20,6 @@ public class CustomerContractService {
         this.contractRepository = contractRepository;
     }
 
-    public static void main(String[] args) {
-
-        CustomerRepository customerRepository = new CustomerRepository();
-        ContractRepository contractRepository = new ContractRepository();
-
-        CustomerContractService customerContractService = new CustomerContractService(customerRepository, contractRepository);
-        HashMap<Customer, ArrayList<Contract>> allCustomersContracts = customerContractService.allCustomersContracts();
-
-
-        // Iterating HashMap through for loop
-        for (Map.Entry<Customer, ArrayList<Contract>> set :
-                allCustomersContracts.entrySet()) {
-
-            // Printing all elements of a Map
-            String contracts = "";
-            for (Contract contract : set.getValue()) {
-                contracts += contract.toString();
-            }
-            System.out.println(set.getKey().toString() + " Contracts: "
-                    + contracts);
-        }
-    }
-
     public HashMap<Customer, ArrayList<Contract>> allCustomersContracts() {
         String previousCustomerCprNum = null;
         String currentCustomerCprNum;

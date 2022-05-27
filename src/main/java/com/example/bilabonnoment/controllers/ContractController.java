@@ -66,7 +66,7 @@ public class ContractController {
     @GetMapping("/editContractForm")
     public String editContractForm(@RequestParam int contractId, Model model, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
-            model.addAttribute("contract", contractService.getSingleContractById(contractId));
+            model.addAttribute("contract", contractService.getSingleById(contractId));
             return "contract-templates/edit-contract";
         }
         return "access-error";
