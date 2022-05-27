@@ -23,8 +23,9 @@ public class LoginService {
             userInfo.add(Integer.toString(user.getId()));
             userInfo.add(user.getUsername());
             userInfo.add(user.getRole());
+            return userInfo;
         }
-        return userInfo;
+        return null;
     }
 
 

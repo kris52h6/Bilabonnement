@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Error</title>
+    <link href="../static/login.css" rel="stylesheet" th:href="@{login.css}">
+</head>
+<body>
+<main>
+    <section id="login-error">
+        <div class="login-error-wrapper">
+            <h2>Forkert brugernavn eller kode</h2>
+            <a th:href="@{/}">
+            <button class="general-button">Prøv igen</button>
+            </a>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

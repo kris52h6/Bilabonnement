@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class LoginController {
 
     private final LoginRepository loginRepository = new LoginRepository();
+    private final LoginService loginService = new LoginService(loginRepository);
 
 
     @GetMapping("/")
@@ -23,14 +24,15 @@ public class LoginController {
 
     @PostMapping("/authUser")
     public String authUser(WebRequest dataFromForm, HttpSession session) {
-        LoginService loginService = new LoginService(loginRepository);
-
         String username = dataFromForm.getParameter("username");
-        System.out.println(username);
         String password = dataFromForm.getParameter("password");
-        System.out.println(password);
 
         ArrayList<String> userInfo = loginService.getLoggedInUserInfo(loginService.authenticateUser(username, password));
+
+        // viser fejlside, hvis login ikke eksistere
+        if (userInfo == null) {
+            return "login-error";
+        }
 
         int user_userId = Integer.parseInt(userInfo.get(0));
         String user_username = userInfo.get(1);
@@ -53,5 +55,10 @@ public class LoginController {
         }
 
         return "redirect:/";
+    }
+
+    @GetMapping("/redirectToFrontPage")
+    public String redirectToFrontPage(HttpSession session) {
+        return loginService.reDirectUser(session);
     }
 }

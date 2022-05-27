@@ -5,9 +5,14 @@
     <nav>
         <div class="navbar">
             <button class="general-button" onclick="history.back()">Tilbage</button>
-            <a th:href="@{/logOut}">
-                <button class="general-button">Log ud</button>
-            </a>
+            <div class="t-wrapper">
+                <a th:href="@{/redirectToFrontPage}">
+                    <button class="general-button">Forside</button>
+                </a>
+                <a th:href="@{/logOut}">
+                    <button class="general-button">Log ud</button>
+                </a>
+            </div>
         </div>
     </nav>
 </header>
