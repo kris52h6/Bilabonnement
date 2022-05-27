@@ -57,8 +57,12 @@ public class ContractController {
     @PostMapping("/createContract")
     public String createContract(WebRequest dataFromForm, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
-            contractService.createContract(dataFromForm);
-            return "redirect:/allContracts";
+            boolean createResult = contractService.createContract(dataFromForm);
+            if (createResult) {
+                return "redirect:/allContracts";
+            } else {
+                return "common-error";
+            }
         }
         return "access-error";
     }
@@ -76,8 +80,12 @@ public class ContractController {
     public String editContract(WebRequest dataFromForm, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
             String redirectId = dataFromForm.getParameter("contractId");
-            contractService.editContract(dataFromForm);
-            return "redirect:/contract?id=" + redirectId;
+            boolean editResult = contractService.editContract(dataFromForm);
+            if (editResult) {
+                return "redirect:/contract?id=" + redirectId;
+            } else {
+                return "common-error";
+            }
         }
         return "access-error";
     }

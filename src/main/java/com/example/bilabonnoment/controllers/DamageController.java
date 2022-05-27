@@ -58,7 +58,7 @@ public class DamageController {
             CustomerService customerService = new CustomerService(customerRepository);
             ContractDamageService contractDamageService = new ContractDamageService(damageRepository, contractRepository);
 
-            String cprNum = contractService.getCprNrFromContractId(id);
+            String cprNum = contractService.getCprNumFromContractId(id);
 
             model.addAttribute("customer", customerService.getCustomerFromCprNum(cprNum));
             model.addAttribute("contract", contractDamageService.contractWithDamage(id));

@@ -89,7 +89,7 @@ public class ContractRepository implements IContractRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         boolean result = false;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.contract (customer_cpr_nr, car_vin, contract_price, car_pickup_place, car_return_place, contract_start_date, contract_end_date, is_returned, contract_damage) VALUES (?,?,?,?,?,?,?,?,?)");
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.contract (customer_cpr_num, car_vin, contract_price, car_pickup_place, car_return_place, contract_start_date, contract_end_date, is_returned, contract_damage) VALUES (?,?,?,?,?,?,?,?,?)");
             pstmt.setString(1, contract.getCprNum());
             pstmt.setString(2, contract.getVin());
             pstmt.setDouble(3, contract.getPrice());
@@ -161,18 +161,24 @@ public class ContractRepository implements IContractRepository {
 
     @Override
     public Contract createContract(WebRequest data) {
-        return new Contract(
-                -1,
-                data.getParameter("customerCprNum"),
-                data.getParameter("vin"),
-                Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
-                data.getParameter("carPickupPlace"),
-                data.getParameter("carReturnPlace"),
-                Date.valueOf(Objects.requireNonNull(data.getParameter("contractStartDate"))),
-                Date.valueOf(Objects.requireNonNull(data.getParameter("contractEndDate"))),
-                false,
-                Contract.Damage.UNCHECKED
-        );
+        try {
+            Contract contract = new Contract(
+                    -1,
+                    data.getParameter("customerCprNum"),
+                    data.getParameter("vin"),
+                    Double.parseDouble(Objects.requireNonNull(data.getParameter("contractPrice"))),
+                    data.getParameter("carPickupPlace"),
+                    data.getParameter("carReturnPlace"),
+                    Date.valueOf(Objects.requireNonNull(data.getParameter("contractStartDate"))),
+                    Date.valueOf(Objects.requireNonNull(data.getParameter("contractEndDate"))),
+                    false,
+                    Contract.Damage.UNCHECKED
+            );
+            return contract;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

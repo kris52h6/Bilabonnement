@@ -26,19 +26,19 @@
             <input id="vinNo" class="not-changeable" name="vin" th:value="${contract.getVin()}" type="text">
 
             <label for="contractPrice">Kontrakt Pris</label>
-            <input id="contractPrice" name="contractPrice" th:value="${contract.getPrice()}" type="number">
+            <input id="contractPrice" name="contractPrice" th:value="${contract.getPrice()}" type="number" required>
 
             <label for="carPickupPlace">Afhentningssted</label>
-            <input id="carPickupPlace" name="carPickupPlace" th:value="${contract.getPickupPlace()}" type="text">
+            <input id="carPickupPlace" name="carPickupPlace" th:value="${contract.getPickupPlace()}" type="text" required>
 
             <label for="carReturnPlace">Returneringsted</label>
-            <input id="carReturnPlace" name="carReturnPlace" th:value="${contract.getReturnPlace()}" type="text">
+            <input id="carReturnPlace" name="carReturnPlace" th:value="${contract.getReturnPlace()}" type="text" required>
 
             <label for="contractStartDate">Kontrakts startdato</label>
-            <input id="contractStartDate" name="contractStartDate" th:value="${contract.getStartDate()}" type="date">
+            <input id="contractStartDate" name="contractStartDate" th:value="${contract.getStartDate()}" type="date" required>
 
             <label for="contractEndDate">Kontrakts slutdato</label>
-            <input id="contractEndDate" name="contractEndDate" th:value="${contract.getEndDate()}" type="date">
+            <input id="contractEndDate" name="contractEndDate" th:value="${contract.getEndDate()}" type="date" required>
 
             <label for="isReturned" hidden>isReturned</label>
             <input hidden id="isReturned" name="isReturned" th:value="${contract.isReturned()}" type="text">
