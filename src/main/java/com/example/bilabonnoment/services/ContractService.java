@@ -13,12 +13,16 @@ public class ContractService {
         this.contractRepository = repo;
     }
 
-    public void editContract(WebRequest dataFromForm) {
+    public boolean editContract(WebRequest dataFromForm) {
         Contract contract = contractRepository.createTempContractObj(dataFromForm);
-        contractRepository.editContract(contract);
+        if (contract != null) {
+            contractRepository.editContract(contract);
+            return true;
+        }
+        return false;
     }
 
-    public String getCprNrFromContractId(int contractId) {
+    public String getCprNumFromContractId(int contractId) {
         return contractRepository.getCprNumFromContractId(contractId);
     }
 
@@ -42,9 +46,13 @@ public class ContractService {
         return contractRepository.getAllEntities();
     }
 
-    public void createContract(WebRequest data) {
+    public boolean createContract(WebRequest data) {
         Contract contract = contractRepository.createContract(data);
-        create(contract);
+        if (contract != null) {
+            create(contract);
+            return true;
+        }
+        return false;
     }
 
     public void create(Contract contract) {
