@@ -30,7 +30,7 @@
 
                 <div id="uncheckedSingle" th:each="contract: ${uncheckedContracts}">
                     <span th:text="${contract.getCprNum()}"></span>
-                    <span th:text="${contract.getVinNo()}">vin no</span>
+                    <span th:text="${contract.getVin()}">vin no</span>
                     <span th:text="${contract.getPrice()}">contract price</span>
                     <span th:text="${contract.getPickupPlace()}">car pick up</span>
                     <span th:text="${contract.getReturnPlace()}">car return</span>
@@ -63,7 +63,7 @@
             <div id="damaged">
                 <div id="checkedSingle" th:each="contract: ${damagedContracts}">
                     <span th:text="${contract.getCprNum()}"></span>
-                    <span th:text="${contract.getVinNo()}">vin no</span>
+                    <span th:text="${contract.getVin()}">vin no</span>
                     <span th:text="${contract.getPrice()}">contract price</span>
                     <span th:text="${contract.getPickupPlace()}">car pick up</span>
                     <span th:text="${contract.getReturnPlace()}">car return</span>

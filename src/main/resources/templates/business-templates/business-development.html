@@ -33,7 +33,7 @@
         <div class="car-wrapper">
             <div class="car" th:each="car : ${cars}">
                 <span th:text="${car.getId()}"></span>
-                <span th:text="${car.getVinNo()}"></span>
+                <span th:text="${car.getVin()}"></span>
                 <span th:text="${car.getMake()}"></span>
                 <span th:text="${car.getModel()}"></span>
                 <span th:text="${car.getEquipmentLevel()}"></span>
