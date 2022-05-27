@@ -134,7 +134,7 @@ public class BusinessRepository implements IBusinessRepository {
         Connection conn = DatabaseConnectionManager.getConnection();
         Car temp = null;
         try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car WHERE car_vin_no = ?");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM bilabonnement.car WHERE car_vin = ?");
             pstmt.setString(1,vinNo);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {

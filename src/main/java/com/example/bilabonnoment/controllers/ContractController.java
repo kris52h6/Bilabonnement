@@ -57,7 +57,6 @@ public class ContractController {
     @PostMapping("/createContract")
     public String createContract(WebRequest dataFromForm, HttpSession session) {
         if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(AREA)) {
-            System.out.println(dataFromForm.getParameter("customerCprNr"));
             contractService.createContract(dataFromForm);
             return "redirect:/allContracts";
         }

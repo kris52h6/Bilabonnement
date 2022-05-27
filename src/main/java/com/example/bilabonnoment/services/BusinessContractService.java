@@ -28,11 +28,11 @@ public class BusinessContractService {
         for (Contract endedContracts : allContracts){
             contractId = endedContracts.getId();
             if(endedContracts.isReturned()){
-                Car car = businessRepository.getCarFromVinNo(endedContracts.getVinNo());
+                Car car = businessRepository.getCarFromVinNo(endedContracts.getVin());
                 businessRepository.editCarLeasingStatus(car.getId(), false);
             }else {
                 isLeased = true;
-                Car car = businessRepository.getCarFromVinNo(endedContracts.getVinNo());
+                Car car = businessRepository.getCarFromVinNo(endedContracts.getVin());
                 businessRepository.editCarLeasingStatus(car.getId(), true);
             }
         }

@@ -20,7 +20,7 @@ public class CustomerService {
         return customerRepository.getSingleById(id);
     }
 
-    public Customer getCustomerFromCprNr(String cprNr) {
-        return customerRepository.getCustomerFromCprNr(cprNr);
+    public Customer getCustomerFromCprNum(String cprNum) {
+        return customerRepository.getCustomerFromCprNum(cprNum);
     }
 }

@@ -6,7 +6,7 @@ public class Contract {
 
     private int id;
     private String cprNum;
-    private String vinNo;
+    private String vin;
     private double price;
     private String pickupPlace;
     private String returnPlace;
@@ -15,10 +15,10 @@ public class Contract {
     private boolean isReturned;
     private Damage damage;
 
-    public Contract(int id, String cprNum, String vinNo, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned, Damage damage) {
+    public Contract(int id, String cprNum, String vin, double price, String pickupPlace, String returnPlace, Date startDate, Date endDate, boolean isReturned, Damage damage) {
         this.id = id;
         this.cprNum = cprNum;
-        this.vinNo = vinNo;
+        this.vin = vin;
         this.price = price;
         this.pickupPlace = pickupPlace;
         this.returnPlace = returnPlace;
@@ -52,12 +52,12 @@ public class Contract {
         this.cprNum = cprNum;
     }
 
-    public String getVinNo() {
-        return vinNo;
+    public String getVin() {
+        return vin;
     }
 
-    public void setVinNo(String vinNo) {
-        this.vinNo = vinNo;
+    public void setVin(String vinNo) {
+        this.vin = vinNo;
     }
 
     public double getPrice() {
@@ -113,7 +113,7 @@ public class Contract {
         return "Contract{" +
                 "id=" + id +
                 ", cprNum='" + cprNum + '\'' +
-                ", vinNo=" + vinNo +
+                ", vinNo=" + vin +
                 ", price=" + price +
                 ", pickupPlace='" + pickupPlace + '\'' +
                 ", returnPlace='" + returnPlace + '\'' +
