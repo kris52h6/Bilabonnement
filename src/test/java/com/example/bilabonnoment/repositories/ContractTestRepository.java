@@ -28,12 +28,12 @@ public class ContractTestRepository implements IContractRepository {
     }
 
     @Override
-    public List<Contract> getAllContractsFromCustomerCprNr(String cprNr) {
+    public List<Contract> getAllContractsFromCustomerCprNum(String cprNum) {
         return null;
     }
 
     @Override
-    public String getCprNrFromContractId(int contractId) {
+    public String getCprNumFromContractId(int contractId) {
         for (Contract contract : allContracts) {
             if (contract.getId() == contractId) {
                 return contract.getCprNum();

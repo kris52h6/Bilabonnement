@@ -23,7 +23,7 @@ public class ContractService {
     }
 
     public String getCprNrFromContractId(int contractId) {
-        return contractRepository.getCprNrFromContractId(contractId);
+        return contractRepository.getCprNumFromContractId(contractId);
     }
 
     public List<Contract> getAllReturnedUncheckedContracts() {
@@ -48,7 +48,6 @@ public class ContractService {
 
     public void createContract(WebRequest data) {
         Contract contract = contractRepository.createContract(data);
-        System.out.println(contract);
         create(contract);
     }
 
