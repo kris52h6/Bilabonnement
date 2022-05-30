@@ -13,23 +13,31 @@
     box-shadow: 5px 10px lightgrey;
 }
 
+.login-info {
+    border: 1px solid black;
+    position: absolute;
+    left: 15%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .login-wrapper form input {
-    width: 200px;
-    margin-bottom: 10px;
-    height: 30px;
+width: 200px;
+margin-bottom: 10px;
+height: 30px;
 }
 
 #login-error {
-    display: flex;
-    justify-content: center;
+display: flex;
+justify-content: center;
 }
 
 .login-error-wrapper {
-    border: 1px solid black;
-    padding: 100px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 5px 10px lightgrey;
+border: 1px solid black;
+padding: 100px;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+box-shadow: 5px 10px lightgrey;
 }

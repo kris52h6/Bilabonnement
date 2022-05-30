@@ -60,6 +60,10 @@ table, th, td {
     border: 1px solid black;
 }
 
+#login tr, th, td {
+    padding: 5px;
+}
+
 form {
     display: flex;
     flex-direction: column;

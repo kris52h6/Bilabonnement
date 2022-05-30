@@ -126,14 +126,14 @@ public class DamageRepository implements IDamageRepository {
     }
 
     @Override
-    public void createTempDamageObj(WebRequest data) {
+    public boolean createTempDamageObj(WebRequest data) {
         Damage damage = new Damage(
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("damageId"))),
                 Double.parseDouble(Objects.requireNonNull(data.getParameter("damagePrice"))),
                 data.getParameter("damageDescription"),
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("contractId")))
         );
-        editDamage(damage);
+        return editDamage(damage);
     }
 
     public void deleteDamage(int damageId) {
