@@ -4,12 +4,14 @@ import com.example.bilabonnoment.models.Car;
 import com.example.bilabonnoment.models.Customer;
 import com.example.bilabonnoment.repositories.BusinessRepository;
 import com.example.bilabonnoment.repositories.CustomerRepository;
+import com.example.bilabonnoment.repositories.interfaces.IBusinessRepository;
+import com.example.bilabonnoment.repositories.interfaces.ICustomerRepository;
 
 import java.util.List;
 
 public class CustomerBusinessService {
-    private final CustomerRepository customerRepository;
-    private final BusinessRepository businessRepository;
+    private final ICustomerRepository customerRepository;
+    private final IBusinessRepository businessRepository;
 
     public CustomerBusinessService(CustomerRepository customerRepository, BusinessRepository businessRepository) {
         this.customerRepository = customerRepository;

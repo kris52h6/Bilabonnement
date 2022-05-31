@@ -4,16 +4,18 @@ import com.example.bilabonnoment.models.Car;
 import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.repositories.BusinessRepository;
 import com.example.bilabonnoment.repositories.ContractRepository;
+import com.example.bilabonnoment.repositories.interfaces.IBusinessRepository;
+import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BusinessContractService {
-    private final ContractRepository contractRepository;
-    private final BusinessRepository businessRepository;
+    private final IContractRepository contractRepository;
+    private final IBusinessRepository businessRepository;
 
 
-    public BusinessContractService(ContractRepository contractRepository, BusinessRepository businessRepository) {
+    public BusinessContractService(IContractRepository contractRepository, BusinessRepository businessRepository) {
         this.contractRepository = contractRepository;
         this.businessRepository = businessRepository;
     }

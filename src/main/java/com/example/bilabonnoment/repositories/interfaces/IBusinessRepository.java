@@ -11,4 +11,5 @@ public interface IBusinessRepository extends IRepository<Car> {
 
     public void editCarLeasingStatus(int carId, boolean isLeased);
 
+    public List<Car> getAllAvailableCars();
     }

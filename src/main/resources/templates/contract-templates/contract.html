@@ -10,7 +10,7 @@
 <body>
 
 <header th:insert="fragments/header.html :: header"></header>
-<main>
+<main th:if="${contracts != null}">
     <h1>Oversigt over kontrakt</h1>
     <section id="single-contract">
 
@@ -60,12 +60,15 @@
                         <a th:href="@{/editContractForm?contractId={contractId}(contractId=${contract.getId()})}">
                             <button class="general-button">Rediger lejekontrakt</button>
                         </a>
-
-
                     </div>
                 </span>
         </div>
     </section>
+</main>
+<main th:if="${contracts == null}">
+    <div class="inner">
+        <p>ingen kontrakt fundet</p>
+    </div>
 </main>
 </body>
 </html>

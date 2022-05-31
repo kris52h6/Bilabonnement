@@ -28,7 +28,6 @@ public class LoginService {
         return null;
     }
 
-
     public String reDirectUser(HttpSession session) {
         String userRole = (String) session.getAttribute("userRole");
 

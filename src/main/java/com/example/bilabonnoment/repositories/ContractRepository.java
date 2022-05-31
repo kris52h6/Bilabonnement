@@ -12,14 +12,6 @@ import java.util.Objects;
 
 public class ContractRepository implements IContractRepository {
 
-    public static void main(String[] args) {
-        ContractRepository contractRepository = new ContractRepository();
-        String str = "2000-05-05";
-        Date date = Date.valueOf(str);
-        Contract editContract = new Contract(1, "123", "1415", 1000, "her", "her", date, date, true, Contract.Damage.YES);
-        contractRepository.editContract(editContract);
-    }
-
     @Override
     public List<Contract> getAllEntities() {
         Connection conn = DatabaseConnectionManager.getConnection();

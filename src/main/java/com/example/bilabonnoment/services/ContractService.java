@@ -1,6 +1,7 @@
 package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Contract;
+import com.example.bilabonnoment.repositories.ContractRepository;
 import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
 import org.springframework.web.context.request.WebRequest;
 
@@ -9,8 +10,8 @@ import java.util.List;
 public class ContractService {
     private final IContractRepository contractRepository;
 
-    public ContractService(IContractRepository repo) {
-        this.contractRepository = repo;
+    public ContractService(ContractRepository contractRepository) {
+        this.contractRepository = contractRepository;
     }
 
     public boolean editContract(WebRequest dataFromForm) {
