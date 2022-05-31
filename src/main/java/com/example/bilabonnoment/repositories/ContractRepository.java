@@ -154,7 +154,7 @@ public class ContractRepository implements IContractRepository {
     @Override
     public Contract createContract(WebRequest data) {
         try {
-            Contract contract = new Contract(
+            return new Contract(
                     -1,
                     data.getParameter("customerCprNum"),
                     data.getParameter("vin"),
@@ -166,7 +166,6 @@ public class ContractRepository implements IContractRepository {
                     false,
                     Contract.Damage.UNCHECKED
             );
-            return contract;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -175,7 +174,7 @@ public class ContractRepository implements IContractRepository {
 
     @Override
     public Contract createTempContractObj(WebRequest data) {
-        Contract temp = new Contract(
+        return new Contract(
                 Integer.parseInt(Objects.requireNonNull(data.getParameter("contractId"))),
                 data.getParameter("customerCprNum"),
                 data.getParameter("vin"),
@@ -188,7 +187,6 @@ public class ContractRepository implements IContractRepository {
                 Contract.Damage.valueOf(data.getParameter("isDamaged"))
 
         );
-        return temp;
     }
 
     @Override
