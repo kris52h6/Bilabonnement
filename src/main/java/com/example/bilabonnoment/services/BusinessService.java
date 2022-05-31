@@ -2,8 +2,11 @@ package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Car;
 import com.example.bilabonnoment.repositories.interfaces.IBusinessRepository;
-
 import java.util.List;
+
+/*
+* @author Alexander
+* */
 
 public class BusinessService {
 
@@ -20,7 +23,6 @@ public class BusinessService {
         }
         return total;
     }
-
 
     public List<Car> getAllRentedCars() {
         return businessRepository.getAllRentedCars();

@@ -10,6 +10,8 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+
+
 class ContractWithDamageTest {
     DamageTestRepository damageTestRepository = new DamageTestRepository();
     ContractTestRepository contractTestRepository = new ContractTestRepository();

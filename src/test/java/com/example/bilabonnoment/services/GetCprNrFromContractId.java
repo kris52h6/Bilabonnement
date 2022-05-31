@@ -5,6 +5,10 @@ import com.example.bilabonnoment.repositories.ContractTestRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/*
+ * @author Alexander
+ * */
+
 class GetCprNrFromContractId {
 
     @Test

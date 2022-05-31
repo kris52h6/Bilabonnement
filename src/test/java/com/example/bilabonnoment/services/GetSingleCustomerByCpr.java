@@ -7,6 +7,10 @@ import com.example.bilabonnoment.repositories.CustomerTestRepository;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+/*
+ * @author Alexander
+ * */
+
 class GetSingleCustomerByCpr {
 
     @Test

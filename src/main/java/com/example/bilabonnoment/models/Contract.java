@@ -124,29 +124,6 @@ public class Contract {
                 '}';
     }
 
-    /*@Override
-    public String toString()
-    {
-        return "Contract{" +
-                "id=" + id +
-                ", cprNr='" + cprNr + '\'' +
-                ", vin_no=" + vin_no +
-                ", price=" + price +
-                ", pickupPlace='" + pickupPlace + '\'' +
-                ", returnPlace='" + returnPlace + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", isReturned=" + isReturned +
-                ", damage=" + damage +
-                '}';
-    }*/
-
-    /*@Override
-    public String toString() {
-        return "Contract{" +
-                "id=" + id;
-    }*/
-
     public enum Damage {
         UNCHECKED,
         YES,

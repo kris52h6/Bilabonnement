@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+ * @author Alexander
+ * */
+
 public class DamageTestRepository implements IDamageRepository {
     ArrayList<Damage> allDamages = new ArrayList<>(
             Arrays.asList(

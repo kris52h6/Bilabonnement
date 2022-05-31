@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+ * @author Alexander
+ * */
+
 public class CustomerTestRepository implements ICustomerRepository {
     ArrayList<Customer> allCustomers = new ArrayList<>(
             Arrays.asList(

@@ -8,7 +8,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.List;
 
 /**
- * @author Kristian, Oliver
+ * @author Alexander, Kristian, Oliver
  */
 public class ContractService {
     private final IContractRepository contractRepository;

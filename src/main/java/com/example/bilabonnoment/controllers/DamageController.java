@@ -17,7 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- * @author Alexander Kristian, Oliver
+ * @author Alexander, Kristian, Oliver
  */
 @Controller
 public class DamageController {
