@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author Alex
+ */
 @Controller
 public class BusinessController {
     private final BusinessRepository businessRepository = new BusinessRepository();

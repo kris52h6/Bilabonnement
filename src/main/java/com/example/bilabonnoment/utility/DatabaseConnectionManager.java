@@ -25,6 +25,7 @@ public class DatabaseConnectionManager {
         try {
             // Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url, username, password);
+            DriverManager.setLoginTimeout(999999999);
             System.out.println("connected");
         } catch (SQLException e) {
             e.printStackTrace();

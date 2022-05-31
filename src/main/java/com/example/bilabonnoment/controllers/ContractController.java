@@ -5,7 +5,6 @@ import com.example.bilabonnoment.repositories.ContractRepository;
 import com.example.bilabonnoment.repositories.CustomerRepository;
 import com.example.bilabonnoment.services.ContractService;
 import com.example.bilabonnoment.services.CustomerBusinessService;
-import com.example.bilabonnoment.services.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
