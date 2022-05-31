@@ -177,30 +177,6 @@ public class BusinessRepository implements IBusinessRepository {
     @Override
     public boolean create(Car entity) {
         return false;
-        /*Connection conn = DatabaseConnectionManager.getConnection();
-
-        boolean result = false;
-        try {
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bilabonnement.car (car_id, car_vin_no, car_make, car_model, car_equipment_level, car_value_pre_tax, car_registration_tax, car_co2_emission, car_is_leased) VALUES (?,?,?,?,?,?,?,?,?)");
-            pstmt.setInt(1,car.getId());
-            pstmt.setInt(2,car.getVinNo());
-            pstmt.setString(3,car.getMake());
-            pstmt.setString(4,car.getModel());
-            pstmt.setString(5,car.getEquipmentLevel());
-            pstmt.setDouble(6,car.getValuePreTax());
-            pstmt.setDouble(7,car.getRegistrationTax());
-            pstmt.setDouble(8,car.getCo2Emission());
-            pstmt.setBoolean(9,car.getIs_leased());
-
-            int row = pstmt.executeUpdate();
-            result = true;
-            // rows affected
-            System.out.println(row); //1
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return result;*/
     }
 
 }
