@@ -9,7 +9,9 @@ import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-
+/**
+ * @author Oliver
+ */
 @Controller
 public class LoginController {
 

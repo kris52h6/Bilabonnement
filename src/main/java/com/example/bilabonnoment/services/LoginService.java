@@ -6,6 +6,9 @@ import com.example.bilabonnoment.repositories.interfaces.ILoginRepository;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
+/**
+ * @author Oliver
+ */
 public class LoginService {
     private final ILoginRepository loginRepository;
 

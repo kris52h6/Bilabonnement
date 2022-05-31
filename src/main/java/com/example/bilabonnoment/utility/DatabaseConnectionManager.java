@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * @author Alexander, Kristian, Oliver
+ */
 public class DatabaseConnectionManager {
     private static String url;
     private static String username;
@@ -22,10 +25,11 @@ public class DatabaseConnectionManager {
         username = System.getenv("db.username");
         password = System.getenv("db.password");
 
+
+
         try {
             // Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url, username, password);
-            DriverManager.setLoginTimeout(999999999);
             System.out.println("connected");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -33,4 +37,6 @@ public class DatabaseConnectionManager {
 
         return conn;
     }
+
+
 }

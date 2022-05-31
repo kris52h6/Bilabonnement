@@ -14,6 +14,9 @@ import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author Kristian, Oliver
+ */
 @Controller
 public class ContractController {
 

@@ -8,15 +8,15 @@ import java.util.List;
 
 public interface IDamageRepository extends IRepository<Damage> {
 
-    public ArrayList<Damage> getAllDamagesFromContract(int contractId);
+    ArrayList<Damage> getAllDamagesFromContract(int contractId);
 
-    public List<String> getAllDamagesFromContracts();
+    List<String> getAllDamagesFromContracts();
 
-    public Damage createDamage(WebRequest data);
+    Damage createDamage(WebRequest data);
 
-    public boolean createTempDamageObj(WebRequest data);
+    boolean createTempDamageObj(WebRequest data);
 
-    public void deleteDamage(int damageId);
+    void deleteDamage(int damageId);
 
 }
 

@@ -6,19 +6,19 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.List;
 
 public interface IContractRepository extends IRepository<Contract> {
-    public List<Contract> getAllContractsFromCustomerCprNum(String cprNum);
+    List<Contract> getAllContractsFromCustomerCprNum(String cprNum);
 
-    public String getCprNumFromContractId(int contractId);
+    String getCprNumFromContractId(int contractId);
 
-    public Contract createContract(WebRequest data);
+    Contract createContract(WebRequest data);
 
-    public int changeContractDamage(int contractId, String updatedDamageStatus);
+    int changeContractDamage(int contractId, String updatedDamageStatus);
 
-    public List<Contract> getAllReturnedUncheckedContracts();
+    List<Contract> getAllReturnedUncheckedContracts();
 
-    public List<Contract> getAllReturnedDamagedContracts();
+    List<Contract> getAllReturnedDamagedContracts();
 
-    public boolean editContract(Contract contract);
+    boolean editContract(Contract contract);
 
-    public Contract createTempContractObj(WebRequest data);
+    Contract createTempContractObj(WebRequest data);
 }

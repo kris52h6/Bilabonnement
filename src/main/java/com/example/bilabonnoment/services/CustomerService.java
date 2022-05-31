@@ -4,7 +4,9 @@ import com.example.bilabonnoment.models.Customer;
 import com.example.bilabonnoment.repositories.interfaces.ICustomerRepository;
 
 import java.util.List;
-
+/**
+ * @author Oliver
+ */
 public class CustomerService {
     private final ICustomerRepository customerRepository;
 

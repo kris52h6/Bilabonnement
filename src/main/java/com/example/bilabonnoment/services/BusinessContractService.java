@@ -10,6 +10,9 @@ import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Oliver
+ */
 public class BusinessContractService {
     private final IContractRepository contractRepository;
     private final IBusinessRepository businessRepository;
