@@ -11,8 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Kristian, Oliver
+ */
 public class CustomerRepository implements ICustomerRepository {
-
     @Override
     public List<Customer> getAllEntities() {
         Connection conn = DatabaseConnectionManager.getConnection();

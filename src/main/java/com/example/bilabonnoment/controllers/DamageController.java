@@ -16,6 +16,9 @@ import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author Alexander Kristian, Oliver
+ */
 @Controller
 public class DamageController {
     private final DamageRepository damageRepository = new DamageRepository();
@@ -24,7 +27,6 @@ public class DamageController {
 
     private final DamageService damageService = new DamageService(damageRepository);
     private final ContractService contractService = new ContractService(contractRepository);
-
 
     private final String AREA = "DAMAGE";
 

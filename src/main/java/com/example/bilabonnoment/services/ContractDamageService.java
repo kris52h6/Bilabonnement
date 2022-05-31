@@ -2,15 +2,15 @@ package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Contract;
 import com.example.bilabonnoment.models.Damage;
-import com.example.bilabonnoment.repositories.ContractRepository;
-import com.example.bilabonnoment.repositories.DamageRepository;
 import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
 import com.example.bilabonnoment.repositories.interfaces.IDamageRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
+/**
+ * @author Kristian, Oliver
+ */
 public class ContractDamageService {
 
     private final IDamageRepository damageRepository;

@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author Kristian, Oliver
+ */
 public class DamageRepository implements IDamageRepository {
-
     @Override
     public List<Damage> getAllEntities() {
         Connection conn = DatabaseConnectionManager.getConnection();

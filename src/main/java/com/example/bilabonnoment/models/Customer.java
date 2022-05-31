@@ -2,8 +2,8 @@ package com.example.bilabonnoment.models;
 
 public class Customer {
 
-    private int id;
-    private String cprNum;
+    private final int id;
+    private final String cprNum;
     private String firstname;
     private String lastname;
 

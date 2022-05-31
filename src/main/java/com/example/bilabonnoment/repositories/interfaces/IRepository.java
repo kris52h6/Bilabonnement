@@ -5,13 +5,13 @@ import java.util.List;
 public interface IRepository<T> {
 
     //ReadAll
-    public List<T> getAllEntities();
+    List<T> getAllEntities();
 
     //ReadSingle
-    public T getSingleById(int id);
+    T getSingleById(int id);
 
     //Create
-    public boolean create(T entity);
+    boolean create(T entity);
 
     //Update
 

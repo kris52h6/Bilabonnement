@@ -11,6 +11,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Alexander, Oliver
+ */
 public class BusinessRepository implements IBusinessRepository {
 
     @Override

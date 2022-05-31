@@ -1,6 +1,7 @@
 package com.example.bilabonnoment.services;
 
 import com.example.bilabonnoment.models.Contract;
+import com.example.bilabonnoment.repositories.interfaces.IContractRepository;
 import org.junit.jupiter.api.Test;
 import com.example.bilabonnoment.repositories.ContractTestRepository;
 
@@ -15,7 +16,7 @@ class GetAllReturnedUncheckedContracts {
     @Test
     void getAllReturnedUncheckedContracts() {
         //arrange
-        ContractTestRepository contractTestRepository = new ContractTestRepository();
+        IContractRepository contractTestRepository = new ContractTestRepository();
         ContractService contractService = new ContractService(contractTestRepository);
 
         String str = "2200-05-05";

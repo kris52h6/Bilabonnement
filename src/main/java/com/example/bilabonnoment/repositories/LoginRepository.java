@@ -9,6 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * @author Oliver
+ */
 public class LoginRepository implements ILoginRepository {
     public User authenticateUser(String username, String password) {
         Connection conn = DatabaseConnectionManager.getConnection();
