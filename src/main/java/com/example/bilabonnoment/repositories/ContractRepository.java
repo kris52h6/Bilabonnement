@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author Kristian, Oliver
+ */
 public class ContractRepository implements IContractRepository {
     @Override
     public List<Contract> getAllEntities() {

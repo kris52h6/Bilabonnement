@@ -8,7 +8,9 @@ import com.example.bilabonnoment.repositories.interfaces.IBusinessRepository;
 import com.example.bilabonnoment.repositories.interfaces.ICustomerRepository;
 
 import java.util.List;
-
+/**
+ * @author Kristian
+ */
 public class CustomerBusinessService {
     private final ICustomerRepository customerRepository;
     private final IBusinessRepository businessRepository;
