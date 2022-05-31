@@ -10,7 +10,7 @@ import java.util.List;
 public class ContractService {
     private final IContractRepository contractRepository;
 
-    public ContractService(ContractRepository contractRepository) {
+    public ContractService(IContractRepository contractRepository) {
         this.contractRepository = contractRepository;
     }
 

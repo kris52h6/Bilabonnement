@@ -15,7 +15,7 @@ public class BusinessContractService {
     private final IBusinessRepository businessRepository;
 
 
-    public BusinessContractService(IContractRepository contractRepository, BusinessRepository businessRepository) {
+    public BusinessContractService(IContractRepository contractRepository, IBusinessRepository businessRepository) {
         this.contractRepository = contractRepository;
         this.businessRepository = businessRepository;
     }

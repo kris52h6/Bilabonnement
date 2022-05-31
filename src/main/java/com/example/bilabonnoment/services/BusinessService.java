@@ -10,7 +10,7 @@ public class BusinessService {
 
     private final IBusinessRepository businessRepository;
 
-    public BusinessService(BusinessRepository businessRepository) {
+    public BusinessService(IBusinessRepository businessRepository) {
         this.businessRepository = businessRepository;
     }
 
