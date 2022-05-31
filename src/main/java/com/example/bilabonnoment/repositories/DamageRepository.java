@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * @author Kristian, Oliver
+ * @author Alexander, Kristian, Oliver
  */
 public class DamageRepository implements IDamageRepository {
     @Override

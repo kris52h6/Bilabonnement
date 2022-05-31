@@ -12,6 +12,10 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+/*
+ * @author Alexander
+ * */
+
 class GetAllReturnedUncheckedContracts {
     @Test
     void getAllReturnedUncheckedContracts() {

@@ -7,7 +7,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.util.ArrayList;
 
 /**
- * @author Kristian, Oliver
+ * @author ALexander, Kristian, Oliver
  */
 public class DamageService {
     private final IDamageRepository damageRepository;

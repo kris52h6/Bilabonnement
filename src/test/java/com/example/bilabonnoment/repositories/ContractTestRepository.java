@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+ * @author Alexander
+ * */
+
 public class ContractTestRepository implements IContractRepository {
     String str = "2200-05-05";
     Date date = Date.valueOf(str);
